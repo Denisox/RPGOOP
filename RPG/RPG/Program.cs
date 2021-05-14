@@ -62,6 +62,39 @@ namespace RPG
                 crossbow3
             };
 
+            Item armor1 = new Item("Evergreen Armor", "all", 20, 5, 0, 0, 4);
+            Item armor2 = new Item("Mantle of Destruction", "all", 12, 5, 0.3, 0, 3);
+            Item armor3 = new Item("Shell of the Undying", "all", 30, 5, 0, 0, 1);
+
+            List<Item> armorTier1 = new List<Item>()
+            {
+                armor1,
+                armor2,
+                armor3
+            };
+
+            Item armor4 = new Item("Oceanic Gear", "all", 30, 8, 0, 0, 8);
+            Item armor5 = new Item("Robe of Power", "all", 18, 8, 0.5, 0, 6);
+            Item armor6 = new Item("Heavy Fortress", "all", 45, 8, 0, 0, 2);
+
+            List<Item> armorTier2 = new List<Item>()
+            {
+                armor4,
+                armor5,
+                armor6
+            };
+
+            Item armor7 = new Item("Borealis Shirt if Shivers", "all", 60, 16, 0, 0, 20);
+            Item armor8 = new Item("Gear of the Unstopable", "all", 36, 16, 0.7, 0, 15);
+            Item armor9 = new Item("Life God's Robe", "all", 90, 16, 0, 0, 5);
+
+            List<Item> armorTier3 = new List<Item>()
+            {
+                armor7,
+                armor8,
+                armor9
+            };
+
         }
     }
 }
