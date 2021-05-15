@@ -9,8 +9,6 @@ namespace RPG_OOP
         public static void Main(string[] args)
         {
             Mage denkoMage = new Pyromanser("Denko the great", 150, 50, 1.50, 500, 200);
-
-            Console.WriteLine(denkoMage.Name);
         }
     }
 }

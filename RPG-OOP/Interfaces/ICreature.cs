@@ -8,11 +8,11 @@ namespace RPG_OOP.Interfaces
 {
     public interface ICreature
     {
-        string Name { get; set; }
-        int Attack { get; set; }
-        int Defence { get; set; }
-        double Speed { get; set; }
-        int HealthPoints { get; set; }
-        int Mana { get; set; }
+        string Name { get; }
+        int Attack { get; }
+        int Defence { get; }
+        double Speed { get; }
+        int HealthPoints { get; }
+        int Mana { get; }
     }
 }

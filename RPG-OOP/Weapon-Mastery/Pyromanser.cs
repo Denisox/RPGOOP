@@ -14,7 +14,6 @@ namespace RPG_OOP.Weapon_Mastery
         public override string Name
         {
             get => name;
-            set => name = value;
         }
 
         private int attack;
@@ -22,7 +21,6 @@ namespace RPG_OOP.Weapon_Mastery
         public override int Attack
         {
             get => attack;
-            set => attack = value;
         }
 
         private int defence;
@@ -30,7 +28,6 @@ namespace RPG_OOP.Weapon_Mastery
         public override int Defence
         {
             get => defence;
-            set => defence = value;
         }
 
         private double speed;
@@ -38,7 +35,6 @@ namespace RPG_OOP.Weapon_Mastery
         public override double Speed
         {
             get => speed;
-            set => speed = value;
         }
 
         private int healthPoints;
@@ -46,7 +42,6 @@ namespace RPG_OOP.Weapon_Mastery
         public override int HealthPoints
         {
             get => healthPoints;
-            set => healthPoints = value;
         }
 
         private int mana;
@@ -54,17 +49,16 @@ namespace RPG_OOP.Weapon_Mastery
         public override int Mana
         {
             get => mana;
-            set => mana = value;
         }
 
         public Pyromanser(string name, int attack, int defence, double speed, int hp, int mana)
         {
-            this.Name = name;
-            this.Attack = attack;
-            this.Defence = defence;
-            this.Speed = speed;
-            this.HealthPoints = hp;
-            this.Mana = mana;
+            this.name = name;
+            this.attack = attack;
+            this.defence = defence;
+            this.speed = speed;
+            this.healthPoints = hp;
+            this.mana = mana;
         }
     }
 }

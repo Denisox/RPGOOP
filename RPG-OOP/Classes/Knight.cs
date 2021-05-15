@@ -9,11 +9,11 @@ namespace RPG_OOP.Classes
 {
     public abstract class Knight : ICreature
     {
-        public abstract string Name { get; set; }
-        public abstract int Attack { get; set; }
-        public abstract int Defence { get; set; }
-        public abstract double Speed { get; set; }
-        public abstract int HealthPoints { get; set; }
-        public abstract int Mana { get; set; }
+        public abstract string Name { get; }
+        public abstract int Attack { get; }
+        public abstract int Defence { get; }
+        public abstract double Speed { get; }
+        public abstract int HealthPoints { get; }
+        public abstract int Mana { get; }
     }
 }
