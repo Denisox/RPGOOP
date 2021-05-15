@@ -7,7 +7,7 @@ using RPG_OOP.Classes;
 
 namespace RPG_OOP.Weapon_Mastery
 {
-    internal class One_Handed_Swordsman : Knight
+    internal class OneHandedSwordsman : Knight
     {
         private string name;
 
@@ -51,7 +51,7 @@ namespace RPG_OOP.Weapon_Mastery
             get => mana;
         }
 
-        public One_Handed_Swordsman(string name, int attack, int defence, double speed, int hp, int mana)
+        public OneHandedSwordsman(string name, int attack, int defence, double speed, int hp, int mana)
         {
             this.name = name;
             this.attack = attack;
