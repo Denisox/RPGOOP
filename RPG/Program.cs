@@ -1,12 +1,15 @@
 ﻿using System;
-using RPG.Items;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using RPG.Items;
 
 namespace RPG
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Item staff1 = new Item("Galvanic Staff", "Mage", 0, 0, 0.1, 4, 0);
             Item sword1 = new Item("Cerulean Edge", "OHS", 0, 0, 0.2, 2, 0);
@@ -94,7 +97,6 @@ namespace RPG
                 armor8,
                 armor9
             };
-
         }
     }
 }

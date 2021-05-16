@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Items
 {
-    class Item
+    public class Item
     {
         private string name;
         private string type;
@@ -16,7 +16,7 @@ namespace RPG.Items
         private int attackAdd;
         private int defenceAdd;
 
-        public string Name 
+        public string Name
         {
             get
             {
