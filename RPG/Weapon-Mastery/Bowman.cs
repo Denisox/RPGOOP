@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RPG_OOP.Classes;
+using RPG.Classes;
 
-namespace RPG_OOP.Weapon_Mastery
+namespace RPG.Weapon_Mastery
 {
     public class Bowman : Archer
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPG_OOP.Interfaces
+namespace RPG.Interfaces
 {
     public interface ICreature
     {
