@@ -55,8 +55,8 @@
     <Compile Include="Weapon-Mastery\Pyromanser.cs" />
     <Compile Include="Weapon-Mastery\Necromanser.cs" />
     <Compile Include="Weapon-Mastery\Spearman.cs" />
-    <Compile Include="Weapon-Mastery\Two-Handed Swordsman.cs" />
-    <Compile Include="Weapon-Mastery\One-Handed Swordsman.cs" />
+    <Compile Include="Weapon-Mastery\TwoHandedSwordsman.cs" />
+    <Compile Include="Weapon-Mastery\OneHandedSwordsman.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
