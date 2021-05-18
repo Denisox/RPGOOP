@@ -127,7 +127,52 @@ namespace RPG
             {
                 Console.WriteLine(character.AsAString());
             }
-            Console.WriteLine("Test");
+            Console.WriteLine("Choose Class from the following: Crossbow, Bow, One-Hand Swordsman, Two-Hand Swordsman, Spearman, Pyromancer or Necromancer\n");
+
+
+            ICharacters currentCharacter = null;
+            while (currentCharacter == null)
+            {
+                string chosenClass = Console.ReadLine();
+            
+            
+                switch (chosenClass)
+                {
+                    case "Crossbow":
+                        currentCharacter = character1;
+                        Console.WriteLine("You have chosen class Crossbow\n");
+                        break;
+                    case "Bow":
+                        currentCharacter = character2;
+                        Console.WriteLine("You have chosen class Bow\n");
+                        break;
+                    case "One-Hand Swordsman":
+                        currentCharacter = character3;
+                        Console.WriteLine("You have chosen class OHS\n");
+                        break;
+                    case "Two-Hand Swordsman":
+                        currentCharacter = character4;
+                        Console.WriteLine("You have chosen class THS\n");
+                        break;
+                    case "Pyromancer":
+                        currentCharacter = character5;
+                        Console.WriteLine("You have chosen class Pyromancer\n");
+                        break;
+                    case "Necromancer":
+                        currentCharacter = character6;
+                        Console.WriteLine("You have chosen class Necromancer\n");
+                        break;
+                    case "Spearman":
+                        currentCharacter = character7;
+                        Console.WriteLine("You have chosen class Spearman\n");
+                        break;
+                    default:
+                        Console.WriteLine("Bad Input");
+                        break;
+                }
+            }
+
+
         }
     }
 }

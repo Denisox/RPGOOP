@@ -8,7 +8,7 @@ using RPG.Interfaces;
 
 namespace RPG.CharacterClasses.Weapon_Mastery
 {
-    public class CharacterArbalist : CharacterArcher, ICharacters
+    public class CharacterArbalist : CharacterArcher, ICharacters, IDisposable
     {
         private string name;
 
@@ -65,6 +65,11 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         public string AsAString()
         {
             return "\nClass: Crossbow;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "\nHP: " + this.healthPoints + "\nMana: " + this.mana;
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }
