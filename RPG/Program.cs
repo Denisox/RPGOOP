@@ -8,6 +8,7 @@ using RPG.Interfaces;
 using RPG.Classes;
 using RPG.CharacterClasses;
 using RPG.Weapon_Mastery;
+using RPG.CharacterClasses.Weapon_Mastery;
 
 namespace RPG
 {
@@ -101,9 +102,25 @@ namespace RPG
                 armor8,
                 armor9
             };
-
             
+           CharacterArbalist character1 = new CharacterArbalist("default", 13, 8, 1.3, 150, 30);
+            CharacterBowman character2 = new CharacterBowman("default", 12, 7, 1.2, 140, 40 );
+            CharacterOneHandedSwordsman character3 = new CharacterOneHandedSwordsman("default", 12, 10, 1.3, 140, 50);
+            CharacterTwoHandedSwordsman character4 = new CharacterTwoHandedSwordsman("default", 15, 7, 1, 180, 60);
+            CharacterPyromancer character5 = new CharacterPyromancer("default", 12, 9, 1.2, 130, 200);
+            CharacterNecromancer character6 = new CharacterNecromancer("default", 9, 8, 1.25, 220, 220 );
+            CharacterSpearman character7 = new CharacterSpearman("default", 13, 10, 1.30, 150, 50);
 
+             List<ICharacters> characters = new List<ICharacters>()
+            {
+                character1,
+                character2,
+                character3,
+                character4,
+                character5,
+                character6,
+                character7
+            };
         }
     }
 }

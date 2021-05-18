@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using RPG.Classes;
 
-namespace RPG.Weapon_Mastery
+namespace RPG.CharacterClasses.Weapon_Mastery
 {
-    public class Spearman : Knight
+    public class CharacterSpearman : CharacterKnight
     {
         private string name;
 
@@ -51,7 +51,7 @@ namespace RPG.Weapon_Mastery
             get => mana;
         }
 
-        public Spearman(string name, int attack, int defence, double speed, int hp, int mana)
+        public CharacterSpearman(string name, int attack, int defence, double speed, int hp, int mana)
         {
             this.name = name;
             this.attack = attack;

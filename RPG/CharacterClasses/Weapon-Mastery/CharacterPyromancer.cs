@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using RPG.Classes;
 
-namespace RPG.Weapon_Mastery
-{
+namespace RPG.CharacterClasses.Weapon_Mastery
+
     public class CharacterPyromancer : CharacterKnight
     {
         private string name;
