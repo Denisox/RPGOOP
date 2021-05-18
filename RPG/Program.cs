@@ -122,9 +122,10 @@ namespace RPG
                 character7
             };
 
+            Console.WriteLine("\nList of the possible characters: \n");
             foreach(ICharacters character in characters)
             {
-                Console.WriteLine(character.ToString());
+                Console.WriteLine(character.AsAString());
             }
             Console.WriteLine("Test");
         }

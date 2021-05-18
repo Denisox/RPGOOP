@@ -7,7 +7,7 @@ using RPG.Interfaces;
 
 namespace RPG.CharacterClasses
 {
-    public abstract class CharacterMage : ICharacters
+    public abstract class CharacterMage
 
     {
         public abstract int HealthPoints { get; }

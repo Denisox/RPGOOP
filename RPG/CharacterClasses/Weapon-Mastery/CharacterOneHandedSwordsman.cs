@@ -62,9 +62,9 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             this.mana = mana;
         }
 
-        public string ToSting()
+        public string AsAString()
         {
-            return "\nClass: One-Hand Swordsman;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "HP: " + this.healthPoints + "Mana: " + this.mana;
+            return "\nClass: One-Hand Swordsman;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "\nHP: " + this.healthPoints + "\nMana: " + this.mana;
         }
     }
 }

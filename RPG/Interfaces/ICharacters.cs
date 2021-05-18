@@ -14,7 +14,8 @@ namespace RPG.Interfaces
         double Speed { get; }
         int HealthPoints { get; }
         int Mana { get; }
-        
+
+        string AsAString();
 
     }
 }
