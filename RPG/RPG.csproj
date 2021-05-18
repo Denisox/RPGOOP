@@ -56,6 +56,7 @@
     <Compile Include="Classes\Archer.cs" />
     <Compile Include="Classes\Knight.cs" />
     <Compile Include="Classes\Mage.cs" />
+    <Compile Include="Interfaces\ICharacters.cs" />
     <Compile Include="Interfaces\ICreature.cs" />
     <Compile Include="Interfaces\ILiving.cs" />
     <Compile Include="Items\Item.cs" />

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RPG.Classes;
+using RPG.Interfaces;
 
 namespace RPG.CharacterClasses.Weapon_Mastery
 {
-    public class CharacterNecromancer : CharacterMage
+    public class CharacterNecromancer : CharacterMage, ICharacters
     {
         private string name;
 

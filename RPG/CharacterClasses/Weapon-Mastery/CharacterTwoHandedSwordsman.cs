@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RPG.Classes;
+using RPG.Interfaces;
 
 namespace RPG.CharacterClasses.Weapon_Mastery
-    
-    public class CharacterTwoHandedSwordsman : CharacterKnight
-    {
+{ 
+    public class CharacterTwoHandedSwordsman : CharacterKnight, ICharacters
+{
         private string name;
 
         public override string Name

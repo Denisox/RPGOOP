@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RPG.Classes;
+using RPG.Interfaces;
 
 namespace RPG.CharacterClasses.Weapon_Mastery
 {
-    public class CharacterArbalist : ClassArcher
+    public class CharacterArbalist : CharacterArcher, ICharacters
     {
         private string name;
 
