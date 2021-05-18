@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using RPG.Interfaces;
 
-namespace RPG.Classes
+namespace RPG.CharacterClasses
 {
-    public abstract class Necromancer : ICreature
+    public abstract class CharacterKnight : ICharacters
+
     {
         public abstract int HealthPoints { get; }
         public abstract int Attack { get; }

@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RPG.Items;
+using RPG.Interfaces;
+using RPG.Classes;
+using RPG.CharacterClasses;
+using RPG.Weapon_Mastery;
 
 namespace RPG
 {
@@ -97,6 +101,9 @@ namespace RPG
                 armor8,
                 armor9
             };
+
+            
+
         }
     }
 }
