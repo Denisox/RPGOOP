@@ -121,6 +121,12 @@ namespace RPG
                 character6,
                 character7
             };
+
+            foreach(ICharacters character in characters)
+            {
+                Console.WriteLine(character.ToString());
+            }
+            Console.WriteLine("Test");
         }
     }
 }

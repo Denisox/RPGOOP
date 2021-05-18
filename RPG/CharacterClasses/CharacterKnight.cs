@@ -17,3 +17,4 @@ namespace RPG.CharacterClasses
         public abstract int Mana { get; }
         public abstract string Name { get; }
     }
+}

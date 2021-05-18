@@ -61,5 +61,9 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             this.healthPoints = hp;
             this.mana = mana;
         }
+        public string ToSting()
+        {
+            return "\nClass: Spearman;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "HP: " + this.healthPoints + "Mana: " + this.mana;
+        }
     }
 }
