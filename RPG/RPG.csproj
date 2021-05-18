@@ -43,6 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharacterClasses\CharacterArcher.cs" />
+    <Compile Include="CharacterClasses\CharacterKnight.cs" />
+    <Compile Include="CharacterClasses\CharacterMage.cs" />
+    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterArbalist.cs" />
+    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterBowman.cs" />
+    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterNecromancer.cs" />
+    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterOneHandedSwordsman.cs" />
+    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterPyromancer.cs" />
+    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterSpearman.cs" />
+    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterTwoHandedSwordsman.cs" />
     <Compile Include="Classes\Archer.cs" />
     <Compile Include="Classes\Knight.cs" />
     <Compile Include="Classes\Mage.cs" />
@@ -62,6 +72,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
