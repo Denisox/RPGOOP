@@ -7,7 +7,7 @@ using RPG.Classes;
 
 namespace RPG.Weapon_Mastery
 {
-    public class Pyromanser : Knight
+    public class Pyromanser : Mage
     {
         private string name;
 

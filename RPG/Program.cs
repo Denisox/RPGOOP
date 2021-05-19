@@ -5,6 +5,7 @@ using RPG.Interfaces;
 using RPG.Weapon_Mastery;
 using RPG.CharacterClasses.Weapon_Mastery;
 using RPG.CharacterClasses;
+using RPG.Classes;
 
 namespace RPG
 {
@@ -118,14 +119,62 @@ namespace RPG
                 character7
             };
 
-            ICreature creature1 = new Arbalist("default", 13, 8, 1.3, 150, 30);
-            ICreature creature2 = new Bowman("default", 12, 7, 1.2, 140, 40);
-            ICreature creature3 = new OneHandedSwordsman("default", 12, 10, 1.3, 140, 50);
-            ICreature creature4 = new TwoHandedSwordsman("default", 15, 7, 1, 180, 60);
-            ICreature creature7 = new Spearman("default", 13, 10, 1.30, 150, 50);
-            ICreature creature5 = new Pyromanser("default", 12, 9, 1.2, 130, 200);
-            ICreature creature6 = new Necromanser("default", 9, 8, 1.25, 220, 220);
+            Archer creature1Tier1 = new Arbalist("default", 13, 8, 1.1, 110, 30);
+            Archer creature2Tier1 = new Bowman("default", 12, 7, 1.3, 110, 30);
+            Knight creature3Tier1 = new OneHandedSwordsman("default", 10, 15, 1.25, 150, 30);
+            Knight creature4Tier1 = new TwoHandedSwordsman("default", 15, 5, 1.15, 170, 30);
+            Knight creature5Tier1 = new Spearman("default", 12, 10, 1.30, 150, 0);
+            Mage creature6Tier1 = new Pyromanser("default", 10, 8, 1, 120, 150);
+            Mage creature7Tier1 = new Necromanser("default", 8, 8, 1, 90, 200);
 
+            List<ICreature> tier1Creatures = new List<ICreature>(7)
+            {
+                creature1Tier1,
+                creature2Tier1,
+                creature3Tier1,
+                creature4Tier1,
+                creature5Tier1,
+                creature6Tier1,
+                creature7Tier1
+            };
+
+            Archer creature1Tier2 = new Arbalist("default", 20, 14, 1.10, 220, 50);
+            Archer creature2Tier2 = new Bowman("default", 17, 14, 1.30, 230, 50);
+            Knight creature3Tier2 = new OneHandedSwordsman("default", 20, 20, 1.25, 200, 60);
+            Knight creature4Tier2 = new TwoHandedSwordsman("default", 20, 13, 1.15, 260, 60);
+            Knight creature5Tier2 = new Spearman("default", 18, 15, 1.30, 250, 0);
+            Mage creature6Tier2 = new Pyromanser("default", 15, 18, 1.25, 240, 250);
+            Mage creature7Tier2 = new Necromanser("default", 15, 16, 1.25, 240, 250);
+
+            List<ICreature> tier2Creatures = new List<ICreature>(7)
+            {
+                creature1Tier2,
+                creature2Tier2,
+                creature3Tier2,
+                creature4Tier2,
+                creature5Tier2,
+                creature6Tier2,
+                creature7Tier2
+            };
+
+            Archer creature1Tier3 = new Arbalist("default", 26, 14, 1.10, 220, 30);
+            Archer creature2Tier3 = new Bowman("default", 23, 20, 1.30, 280, 100);
+            Knight creature3Tier3 = new OneHandedSwordsman("default", 25, 25, 1.25, 320, 80);
+            Knight creature4Tier3 = new TwoHandedSwordsman("default", 27, 25, 1.15, 300, 80);
+            Knight creature5Tier3 = new Spearman("default", 23, 20, 1.30, 300, 0);
+            Mage creature6Tier3 = new Pyromanser("default", 18, 23, 1.30, 300, 400);
+            Mage creature7Tier3 = new Necromanser("default", 20, 20, 1.40, 300, 400);
+
+            List<ICreature> tier3Creatures = new List<ICreature>(7)
+            {
+                creature1Tier3,
+                creature2Tier3,
+                creature3Tier3,
+                creature4Tier3,
+                creature5Tier3,
+                creature6Tier3,
+                creature7Tier3
+            };
 
             Console.WriteLine("List of the possible characters: ");
             foreach (ICharacters character in characters)
