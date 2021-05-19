@@ -64,8 +64,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Weapon-Mastery\Creatures\Bowman.cs" />
     <Compile Include="Weapon-Mastery\Creatures\Arbalist.cs" />
-    <Compile Include="Weapon-Mastery\Creatures\Necromanser.cs" />
-    <Compile Include="Weapon-Mastery\Creatures\Pyromanser.cs" />
+    <Compile Include="Weapon-Mastery\Creatures\Necromancer.cs" />
+    <Compile Include="Weapon-Mastery\Creatures\Pyromancer.cs" />
     <Compile Include="Weapon-Mastery\Creatures\Spearman.cs" />
     <Compile Include="Weapon-Mastery\Creatures\OneHandedSwordsman.cs" />
     <Compile Include="Weapon-Mastery\Creatures\TwoHandedSwordsman.cs" />

@@ -7,7 +7,7 @@ using RPG.Classes;
 
 namespace RPG.Weapon_Mastery
 {
-    public class Pyromanser : Mage
+    public class Necromancer : Mage
     {
         private string name;
 
@@ -51,7 +51,7 @@ namespace RPG.Weapon_Mastery
             get => mana;
         }
 
-        public Pyromanser(string name, int attack, int defence, double speed, int hp, int mana)
+        public Necromancer(string name, int attack, int defence, double speed, int hp, int mana)
         {
             this.name = name;
             this.attack = attack;
