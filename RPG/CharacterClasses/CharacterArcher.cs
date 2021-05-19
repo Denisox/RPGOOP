@@ -15,6 +15,6 @@ namespace RPG.CharacterClasses
         public abstract int Defence { get; }
         public abstract double Speed { get; }
         public abstract int Mana { get; }
-        public abstract string Name { get; }
+        public abstract string Name { get; set; }
     }
 }

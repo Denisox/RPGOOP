@@ -8,7 +8,7 @@ namespace RPG.Interfaces
 {
     public interface ICharacters
     {
-        string Name { get; }
+        string Name { get; set; }
         int Attack { get; }
         int Defence { get; }
         double Speed { get; }

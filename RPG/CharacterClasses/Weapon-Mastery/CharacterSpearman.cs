@@ -15,6 +15,8 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         public override string Name
         {
             get => name;
+            set => name = value;
+
         }
 
         private int attack;

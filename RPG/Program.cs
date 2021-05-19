@@ -172,6 +172,17 @@ namespace RPG
                 }
             }
 
+            String givenName = Console.ReadLine();
+            while (String.IsNullOrEmpty(givenName))
+            {
+                Console.WriteLine("Your Character must have a name!");
+                givenName = Console.ReadLine();
+            }
+
+            currentCharacter.Name = givenName;
+            Console.WriteLine("Your name is " + currentCharacter.Name);
+
+
 
         }
     }
