@@ -7,7 +7,7 @@ using RPG.Interfaces;
 
 namespace RPG.CharacterClasses
 {
-    public abstract class CharacterArcher 
+    public abstract class CharacterMage : ICharacters
 
     {
         public abstract int HealthPoints { get; }
@@ -16,5 +16,10 @@ namespace RPG.CharacterClasses
         public abstract double Speed { get; }
         public abstract int Mana { get; }
         public abstract string Name { get; set; }
+
+        public string AsAString()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

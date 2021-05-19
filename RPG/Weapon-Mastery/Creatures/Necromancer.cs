@@ -4,18 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RPG.Classes;
-using RPG.Interfaces;
 
-namespace RPG.CharacterClasses.Weapon_Mastery
+namespace RPG.Weapon_Mastery
 {
-    public class CharacterBowman : CharacterArcher, ICharacters
+    public class Necromancer : Mage
     {
         private string name;
 
         public override string Name
         {
             get => name;
-            set => name = value;
         }
 
         private int attack;
@@ -53,7 +51,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             get => mana;
         }
 
-        public CharacterBowman(string name, int attack, int defence, double speed, int hp, int mana)
+        public Necromancer(string name, int attack, int defence, double speed, int hp, int mana)
         {
             this.name = name;
             this.attack = attack;
@@ -61,11 +59,6 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             this.speed = speed;
             this.healthPoints = hp;
             this.mana = mana;
-        }
-
-        public string AsAString()
-        {
-            return "\nClass: Bow;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "\nHP: " + this.healthPoints + "\nMana: " + this.mana;
         }
     }
 }

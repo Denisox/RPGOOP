@@ -43,32 +43,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharacterClasses\CharacterArcher.cs" />
-    <Compile Include="CharacterClasses\CharacterKnight.cs" />
-    <Compile Include="CharacterClasses\CharacterMage.cs" />
-    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterArbalist.cs" />
-    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterBowman.cs" />
-    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterNecromancer.cs" />
-    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterOneHandedSwordsman.cs" />
-    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterPyromancer.cs" />
-    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterSpearman.cs" />
-    <Compile Include="CharacterClasses\Weapon-Mastery\CharacterTwoHandedSwordsman.cs" />
-    <Compile Include="Classes\Archer.cs" />
-    <Compile Include="Classes\Knight.cs" />
-    <Compile Include="Classes\Mage.cs" />
+    <Compile Include="Classes\Charecters\CharacterArcher.cs" />
+    <Compile Include="Classes\Charecters\CharacterKnight.cs" />
+    <Compile Include="Classes\Charecters\CharacterMage.cs" />
+    <Compile Include="Weapon-Mastery\Characters\CharacterArbalist.cs" />
+    <Compile Include="Weapon-Mastery\Characters\CharacterBowman.cs" />
+    <Compile Include="Weapon-Mastery\Characters\CharacterNecromancer.cs" />
+    <Compile Include="Weapon-Mastery\Characters\CharacterOneHandedSwordsman.cs" />
+    <Compile Include="Weapon-Mastery\Characters\CharacterPyromancer.cs" />
+    <Compile Include="Weapon-Mastery\Characters\CharacterSpearman.cs" />
+    <Compile Include="Weapon-Mastery\Characters\CharacterTwoHandedSwordsman.cs" />
+    <Compile Include="Classes\Creatures\Archer.cs" />
+    <Compile Include="Classes\Creatures\Knight.cs" />
+    <Compile Include="Classes\Creatures\Mage.cs" />
     <Compile Include="Interfaces\ICharacters.cs" />
     <Compile Include="Interfaces\ICreature.cs" />
     <Compile Include="Interfaces\ILiving.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Weapon-Mastery\Bowman.cs" />
-    <Compile Include="Weapon-Mastery\Arbalist.cs" />
-    <Compile Include="Weapon-Mastery\Necromanser.cs" />
-    <Compile Include="Weapon-Mastery\Pyromanser.cs" />
-    <Compile Include="Weapon-Mastery\Spearman.cs" />
-    <Compile Include="Weapon-Mastery\OneHandedSwordsman.cs" />
-    <Compile Include="Weapon-Mastery\TwoHandedSwordsman.cs" />
+    <Compile Include="Weapon-Mastery\Creatures\Bowman.cs" />
+    <Compile Include="Weapon-Mastery\Creatures\Arbalist.cs" />
+    <Compile Include="Weapon-Mastery\Creatures\Necromancer.cs" />
+    <Compile Include="Weapon-Mastery\Creatures\Pyromancer.cs" />
+    <Compile Include="Weapon-Mastery\Creatures\Spearman.cs" />
+    <Compile Include="Weapon-Mastery\Creatures\OneHandedSwordsman.cs" />
+    <Compile Include="Weapon-Mastery\Creatures\TwoHandedSwordsman.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

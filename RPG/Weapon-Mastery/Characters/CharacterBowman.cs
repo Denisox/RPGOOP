@@ -8,7 +8,7 @@ using RPG.Interfaces;
 
 namespace RPG.CharacterClasses.Weapon_Mastery
 {
-    public class CharacterArbalist : CharacterArcher, ICharacters, IDisposable
+    public class CharacterBowman : CharacterArcher, ICharacters
     {
         private string name;
 
@@ -53,7 +53,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             get => mana;
         }
 
-        public CharacterArbalist(string name, int attack, int defence, double speed, int hp, int mana)
+        public CharacterBowman(string name, int attack, int defence, double speed, int hp, int mana)
         {
             this.name = name;
             this.attack = attack;
@@ -63,14 +63,9 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             this.mana = mana;
         }
 
-        public string AsAString()
+        public new string AsAString()
         {
-            return "\nClass: Crossbow;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "\nHP: " + this.healthPoints + "\nMana: " + this.mana;
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            return "\nClass: Bow;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "\nHP: " + this.healthPoints + "\nMana: " + this.mana;
         }
     }
 }

@@ -16,6 +16,5 @@ namespace RPG.Interfaces
         int Mana { get; }
 
         string AsAString();
-
     }
 }
