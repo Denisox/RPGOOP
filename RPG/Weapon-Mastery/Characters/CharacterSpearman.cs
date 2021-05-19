@@ -7,9 +7,9 @@ using RPG.Classes;
 using RPG.Interfaces;
 
 namespace RPG.CharacterClasses.Weapon_Mastery
-{ 
-    public class CharacterTwoHandedSwordsman : CharacterKnight, ICharacters
 {
+    public class CharacterSpearman : CharacterKnight, ICharacters
+    {
         private string name;
 
         public override string Name
@@ -54,7 +54,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             get => mana;
         }
 
-        public CharacterTwoHandedSwordsman(string name, int attack, int defence, double speed, int hp, int mana)
+        public CharacterSpearman(string name, int attack, int defence, double speed, int hp, int mana)
         {
             this.name = name;
             this.attack = attack;
@@ -63,10 +63,9 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             this.healthPoints = hp;
             this.mana = mana;
         }
-
-        public string AsAString()
+        public new string AsAString()
         {
-            return "\nClass: Two-Hand Swordsman;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "\nHP: " + this.healthPoints + "\nMana: " + this.mana;
+            return "\nClass: Spearman;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "\nHP: " + this.healthPoints + "\nMana: " + this.mana;
         }
     }
 }

@@ -8,7 +8,7 @@ using RPG.Interfaces;
 
 namespace RPG.CharacterClasses.Weapon_Mastery
 {
-    public class CharacterSpearman : CharacterKnight, ICharacters
+    public class CharacterNecromancer : CharacterMage, ICharacters
     {
         private string name;
 
@@ -16,7 +16,6 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         {
             get => name;
             set => name = value;
-
         }
 
         private int attack;
@@ -54,7 +53,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             get => mana;
         }
 
-        public CharacterSpearman(string name, int attack, int defence, double speed, int hp, int mana)
+        public CharacterNecromancer(string name, int attack, int defence, double speed, int hp, int mana)
         {
             this.name = name;
             this.attack = attack;
@@ -63,9 +62,10 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             this.healthPoints = hp;
             this.mana = mana;
         }
-        public string AsAString()
+
+        public new string AsAString()
         {
-            return "\nClass: Spearman;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "\nHP: " + this.healthPoints + "\nMana: " + this.mana;
+            return "\nClass: Necromancer;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "\nHP: " + this.healthPoints + "\nMana: " + this.mana;
         }
     }
 }

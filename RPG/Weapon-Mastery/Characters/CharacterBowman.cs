@@ -63,7 +63,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             this.mana = mana;
         }
 
-        public string AsAString()
+        public new string AsAString()
         {
             return "\nClass: Bow;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "\nHP: " + this.healthPoints + "\nMana: " + this.mana;
         }

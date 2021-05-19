@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RPG.Items;
 using RPG.Interfaces;
-using RPG.Classes;
-using RPG.CharacterClasses;
 using RPG.Weapon_Mastery;
 using RPG.CharacterClasses.Weapon_Mastery;
+using RPG.CharacterClasses;
 
 namespace RPG
 {
@@ -102,16 +98,16 @@ namespace RPG
                 armor8,
                 armor9
             };
-            
-           CharacterArbalist character1 = new CharacterArbalist("default", 13, 8, 1.3, 150, 30);
-            CharacterBowman character2 = new CharacterBowman("default", 12, 7, 1.2, 140, 40 );
-            CharacterOneHandedSwordsman character3 = new CharacterOneHandedSwordsman("default", 12, 10, 1.3, 140, 50);
-            CharacterTwoHandedSwordsman character4 = new CharacterTwoHandedSwordsman("default", 15, 7, 1, 180, 60);
-            CharacterPyromancer character5 = new CharacterPyromancer("default", 12, 9, 1.2, 130, 200);
-            CharacterNecromancer character6 = new CharacterNecromancer("default", 9, 8, 1.25, 220, 220 );
-            CharacterSpearman character7 = new CharacterSpearman("default", 13, 10, 1.30, 150, 50);
 
-             List<ICharacters> characters = new List<ICharacters>()
+            CharacterArcher character1 = new CharacterArbalist("default", 13, 8, 1.3, 150, 30);
+            CharacterArcher character2 = new CharacterBowman("default", 12, 7, 1.2, 140, 40);
+            CharacterKnight character3 = new CharacterOneHandedSwordsman("default", 12, 10, 1.3, 140, 50);
+            CharacterKnight character4 = new CharacterTwoHandedSwordsman("default", 15, 7, 1, 180, 60);
+            CharacterMage character5 = new CharacterPyromancer("default", 12, 9, 1.2, 130, 200);
+            CharacterMage character6 = new CharacterNecromancer("default", 9, 8, 1.25, 220, 220);
+            CharacterKnight character7 = new CharacterSpearman("default", 13, 10, 1.30, 150, 50);
+
+            List<ICharacters> characters = new List<ICharacters>()
             {
                 character1,
                 character2,
@@ -122,20 +118,52 @@ namespace RPG
                 character7
             };
 
-            Console.WriteLine("\nList of the possible characters: \n");
-            foreach(ICharacters character in characters)
+            ICreature creature1 = new Arbalist("default", 13, 8, 1.3, 150, 30);
+            ICreature creature2 = new Bowman("default", 12, 7, 1.2, 140, 40);
+            ICreature creature3 = new OneHandedSwordsman("default", 12, 10, 1.3, 140, 50);
+            ICreature creature4 = new TwoHandedSwordsman("default", 15, 7, 1, 180, 60);
+            ICreature creature7 = new Spearman("default", 13, 10, 1.30, 150, 50);
+            ICreature creature5 = new Pyromanser("default", 12, 9, 1.2, 130, 200);
+            ICreature creature6 = new Necromanser("default", 9, 8, 1.25, 220, 220);
+
+
+            Console.WriteLine("List of the possible characters: ");
+            foreach (ICharacters character in characters)
             {
                 Console.WriteLine(character.AsAString());
             }
-            Console.WriteLine("Choose Class from the following: Crossbow, Bow, One-Hand Swordsman, Two-Hand Swordsman, Spearman, Pyromancer or Necromancer\n");
 
+            Console.WriteLine();
+            string choice = "Choose Class: |    Crossbow    |   Bow   |     One - Hand Swordsman     |      Two - Hand Swordsman     |      Spearman     |      Pyromancer     |        Necromancer      |";
+
+            for (int i = 0; i < choice.Length; i++)
+            {
+                Console.Write("-");
+
+                if (i == choice.Length - 1)
+                {
+                    Console.WriteLine();
+                }
+            }
+
+            Console.WriteLine(choice);
+
+            for (int i = 0; i < choice.Length; i++)
+            {
+                Console.Write("-");
+
+                if (i == choice.Length - 1)
+                {
+                    Console.WriteLine();
+                }
+            }
 
             ICharacters currentCharacter = null;
             while (currentCharacter == null)
             {
+                Console.Write("Enter class name: ");
                 string chosenClass = Console.ReadLine();
-            
-            
+
                 switch (chosenClass)
                 {
                     case "Crossbow":
@@ -167,23 +195,21 @@ namespace RPG
                         Console.WriteLine("You have chosen class Spearman\n");
                         break;
                     default:
-                        Console.WriteLine("Bad Input");
+                        Console.WriteLine("Bad Input\n");
                         break;
                 }
             }
 
-            String givenName = Console.ReadLine();
-            while (String.IsNullOrEmpty(givenName))
+            Console.Write("Enter name: ");
+            string givenName = Console.ReadLine();
+            while (string.IsNullOrEmpty(givenName))
             {
                 Console.WriteLine("Your Character must have a name!");
                 givenName = Console.ReadLine();
             }
 
             currentCharacter.Name = givenName;
-            Console.WriteLine("Your name is " + currentCharacter.Name);
-
-
-
+            Console.WriteLine("Your name is " + currentCharacter.Name + "\n");
         }
     }
 }
