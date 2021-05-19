@@ -90,37 +90,37 @@ namespace RPG
             double coeficientTier2 = 2.5;
             double coeficientTier3 = 3.5;
 
-            List<ICreature> tier1Boss = new List<ICreature>(7);
+            List<ICreature> tier1Boss = new List<ICreature>(7)
             {
-                new Arbalist("James Bond Junior", Convert.ToInt32(13 * coeficientTier1), Convert.ToInt32(8 * coeficientTier1), 1.1, Convert.ToInt32(110 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1));
-                new Bowman("Shefa with Bow", Convert.ToInt32(12 * coeficientTier1), Convert.ToInt32(7 * coeficientTier1), 1.3, Convert.ToInt32(110 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1));
-                new OneHandedSwordsman("Malkiq Muk", Convert.ToInt32(10 * coeficientTier1), Convert.ToInt32(15 * coeficientTier1), 1.25, Convert.ToInt32(150 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1));
-                new TwoHandedSwordsman("Stoqn Kolev", Convert.ToInt32(15 * coeficientTier1), Convert.ToInt32(5 * coeficientTier1), 1.15, Convert.ToInt32(170 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1));
-                new Spearman("Labadai", Convert.ToInt32(12 * coeficientTier1), Convert.ToInt32(10 * coeficientTier1), 1.30, Convert.ToInt32(150 * coeficientTier1), Convert.ToInt32(0 * coeficientTier1));
-                new Pyromancer("Sezgin", Convert.ToInt32(10 * coeficientTier1), Convert.ToInt32(8 * coeficientTier1), 1, Convert.ToInt32(120 * coeficientTier1), Convert.ToInt32(150 * coeficientTier1));
-                new Necromancer("Ogi the Sex", Convert.ToInt32(8 * coeficientTier1), Convert.ToInt32(8 * coeficientTier1), 1, Convert.ToInt32(90 * coeficientTier1), Convert.ToInt32(200 * coeficientTier1));
+                new Arbalist("James Bond Junior", Convert.ToInt32(13 * coeficientTier1), Convert.ToInt32(8 * coeficientTier1), 1.1, Convert.ToInt32(110 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1)),
+                new Bowman("Shefa with Bow", Convert.ToInt32(12 * coeficientTier1), Convert.ToInt32(7 * coeficientTier1), 1.3, Convert.ToInt32(110 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1)),
+                new OneHandedSwordsman("Malkiq Muk", Convert.ToInt32(10 * coeficientTier1), Convert.ToInt32(15 * coeficientTier1), 1.25, Convert.ToInt32(150 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1)),
+                new TwoHandedSwordsman("Stoqn Kolev", Convert.ToInt32(15 * coeficientTier1), Convert.ToInt32(5 * coeficientTier1), 1.15, Convert.ToInt32(170 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1)),
+                new Spearman("Labadai", Convert.ToInt32(12 * coeficientTier1), Convert.ToInt32(10 * coeficientTier1), 1.30, Convert.ToInt32(150 * coeficientTier1), Convert.ToInt32(0 * coeficientTier1)),
+                new Pyromancer("Sezgin", Convert.ToInt32(10 * coeficientTier1), Convert.ToInt32(8 * coeficientTier1), 1, Convert.ToInt32(120 * coeficientTier1), Convert.ToInt32(150 * coeficientTier1)),
+                new Necromancer("Ogi the Sex", Convert.ToInt32(8 * coeficientTier1), Convert.ToInt32(8 * coeficientTier1), 1, Convert.ToInt32(90 * coeficientTier1), Convert.ToInt32(200 * coeficientTier1))
             };
 
-            List<ICreature> tier2Boss = new List<ICreature>(7);
+            List<ICreature> tier2Boss = new List<ICreature>(7)
             {
-                new Arbalist("James Bond Junior 2", Convert.ToInt32(13 * coeficientTier2), Convert.ToInt32(8 * coeficientTier2), 1.1, Convert.ToInt32(110 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2));
-                new Bowman("Shefa with Bow 2", Convert.ToInt32(12 * coeficientTier2), Convert.ToInt32(7 * coeficientTier2), 1.3, Convert.ToInt32(110 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2));
-                new OneHandedSwordsman("Malkiq Muk 2", Convert.ToInt32(10 * coeficientTier2), Convert.ToInt32(15 * coeficientTier2), 1.25, Convert.ToInt32(150 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2));
-                new TwoHandedSwordsman("Stoqn Kolev 2", Convert.ToInt32(15 * coeficientTier2), Convert.ToInt32(5 * coeficientTier2), 1.15, Convert.ToInt32(170 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2));
-                new Spearman("Labadai 2", Convert.ToInt32(12 * coeficientTier2), Convert.ToInt32(10 * coeficientTier2), 1.30, Convert.ToInt32(150 * coeficientTier2), Convert.ToInt32(0 * coeficientTier2));
-                new Pyromancer("Sezgin 2", Convert.ToInt32(10 * coeficientTier2), Convert.ToInt32(8 * coeficientTier2), 1, Convert.ToInt32(120 * coeficientTier2), Convert.ToInt32(150 * coeficientTier2));
-                new Necromancer("Ogi the Sex 2", Convert.ToInt32(8 * coeficientTier2), Convert.ToInt32(8 * coeficientTier2), 1, Convert.ToInt32(90 * coeficientTier2), Convert.ToInt32(200 * coeficientTier2));
+                new Arbalist("James Bond Junior 2", Convert.ToInt32(13 * coeficientTier2), Convert.ToInt32(8 * coeficientTier2), 1.1, Convert.ToInt32(110 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2)),
+                new Bowman("Shefa with Bow 2", Convert.ToInt32(12 * coeficientTier2), Convert.ToInt32(7 * coeficientTier2), 1.3, Convert.ToInt32(110 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2)),
+                new OneHandedSwordsman("Malkiq Muk 2", Convert.ToInt32(10 * coeficientTier2), Convert.ToInt32(15 * coeficientTier2), 1.25, Convert.ToInt32(150 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2)),
+                new TwoHandedSwordsman("Stoqn Kolev 2", Convert.ToInt32(15 * coeficientTier2), Convert.ToInt32(5 * coeficientTier2), 1.15, Convert.ToInt32(170 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2)),
+                new Spearman("Labadai 2", Convert.ToInt32(12 * coeficientTier2), Convert.ToInt32(10 * coeficientTier2), 1.30, Convert.ToInt32(150 * coeficientTier2), Convert.ToInt32(0 * coeficientTier2)),
+                new Pyromancer("Sezgin 2", Convert.ToInt32(10 * coeficientTier2), Convert.ToInt32(8 * coeficientTier2), 1, Convert.ToInt32(120 * coeficientTier2), Convert.ToInt32(150 * coeficientTier2)),
+                new Necromancer("Ogi the Sex 2", Convert.ToInt32(8 * coeficientTier2), Convert.ToInt32(8 * coeficientTier2), 1, Convert.ToInt32(90 * coeficientTier2), Convert.ToInt32(200 * coeficientTier2))
             };
 
-            List<ICreature> tier3Boss = new List<ICreature>(7);
+            List<ICreature> tier3Boss = new List<ICreature>(7)
             {
-                new Arbalist("James Bond Junior 3", Convert.ToInt32(13 * coeficientTier3), Convert.ToInt32(8 * coeficientTier3), 1.1, Convert.ToInt32(110 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3));
-                new Bowman("Shefa with Bow 3", Convert.ToInt32(12 * coeficientTier3), Convert.ToInt32(7 * coeficientTier3), 1.3, Convert.ToInt32(110 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3));
-                new OneHandedSwordsman("Malkiq Muk 3", Convert.ToInt32(10 * coeficientTier3), Convert.ToInt32(15 * coeficientTier3), 1.25, Convert.ToInt32(150 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3));
-                new TwoHandedSwordsman("Stoqn Kolev 3", Convert.ToInt32(15 * coeficientTier3), Convert.ToInt32(5 * coeficientTier3), 1.15, Convert.ToInt32(170 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3));
-                new Spearman("Labadai 3", Convert.ToInt32(12 * coeficientTier3), Convert.ToInt32(10 * coeficientTier3), 1.30, Convert.ToInt32(150 * coeficientTier3), Convert.ToInt32(0 * coeficientTier3));
-                new Pyromancer("Sezgin 3", Convert.ToInt32(10 * coeficientTier3), Convert.ToInt32(8 * coeficientTier3), 1, Convert.ToInt32(120 * coeficientTier3), Convert.ToInt32(150 * coeficientTier3));
-                new Necromancer("Ogi the Sex 3", Convert.ToInt32(8 * coeficientTier3), Convert.ToInt32(8 * coeficientTier3), 1, Convert.ToInt32(90 * coeficientTier3), Convert.ToInt32(200 * coeficientTier3));
+                new Arbalist("James Bond Junior 3", Convert.ToInt32(13 * coeficientTier3), Convert.ToInt32(8 * coeficientTier3), 1.1, Convert.ToInt32(110 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3)),
+                new Bowman("Shefa with Bow 3", Convert.ToInt32(12 * coeficientTier3), Convert.ToInt32(7 * coeficientTier3), 1.3, Convert.ToInt32(110 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3)),
+                new OneHandedSwordsman("Malkiq Muk 3", Convert.ToInt32(10 * coeficientTier3), Convert.ToInt32(15 * coeficientTier3), 1.25, Convert.ToInt32(150 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3)),
+                new TwoHandedSwordsman("Stoqn Kolev 3", Convert.ToInt32(15 * coeficientTier3), Convert.ToInt32(5 * coeficientTier3), 1.15, Convert.ToInt32(170 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3)),
+                new Spearman("Labadai 3", Convert.ToInt32(12 * coeficientTier3), Convert.ToInt32(10 * coeficientTier3), 1.30, Convert.ToInt32(150 * coeficientTier3), Convert.ToInt32(0 * coeficientTier3)),
+                new Pyromancer("Sezgin 3", Convert.ToInt32(10 * coeficientTier3), Convert.ToInt32(8 * coeficientTier3), 1, Convert.ToInt32(120 * coeficientTier3), Convert.ToInt32(150 * coeficientTier3)),
+                new Necromancer("Ogi the Sex 3", Convert.ToInt32(8 * coeficientTier3), Convert.ToInt32(8 * coeficientTier3), 1, Convert.ToInt32(90 * coeficientTier3), Convert.ToInt32(200 * coeficientTier3))
             };
 
             List<ICreature> tier1Creatures = new List<ICreature>(7)
@@ -163,7 +163,7 @@ namespace RPG
             }
 
             Console.WriteLine();
-            string choice = "Choose Class: |    Crossbow    |   Bow   |     One - Hand Swordsman     |      Two - Hand Swordsman     |      Spearman     |      Pyromancer     |        Necromancer      |";
+            string choice = "Choose Class: |    Crossbow    |   Bow   |     One-Hand Swordsman     |      Two-Hand Swordsman     |      Spearman     |      Pyromancer     |        Necromancer      |";
 
             for (int i = 0; i < choice.Length; i++)
             {
@@ -240,7 +240,7 @@ namespace RPG
             currentCharacter.Name = givenName;
             Console.WriteLine("Your name is " + currentCharacter.Name + "\n");
 
-            foreach (var item in tier1Creatures)
+            foreach (var item in tier1Boss)
             {
                 Console.WriteLine($"{item.Name}, {item.Attack}, {item.Defence}, {item.HealthPoints}, {item.Mana}, {item.Speed}");
             }
