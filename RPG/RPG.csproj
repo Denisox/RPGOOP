@@ -58,7 +58,6 @@
     <Compile Include="Classes\Creatures\Mage.cs" />
     <Compile Include="Interfaces\ICharacters.cs" />
     <Compile Include="Interfaces\ICreature.cs" />
-    <Compile Include="Interfaces\ILiving.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

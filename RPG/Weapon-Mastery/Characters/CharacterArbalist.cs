@@ -8,7 +8,7 @@ using RPG.Interfaces;
 
 namespace RPG.CharacterClasses.Weapon_Mastery
 {
-    public class CharacterArbalist : CharacterArcher, ICharacters, IDisposable
+    public class CharacterArbalist : CharacterArcher, ICharacters
     {
         private string name;
 
@@ -53,6 +53,20 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             get => mana;
         }
 
+        private int currentHealthPoints;
+        public override int CurrentHealthPoints
+        {
+            get => currentHealthPoints;
+            set => currentHealthPoints = value;
+        }
+
+        private int currentMana;
+        public override int CurrentMana
+        {
+            get => currentMana;
+            set => currentMana = value;
+        }
+
         public CharacterArbalist(string name, int attack, int defence, double speed, int hp, int mana)
         {
             this.name = name;
@@ -61,6 +75,8 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             this.speed = speed;
             this.healthPoints = hp;
             this.mana = mana;
+            this.currentHealthPoints = this.healthPoints;
+            this.currentMana = this.mana;
         }
 
         public new string AsAString()

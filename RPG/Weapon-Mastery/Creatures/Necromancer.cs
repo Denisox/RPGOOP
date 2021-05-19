@@ -51,6 +51,13 @@ namespace RPG.Weapon_Mastery
             get => mana;
         }
 
+        private int currentHealthPoints;
+        public override int CurrentHealthPoints
+        {
+            get => currentHealthPoints;
+            set => currentHealthPoints = value;
+        }
+
         public Necromancer(string name, int attack, int defence, double speed, int hp, int mana)
         {
             this.name = name;

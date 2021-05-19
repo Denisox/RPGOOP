@@ -10,5 +10,6 @@ namespace RPG.Classes
         public abstract double Speed { get; }
         public abstract int HealthPoints { get; }
         public abstract int Mana { get; }
+        public abstract int CurrentHealthPoints { get; set; }
     }
 }

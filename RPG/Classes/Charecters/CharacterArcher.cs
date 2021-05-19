@@ -16,6 +16,9 @@ namespace RPG.CharacterClasses
         public abstract int Mana { get; }
         public abstract string Name { get; set; }
 
+        public abstract int CurrentHealthPoints { get; set; }
+        public abstract int CurrentMana { get; set; }
+
         public string AsAString()
         {
             throw new NotImplementedException();
