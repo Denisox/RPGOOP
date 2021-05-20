@@ -17,5 +17,11 @@ namespace RPG.Classes
         public abstract int Mana { get; }
         public abstract int CurrentHealthPoints { get; set; }
 
+       public abstract int IncomingDamage { get; set; }
+       public abstract int OutgoingDamage { get; set; }
+
+       public abstract bool HasShield { get; set; }
+       public abstract bool HasBuff { get; set; }
+
     }
 }

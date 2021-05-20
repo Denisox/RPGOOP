@@ -18,6 +18,11 @@ namespace RPG.CharacterClasses
 
         public abstract int CurrentHealthPoints { get; set; }
         public abstract int CurrentMana { get; set; }
+        public abstract int IncomingDamage { get; set; }
+        public abstract int OutgoingDamage { get; set; }
+
+        public abstract bool HasShield { get; set; }
+        public abstract bool HasBuff { get; set; }
 
         public virtual void HealCharacter(ICharacters character)
         {
