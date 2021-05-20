@@ -92,15 +92,6 @@ namespace RPG
 
             List<ICreature> tier1Boss = new List<ICreature>(7)
             {
-<<<<<<< HEAD
-                new Arbalist("Marroweater the Deathbringer", Convert.ToInt32(13 * coeficientTier1), Convert.ToInt32(8 * coeficientTier1), 1.1, Convert.ToInt32(110 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1)),
-                new Bowman("Lightshorn the Impaler", Convert.ToInt32(12 * coeficientTier1), Convert.ToInt32(7 * coeficientTier1), 1.3, Convert.ToInt32(110 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1)),
-                new OneHandedSwordsman("Mordath the Undefeated", Convert.ToInt32(10 * coeficientTier1), Convert.ToInt32(15 * coeficientTier1), 1.25, Convert.ToInt32(150 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1)),
-                new TwoHandedSwordsman("Dreadnaught the Miser", Convert.ToInt32(15 * coeficientTier1), Convert.ToInt32(5 * coeficientTier1), 1.15, Convert.ToInt32(170 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1)),
-                new Spearman("Thornblight - the Reaper's Kiss", Convert.ToInt32(12 * coeficientTier1), Convert.ToInt32(10 * coeficientTier1), 1.30, Convert.ToInt32(150 * coeficientTier1), Convert.ToInt32(0 * coeficientTier1)),
-                new Pyromancer("Bramblejack the Wicked", Convert.ToInt32(10 * coeficientTier1), Convert.ToInt32(8 * coeficientTier1), 1, Convert.ToInt32(120 * coeficientTier1), Convert.ToInt32(150 * coeficientTier1)),
-                new Necromancer("Abolusha - Oracle of Curses", Convert.ToInt32(8 * coeficientTier1), Convert.ToInt32(8 * coeficientTier1), 1, Convert.ToInt32(90 * coeficientTier1), Convert.ToInt32(200 * coeficientTier1))
-=======
                 new Arbalist("Polygon", Convert.ToInt32(13 * coeficientTier1), Convert.ToInt32(8 * coeficientTier1), 1.1, Convert.ToInt32(110 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1)),
                 new Bowman("Green Arrow", Convert.ToInt32(12 * coeficientTier1), Convert.ToInt32(7 * coeficientTier1), 1.3, Convert.ToInt32(110 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1)),
                 new OneHandedSwordsman("Arabor", Convert.ToInt32(10 * coeficientTier1), Convert.ToInt32(15 * coeficientTier1), 1.25, Convert.ToInt32(150 * coeficientTier1), Convert.ToInt32(30 * coeficientTier1)),
@@ -108,20 +99,10 @@ namespace RPG
                 new Spearman("Shin-Zao", Convert.ToInt32(12 * coeficientTier1), Convert.ToInt32(10 * coeficientTier1), 1.30, Convert.ToInt32(150 * coeficientTier1), Convert.ToInt32(0 * coeficientTier1)),
                 new Pyromancer("Lulilium", Convert.ToInt32(10 * coeficientTier1), Convert.ToInt32(8 * coeficientTier1), 1, Convert.ToInt32(120 * coeficientTier1), Convert.ToInt32(150 * coeficientTier1)),
                 new Necromancer("Darquesse", Convert.ToInt32(8 * coeficientTier1), Convert.ToInt32(8 * coeficientTier1), 1, Convert.ToInt32(90 * coeficientTier1), Convert.ToInt32(200 * coeficientTier1))
->>>>>>> f0c519262bc91fbf89cb244a6dada6aa8b40eb53
             };
 
             List<ICreature> tier2Boss = new List<ICreature>(7)
             {
-<<<<<<< HEAD
-                new Arbalist("Grayskin the Conqueror", Convert.ToInt32(13 * coeficientTier2), Convert.ToInt32(8 * coeficientTier2), 1.1, Convert.ToInt32(110 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2)),
-                new Bowman("Damnerstake of the Iron Cage", Convert.ToInt32(12 * coeficientTier2), Convert.ToInt32(7 * coeficientTier2), 1.3, Convert.ToInt32(110 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2)),
-                new OneHandedSwordsman("Deathmire Wyrmtonguer", Convert.ToInt32(10 * coeficientTier2), Convert.ToInt32(15 * coeficientTier2), 1.25, Convert.ToInt32(150 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2)),
-                new TwoHandedSwordsman("Typhus Horsegutter", Convert.ToInt32(15 * coeficientTier2), Convert.ToInt32(5 * coeficientTier2), 1.15, Convert.ToInt32(170 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2)),
-                new Spearman("Wolftamer Knightslayer", Convert.ToInt32(12 * coeficientTier2), Convert.ToInt32(10 * coeficientTier2), 1.30, Convert.ToInt32(150 * coeficientTier2), Convert.ToInt32(0 * coeficientTier2)),
-                new Pyromancer("Skinrender the Flameborne", Convert.ToInt32(10 * coeficientTier2), Convert.ToInt32(8 * coeficientTier2), 1, Convert.ToInt32(120 * coeficientTier2), Convert.ToInt32(150 * coeficientTier2)),
-                new Necromancer("Portent the Cannibal", Convert.ToInt32(8 * coeficientTier2), Convert.ToInt32(8 * coeficientTier2), 1, Convert.ToInt32(90 * coeficientTier2), Convert.ToInt32(200 * coeficientTier2))
-=======
                 new Arbalist("Vipertron", Convert.ToInt32(13 * coeficientTier2), Convert.ToInt32(8 * coeficientTier2), 1.1, Convert.ToInt32(110 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2)),
                 new Bowman("Raftel", Convert.ToInt32(12 * coeficientTier2), Convert.ToInt32(7 * coeficientTier2), 1.3, Convert.ToInt32(110 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2)),
                 new OneHandedSwordsman("Kobalion", Convert.ToInt32(10 * coeficientTier2), Convert.ToInt32(15 * coeficientTier2), 1.25, Convert.ToInt32(150 * coeficientTier2), Convert.ToInt32(30 * coeficientTier2)),
@@ -129,20 +110,10 @@ namespace RPG
                 new Spearman("The Wasp", Convert.ToInt32(12 * coeficientTier2), Convert.ToInt32(10 * coeficientTier2), 1.30, Convert.ToInt32(150 * coeficientTier2), Convert.ToInt32(0 * coeficientTier2)),
                 new Pyromancer("Hellfire", Convert.ToInt32(10 * coeficientTier2), Convert.ToInt32(8 * coeficientTier2), 1, Convert.ToInt32(120 * coeficientTier2), Convert.ToInt32(150 * coeficientTier2)),
                 new Necromancer("The Archivist", Convert.ToInt32(8 * coeficientTier2), Convert.ToInt32(8 * coeficientTier2), 1, Convert.ToInt32(90 * coeficientTier2), Convert.ToInt32(200 * coeficientTier2))
->>>>>>> f0c519262bc91fbf89cb244a6dada6aa8b40eb53
             };
 
             List<ICreature> tier3Boss = new List<ICreature>(7)
             {
-<<<<<<< HEAD
-                new Arbalist("Corpsebreath Skullgrinder", Convert.ToInt32(13 * coeficientTier3), Convert.ToInt32(8 * coeficientTier3), 1.1, Convert.ToInt32(110 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3)),
-                new Bowman("Grendle Bloodmount", Convert.ToInt32(12 * coeficientTier3), Convert.ToInt32(7 * coeficientTier3), 1.3, Convert.ToInt32(110 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3)),
-                new OneHandedSwordsman("Limper Stormbringer", Convert.ToInt32(10 * coeficientTier3), Convert.ToInt32(15 * coeficientTier3), 1.25, Convert.ToInt32(150 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3)),
-                new TwoHandedSwordsman("Tempest Bileblossom", Convert.ToInt32(15 * coeficientTier3), Convert.ToInt32(5 * coeficientTier3), 1.15, Convert.ToInt32(170 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3)),
-                new Spearman("Kane the Hobbled", Convert.ToInt32(12 * coeficientTier3), Convert.ToInt32(10 * coeficientTier3), 1.30, Convert.ToInt32(150 * coeficientTier3), Convert.ToInt32(0 * coeficientTier3)),
-                new Pyromancer("Gluttonous Blackheart", Convert.ToInt32(10 * coeficientTier3), Convert.ToInt32(8 * coeficientTier3), 1, Convert.ToInt32(120 * coeficientTier3), Convert.ToInt32(150 * coeficientTier3)),
-                new Necromancer("Ashencroft Soulbinder", Convert.ToInt32(8 * coeficientTier3), Convert.ToInt32(8 * coeficientTier3), 1, Convert.ToInt32(90 * coeficientTier3), Convert.ToInt32(200 * coeficientTier3))
-=======
                 new Arbalist("Arcus The Great", Convert.ToInt32(13 * coeficientTier3), Convert.ToInt32(8 * coeficientTier3), 1.1, Convert.ToInt32(110 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3)),
                 new Bowman("Razorwind", Convert.ToInt32(12 * coeficientTier3), Convert.ToInt32(7 * coeficientTier3), 1.3, Convert.ToInt32(110 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3)),
                 new OneHandedSwordsman(" Executioner of Denial", Convert.ToInt32(10 * coeficientTier3), Convert.ToInt32(15 * coeficientTier3), 1.25, Convert.ToInt32(150 * coeficientTier3), Convert.ToInt32(30 * coeficientTier3)),
@@ -150,7 +121,6 @@ namespace RPG
                 new Spearman("Bone Piercer", Convert.ToInt32(12 * coeficientTier3), Convert.ToInt32(10 * coeficientTier3), 1.30, Convert.ToInt32(150 * coeficientTier3), Convert.ToInt32(0 * coeficientTier3)),
                 new Pyromancer("Meteor Strike", Convert.ToInt32(10 * coeficientTier3), Convert.ToInt32(8 * coeficientTier3), 1, Convert.ToInt32(120 * coeficientTier3), Convert.ToInt32(150 * coeficientTier3)),
                 new Necromancer("Malistaire", Convert.ToInt32(8 * coeficientTier3), Convert.ToInt32(8 * coeficientTier3), 1, Convert.ToInt32(90 * coeficientTier3), Convert.ToInt32(200 * coeficientTier3))
->>>>>>> f0c519262bc91fbf89cb244a6dada6aa8b40eb53
             };
 
             List<ICreature> tier1Creatures = new List<ICreature>(7)
