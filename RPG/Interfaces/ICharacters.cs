@@ -17,6 +17,7 @@ namespace RPG.Interfaces
         int CurrentHealthPoints { get; set; }
         int CurrentMana { get; set; }
 
+        void HealCharacter(ICharacters character);
         string AsAString();
     }
 }

@@ -19,6 +19,27 @@ namespace RPG.CharacterClasses
         public abstract int CurrentHealthPoints { get; set; }
         public abstract int CurrentMana { get; set; }
 
+        public virtual void HealCharacter(ICharacters character)
+        {
+            if (character.CurrentMana >= 20)
+            {
+                if (character.CurrentHealthPoints + character.HealthPoints * 0.25 > character.HealthPoints)
+                {
+                    character.CurrentHealthPoints = character.HealthPoints;
+                    CurrentMana -= 20;
+                }
+
+                else
+                {
+                    character.CurrentHealthPoints = Convert.ToInt32(0.25 * character.HealthPoints + character.CurrentHealthPoints);
+                    CurrentMana -= 20;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Not enough mana!");
+            }
+        }
         public string AsAString()
         {
             throw new NotImplementedException();
