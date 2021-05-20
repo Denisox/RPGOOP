@@ -107,5 +107,27 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         {
             return "\nClass: One-Hand Swordsman;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "\nHP: " + this.healthPoints + "\nMana: " + this.mana;
         }
+
+        public override void GetDamage()
+        {
+            int dealtDamage = this.IncomingDamage - this.Defence;
+            if (dealtDamage < 2)
+            {
+                dealtDamage = 2;
+            }
+            if (HasBuff == false)
+            {
+                this.CurrentHealthPoints = this.CurrentHealthPoints - dealtDamage;
+            }
+            else
+            {
+                dealtDamage = Convert.ToInt32(0.4 * dealtDamage);
+                this.CurrentHealthPoints = this.CurrentHealthPoints - dealtDamage;
+            }
+            if (CurrentHealthPoints < 0)
+            {
+                CurrentHealthPoints = 0;
+            }
+        }
     }
 }

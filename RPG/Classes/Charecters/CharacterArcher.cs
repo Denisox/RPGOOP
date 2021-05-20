@@ -28,7 +28,7 @@ namespace RPG.CharacterClasses
         {
                 if (character.CurrentMana >= 20)
                 {
-                    if (character.CurrentHealthPoints + character.HealthPoints * 0.25 > character.HealthPoints)
+                    if (Convert.ToInt32(character.CurrentHealthPoints + character.HealthPoints * 0.25) > character.HealthPoints)
                     {
                         character.CurrentHealthPoints = character.HealthPoints;
                         CurrentMana -= 20;
@@ -112,6 +112,28 @@ namespace RPG.CharacterClasses
             else
             {
                 Console.WriteLine("Can't get a new Shield!");
+            }
+        }
+
+        public virtual void GetDamage()
+        {
+            int dealtDamage = Convert.ToInt32(this.IncomingDamage - 0.8 * this.Defence);
+            if (dealtDamage < 2)
+            {
+                dealtDamage = 2;
+            }
+            if (HasBuff == false)
+            {
+                this.CurrentHealthPoints = this.CurrentHealthPoints - dealtDamage;
+            }
+            else
+            {
+                dealtDamage = Convert.ToInt32(0.5 * dealtDamage);
+                this.CurrentHealthPoints = this.CurrentHealthPoints - dealtDamage;
+            }
+            if (CurrentHealthPoints < 0)
+            {
+                CurrentHealthPoints = 0;
             }
         }
         public string AsAString()

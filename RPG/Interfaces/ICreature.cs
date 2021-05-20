@@ -20,5 +20,11 @@ namespace RPG.Interfaces
 
         bool HasShield { get; set; }
         bool HasBuff { get; set; }
+        void Heal();
+        void GetBuff();
+        void GetShield();
+
+        void AttackCharacter(ICharacters newCharacter);
+
     }
 }
