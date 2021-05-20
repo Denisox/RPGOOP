@@ -57,7 +57,7 @@ namespace RPG.CharacterClasses
             {
                 this.OutgoingDamage = Convert.ToInt32(1.5 * 1.2 * this.Attack);
             }
-            newCreature.IncomingDamage = this.IncomingDamage;
+            newCreature.IncomingDamage = this.OutgoingDamage;
         }
 
         public virtual void PowerAttack(ICreature newCreature)
@@ -73,8 +73,13 @@ namespace RPG.CharacterClasses
                 {
                     this.OutgoingDamage = Convert.ToInt32(1.5 * 2 * this.Attack);
                 }
+                newCreature.IncomingDamage = this.OutgoingDamage;
             }
-            newCreature.IncomingDamage = this.IncomingDamage;
+           
+             else
+            {
+                Console.WriteLine("Power Attack failed. Not enough mana");
+            }
         }
         public string AsAString()
         {
