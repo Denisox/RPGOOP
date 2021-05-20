@@ -28,7 +28,7 @@ namespace RPG.CharacterClasses
         {
                 if (character.CurrentMana >= 20)
                 {
-                    if (character.CurrentHealthPoints + character.HealthPoints * 0.25 > character.HealthPoints)
+                    if (Convert.ToInt32(character.CurrentHealthPoints + character.HealthPoints * 0.25) > character.HealthPoints)
                     {
                         character.CurrentHealthPoints = character.HealthPoints;
                         CurrentMana -= 20;
