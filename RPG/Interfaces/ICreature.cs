@@ -14,5 +14,17 @@ namespace RPG.Interfaces
         double Speed { get; }
         int HealthPoints { get; }
         int Mana { get; }
+        int CurrentHealthPoints { get; set; }
+        int IncomingDamage { get; set; }
+        int OutgoingDamage { get; set; }
+
+        bool HasShield { get; set; }
+        bool HasBuff { get; set; }
+        void Heal();
+        void GetBuff();
+        void GetShield();
+
+        void AttackCharacter(ICharacters newCharacter);
+
     }
 }

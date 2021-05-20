@@ -51,6 +51,39 @@ namespace RPG.Weapon_Mastery
             get => mana;
         }
 
+        private int currentHealthPoints;
+        public override int CurrentHealthPoints
+        {
+            get => currentHealthPoints;
+            set => currentHealthPoints = value;
+        }
+        private bool hasBuff = false;
+        public override bool HasBuff
+        {
+            get => hasBuff;
+            set => hasBuff = value;
+        }
+
+        private bool hasShield = false;
+        public override bool HasShield
+        {
+            get => hasShield;
+            set => hasShield = value;
+        }
+
+        private int incomingDamage = 0;
+        public override int IncomingDamage
+        {
+            get => incomingDamage;
+            set => incomingDamage = value;
+        }
+        private int outgoingDamage = 0;
+        public override int OutgoingDamage
+        {
+            get => outgoingDamage;
+            set => outgoingDamage = value;
+        }
+
         public Necromancer(string name, int attack, int defence, double speed, int hp, int mana)
         {
             this.name = name;
