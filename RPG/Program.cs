@@ -244,6 +244,7 @@ namespace RPG
             {
                 Console.WriteLine($"{item.Name}, {item.Attack}, {item.Defence}, {item.HealthPoints}, {item.Mana}, {item.Speed}");
             }
+
         }
     }
 }

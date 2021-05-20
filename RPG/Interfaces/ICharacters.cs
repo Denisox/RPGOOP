@@ -17,6 +17,15 @@ namespace RPG.Interfaces
         int CurrentHealthPoints { get; set; }
         int CurrentMana { get; set; }
 
+        int IncomingDamage { get; set; }
+        int OutgoingDamage { get; set; }
+
+        bool HasShield { get; set; }
+        bool HasBuff { get; set; }
+
+        void HealCharacter(ICharacters character);
+        void NormalAttack(ICreature newCreature);
+        void PowerAttack(ICreature newCreature);
         string AsAString();
     }
 }
