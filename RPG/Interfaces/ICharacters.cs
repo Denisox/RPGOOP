@@ -26,6 +26,8 @@ namespace RPG.Interfaces
         void HealCharacter(ICharacters character);
         void NormalAttack(ICreature newCreature);
         void PowerAttack(ICreature newCreature);
+
+        void GetBuff();
         string AsAString();
     }
 }

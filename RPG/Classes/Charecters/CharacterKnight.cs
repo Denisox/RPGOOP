@@ -61,22 +61,43 @@ namespace RPG.CharacterClasses
 
         public virtual void PowerAttack(ICreature newCreature)
         {
-            if (this.CurrentMana >= 20)
-            {
-                if (this.HasBuff == false)
-                {
-                    this.OutgoingDamage = Convert.ToInt32(2 * this.Attack);
-                }
 
+            Random newRandom = new Random();
+            if (newRandom.Next(100) < 85)
+            {
+                if (this.CurrentMana >= 20)
+                {
+                    if (this.HasBuff == false)
+                    {
+                        this.OutgoingDamage = Convert.ToInt32(2 * this.Attack);
+                    }
+
+                    else
+                    {
+                        this.OutgoingDamage = Convert.ToInt32(1.4 * 2 * this.Attack);
+                    }
+                    newCreature.IncomingDamage = this.OutgoingDamage;
+                }
                 else
                 {
-                    this.OutgoingDamage = Convert.ToInt32(1.4 * 2 * this.Attack);
+                    Console.WriteLine("Power Attack failed. Not enough mana");
                 }
-                newCreature.IncomingDamage = this.OutgoingDamage;
             }
             else
             {
-                Console.WriteLine("Power Attack failed. Not enough mana");
+                Console.WriteLine("Power Attack could not get executed!");
+            }
+        }
+        public virtual void GetBuff()
+        {
+            if (this.HasBuff == false)
+            {
+                this.HasBuff = true;
+            }
+
+            else
+            {
+                Console.WriteLine("Can't get a new Buff!");
             }
         }
 
