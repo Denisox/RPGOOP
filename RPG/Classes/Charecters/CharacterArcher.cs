@@ -102,6 +102,18 @@ namespace RPG.CharacterClasses
                 Console.WriteLine("Can't get a new Buff!");
             }
         }
+        public virtual void GetShield()
+        {
+            if (this.HasShield == false)
+            {
+                this.HasShield = true;
+            }
+
+            else
+            {
+                Console.WriteLine("Can't get a new Shield!");
+            }
+        }
         public string AsAString()
         {
             throw new NotImplementedException();
