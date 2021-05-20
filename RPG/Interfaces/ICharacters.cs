@@ -28,6 +28,7 @@ namespace RPG.Interfaces
         void PowerAttack(ICreature newCreature);
         void GetBuff();
         void GetShield();
+        void GetDamage();
         string AsAString();
     }
 }
