@@ -59,6 +59,23 @@ namespace RPG.CharacterClasses
             }
             newCreature.IncomingDamage = this.IncomingDamage;
         }
+
+        public virtual void PowerAttack(ICreature newCreature)
+        {
+            if (this.CurrentMana >= 25)
+            {
+                if (this.HasBuff == false)
+                {
+                    this.OutgoingDamage = Convert.ToInt32(2 * this.Attack);
+                }
+
+                else
+                {
+                    this.OutgoingDamage = Convert.ToInt32(1.5 * 2 * this.Attack);
+                }
+            }
+            newCreature.IncomingDamage = this.IncomingDamage;
+        }
         public string AsAString()
         {
             throw new NotImplementedException();
