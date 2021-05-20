@@ -45,6 +45,20 @@ namespace RPG.CharacterClasses
             }
         }
 
+        public virtual void NormalAttack(ICreature newCreature)
+        {
+            if (this.HasBuff == false)
+            {
+                this.OutgoingDamage = Convert.ToInt32(1.25 * this.Attack);
+            }
+
+            else
+            {
+                this.OutgoingDamage = Convert.ToInt32(1.4 * 1.25 * this.Attack);
+            }
+            newCreature.IncomingDamage = this.IncomingDamage;
+        }
+
         public string AsAString()
         {
             throw new NotImplementedException();

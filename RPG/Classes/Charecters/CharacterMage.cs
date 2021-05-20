@@ -44,6 +44,19 @@ namespace RPG.CharacterClasses
                 Console.WriteLine("Not enough mana!");
             }
         }
+        public virtual void NormalAttack(ICreature newCreature)
+        {
+            if (this.HasBuff == false)
+            {
+                this.OutgoingDamage = Convert.ToInt32(1.15 * this.Attack);
+            }
+
+            else
+            {
+                this.OutgoingDamage = Convert.ToInt32(1.5 * 1.15 * this.Attack);
+            }
+            newCreature.IncomingDamage = this.IncomingDamage;
+        }
         public string AsAString()
         {
             throw new NotImplementedException();
