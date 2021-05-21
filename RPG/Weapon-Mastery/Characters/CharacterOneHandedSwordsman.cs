@@ -110,7 +110,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
 
         public override void GetDamage()
         {
-            int dealtDamage = this.IncomingDamage - this.Defence;
+            int dealtDamage = Convert.ToInt32(this.IncomingDamage - 0.8*this.Defence);
             if (dealtDamage < 2)
             {
                 dealtDamage = 2;

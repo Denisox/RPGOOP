@@ -25,6 +25,8 @@ namespace RPG.Interfaces
         void GetShield();
 
         void AttackCharacter(ICharacters newCharacter);
+        void GetDamage();
+
 
     }
 }
