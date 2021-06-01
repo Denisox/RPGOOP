@@ -251,7 +251,7 @@ namespace RPG
                 Random random1 = new Random();
                 int index = random1.Next(tier1Creatures.Count);
                 ICreature currentCreature = tier1Creatures[index];
-                Console.WriteLine("\nYou will be fight a: " + currentCreature.Name + "\n");
+                Console.WriteLine("\nYou will be fighting1 a: " + currentCreature.Name + "\n");
                 if (currentCharacter.Speed >= currentCreature.Speed)
                 {
                     while (currentCharacter.CurrentHealthPoints > 0 && currentCreature.CurrentHealthPoints > 0)
@@ -300,11 +300,11 @@ namespace RPG
             }
             Random random2 = new Random();
             int indexBoss = random2.Next(tier1Boss.Count);
-            ICreature currentBoss = tier1Creatures[indexBoss];
-            Console.WriteLine("\nYou will be fight a: " + currentBoss.Name + "\n");
+            ICreature currentBoss = tier1Boss[indexBoss];
+            Console.WriteLine("\nYou will be fighting a: " + currentBoss.Name + "\n");
             if (currentCharacter.Speed >= currentBoss.Speed)
             {
-                while (currentBoss.CurrentHealthPoints > 0 || currentBoss.CurrentHealthPoints > 0)
+                while (currentBoss.CurrentHealthPoints > 0 && currentBoss.CurrentHealthPoints > 0)
                 {
                     Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
                     string currentCommand = Console.ReadLine();
@@ -325,7 +325,7 @@ namespace RPG
             }
             else
             {
-                while (currentCharacter.CurrentHealthPoints > 0 || currentBoss.CurrentHealthPoints > 0)
+                while (currentCharacter.CurrentHealthPoints > 0 && currentBoss.CurrentHealthPoints > 0)
                 {
                     Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
                     string currentCommand = Console.ReadLine();
@@ -343,6 +343,8 @@ namespace RPG
                     Console.WriteLine(currentBoss.Status());
                 }
                 SomeoneDied(currentCharacter, currentBoss);
+                Reheal(currentCharacter);
+
             }
 
         }
