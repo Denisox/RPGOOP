@@ -61,7 +61,7 @@ namespace RPG.Classes
         }
         public virtual void AttackCharacter(ICharacters newCharacter)
         {
-            if (this.HasBuff == false)
+            if (this.HasShield == false)
             {
                 this.OutgoingDamage = Convert.ToInt32(1.3 * this.Attack);
             }
@@ -69,7 +69,6 @@ namespace RPG.Classes
             else
             {
                 this.OutgoingDamage = Convert.ToInt32(1.5 * 1.3 * this.Attack);
-                this.HasBuff = false;
             }
             newCharacter.IncomingDamage = this.OutgoingDamage;
         }
@@ -80,7 +79,7 @@ namespace RPG.Classes
             {
                 dealtDamage = 2;
             }
-            if (HasShield == false)
+            if (HasBuff == false)
             {
                 this.CurrentHealthPoints = this.CurrentHealthPoints - dealtDamage;
             }
@@ -88,7 +87,6 @@ namespace RPG.Classes
             {
                 dealtDamage = Convert.ToInt32(0.5 * dealtDamage);
                 this.CurrentHealthPoints = this.CurrentHealthPoints - dealtDamage;
-                this.HasShield = false;
             }
             if (CurrentHealthPoints < 0)
             {
