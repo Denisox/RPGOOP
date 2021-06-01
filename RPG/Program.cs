@@ -252,6 +252,32 @@ namespace RPG
 
             Program program = new Program();
             program.CombatTier(currentCharacter, tier1Creatures, tier1Boss);
+            if (currentCharacter.CurrentHealthPoints > 0)
+            {
+                Console.WriteLine("\n\nCongratulations! You finished Stage 1! Two more to go!");
+            }
+            else
+            {
+                System.Environment.Exit(0);
+            }
+            program.CombatTier(currentCharacter, tier2Creatures, tier2Boss);
+            if (currentCharacter.CurrentHealthPoints > 0)
+            {
+                Console.WriteLine("\n\nCongratulations! You finished Stage 2! One more to go!");
+            }
+            else
+            {
+                System.Environment.Exit(0);
+            }
+            program.CombatTier(currentCharacter, tier3Creatures, tier3Boss);
+            if (currentCharacter.CurrentHealthPoints > 0)
+            {
+                Console.WriteLine("\n\nCongratulations! You finished Stage 3! Game Over, you win!");
+            }
+            else
+            {
+                System.Environment.Exit(0);
+            }
         }
 
         public void CombatTier(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss)
