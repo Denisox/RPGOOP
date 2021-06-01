@@ -71,7 +71,7 @@ namespace RPG
             CharacterArcher character2 = new CharacterBowman("default", 12, 7, 1.2, 140, 40);
             CharacterKnight character3 = new CharacterOneHandedSwordsman("default", 12, 10, 1.3, 140, 50);
             CharacterKnight character4 = new CharacterTwoHandedSwordsman("default", 15, 7, 1, 180, 60);
-            CharacterMage character5 = new CharacterPyromancer("default", 100, 9, 1.2, 130, 200);
+            CharacterMage character5 = new CharacterPyromancer("default", 12, 9, 1.2, 130, 200);
             CharacterMage character6 = new CharacterNecromancer("default", 9, 8, 1.25, 220, 220);
             CharacterKnight character7 = new CharacterSpearman("default", 13, 10, 1.30, 150, 50);
 
