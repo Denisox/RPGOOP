@@ -199,30 +199,37 @@ namespace RPG
                         currentCharacter = character1;
                         Console.WriteLine("You have chosen class Crossbow\n");
                         break;
+
                     case "Bow":
                         currentCharacter = character2;
                         Console.WriteLine("You have chosen class Bow\n");
                         break;
+
                     case "One-Hand Swordsman":
                         currentCharacter = character3;
                         Console.WriteLine("You have chosen class OHS\n");
                         break;
+
                     case "Two-Hand Swordsman":
                         currentCharacter = character4;
                         Console.WriteLine("You have chosen class THS\n");
                         break;
+
                     case "Pyromancer":
                         currentCharacter = character5;
                         Console.WriteLine("You have chosen class Pyromancer\n");
                         break;
+
                     case "Necromancer":
                         currentCharacter = character6;
                         Console.WriteLine("You have chosen class Necromancer\n");
                         break;
+
                     case "Spearman":
                         currentCharacter = character7;
                         Console.WriteLine("You have chosen class Spearman\n");
                         break;
+
                     default:
                         Console.WriteLine("Bad Input\n");
                         break;
@@ -295,7 +302,6 @@ namespace RPG
                     SomeoneDied(currentCharacter, currentCreature);
                     Reheal(currentCharacter);
                 }
-
             }
             Random random2 = new Random();
             int indexBoss = random2.Next(tier1Boss.Count);
@@ -340,7 +346,6 @@ namespace RPG
                 }
                 SomeoneDied(currentCharacter, currentBoss);
             }
-
         }
 
         private void ExecuteCommand(string currentCommand, ICharacters currentCharacter, ICreature currentCreature)
@@ -354,14 +359,12 @@ namespace RPG
                     Recharge(currentCharacter);
                     break;
                 }
-
                 else if (currentCommand == "Buff")
                 {
                     currentCharacter.GetBuff();
                     Recharge(currentCharacter);
                     break;
                 }
-
                 else if (currentCommand == "Shield")
                 {
                     currentCharacter.GetShield();
@@ -381,7 +384,6 @@ namespace RPG
                     Recharge(currentCharacter);
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid command");
@@ -440,7 +442,7 @@ namespace RPG
         {
             if (Convert.ToInt32(1.2 * currentCharacter.CurrentHealthPoints) <= currentCharacter.HealthPoints)
             {
-                currentCharacter.CurrentHealthPoints = Convert.ToInt32(currentCharacter.CurrentHealthPoints*1.2);
+                currentCharacter.CurrentHealthPoints = Convert.ToInt32(currentCharacter.CurrentHealthPoints * 1.2);
             }
             else
             {
