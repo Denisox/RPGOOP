@@ -71,7 +71,7 @@ namespace RPG
             CharacterArcher character2 = new CharacterBowman("default", 12, 7, 1.2, 140, 40);
             CharacterKnight character3 = new CharacterOneHandedSwordsman("default", 12, 10, 1.3, 140, 50);
             CharacterKnight character4 = new CharacterTwoHandedSwordsman("default", 15, 7, 1, 180, 60);
-            CharacterMage character5 = new CharacterPyromancer("default", 12, 9, 1.2, 130, 200);
+            CharacterMage character5 = new CharacterPyromancer("default", 100, 9, 1.2, 130, 200);
             CharacterMage character6 = new CharacterNecromancer("default", 9, 8, 1.25, 220, 220);
             CharacterKnight character7 = new CharacterSpearman("default", 13, 10, 1.30, 150, 50);
 
@@ -266,17 +266,30 @@ namespace RPG
                         Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                         string currentCommand = Console.ReadLine();
                         ExecuteCommand(currentCommand, currentCharacter, currentCreature);
+<<<<<<< HEAD
                         currentCharacter.Status();
                         currentCreature.Status();
 
+=======
+                        Console.WriteLine("You used: " + currentCommand);
+                        Console.WriteLine (currentCharacter.Status());
+                        Console.WriteLine(currentCreature.Status());
+>>>>>>> 282808957ce27c1072536d3ea7fcc1e40bbe3390
                         if (currentCreature.CurrentHealthPoints <= 0)
                         {
                             break;
                         }
+<<<<<<< HEAD
 
                         MobAction(currentCharacter, currentCreature);
                         currentCharacter.Status();
                         currentCreature.Status();
+=======
+                        string mobCommand = MobAction(currentCharacter, currentCreature);
+                        Console.WriteLine("The mob used " + mobCommand);
+                        Console.WriteLine(currentCharacter.Status());
+                        Console.WriteLine(currentCreature.Status());
+>>>>>>> 282808957ce27c1072536d3ea7fcc1e40bbe3390
                     }
                 }
                 else
@@ -285,17 +298,18 @@ namespace RPG
                     {
                         Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                         string currentCommand = Console.ReadLine();
-                        MobAction(currentCharacter, currentCreature);
-
-                        currentCharacter.Status();
-                        currentCreature.Status();
+                        string mobCommand = MobAction(currentCharacter, currentCreature);
+                        Console.WriteLine("The mob used " + mobCommand);
+                        Console.WriteLine(currentCharacter.Status());
+                        Console.WriteLine(currentCreature.Status());
                         if (currentCharacter.CurrentHealthPoints <= 0)
                         {
                             break;
                         }
                         ExecuteCommand(currentCommand, currentCharacter, currentCreature);
-                        currentCharacter.Status();
-                        currentCreature.Status();
+                        Console.WriteLine("You used: " + currentCommand);
+                        Console.WriteLine(currentCharacter.Status());
+                        Console.WriteLine(currentCreature.Status());
                     }
                 }
                 if (currentCharacter.CurrentHealthPoints <= 0)
@@ -405,7 +419,7 @@ namespace RPG
             }
         }
 
-        private void MobAction(ICharacters currentCharacter, ICreature currentCreature)
+        private string MobAction(ICharacters currentCharacter, ICreature currentCreature)
         {
             Random random2 = new Random();
             int chanceForMob = random2.Next(1, 101);
@@ -413,19 +427,24 @@ namespace RPG
             {
                 currentCreature.AttackCharacter(currentCharacter);
                 currentCharacter.GetDamage();
+                return "Attack";
             }
             else if (chanceForMob >= 70 && chanceForMob < 84)
             {
                 currentCreature.GetBuff();
+                return "Buff";
             }
             else if (chanceForMob >= 84 && chanceForMob <= 98)
             {
                 currentCreature.GetShield();
+                return "Shield";
             }
             else if (chanceForMob > 98)
             {
                 currentCreature.Heal();
+                return "Heal";
             }
+            return "Bug, no command";
         }
     }
 }

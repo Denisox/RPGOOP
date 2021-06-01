@@ -93,7 +93,7 @@ namespace RPG.Classes
                 CurrentHealthPoints = 0;
             }
         }
-        public virtual string Status()
+        public string Status()
         {
             return "\nThe Mob has " + this.CurrentHealthPoints + " Health and " + this.Mana + " Mana\nThe Attack of the mob is " + this.Attack + " and the Defense is " + this.Defence + ". The Speed is" + this.Speed + "\n";
         }
