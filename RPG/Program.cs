@@ -275,6 +275,7 @@ namespace RPG
                         Console.WriteLine(currentCreature.Status());
                     }
                     SomeoneDied(currentCharacter, currentCreature);
+                    Reheal(currentCharacter);
                 }
                 else
                 {
@@ -296,6 +297,7 @@ namespace RPG
                         Console.WriteLine(currentCreature.Status());
                     }
                     SomeoneDied(currentCharacter, currentCreature);
+                    Reheal(currentCharacter);
                 }
 
             }
@@ -320,6 +322,7 @@ namespace RPG
                     currentBoss.Status();
                 }
                 SomeoneDied(currentCharacter, currentBoss);
+                Reheal(currentCharacter);
             }
             else
             {
@@ -353,29 +356,34 @@ namespace RPG
                 {
                     currentCharacter.NormalAttack(currentCreature);
                     currentCreature.GetDamage();
+                    Recharge(currentCharacter);
                     break;
                 }
 
                 else if (currentCommand == "Buff")
                 {
                     currentCharacter.GetBuff();
+                    Recharge(currentCharacter);
                     break;
                 }
 
                 else if (currentCommand == "Shield")
                 {
                     currentCharacter.GetShield();
+                    Recharge(currentCharacter);
                     break;
                 }
                 else if (currentCommand == "Heal")
                 {
                     currentCharacter.HealCharacter(currentCharacter);
+                    Recharge(currentCharacter);
                     break;
                 }
                 else if (currentCommand == "Power Attack")
                 {
                     currentCharacter.PowerAttack(currentCreature);
                     currentCreature.GetDamage();
+                    Recharge(currentCharacter);
                     break;
                 }
 
@@ -425,6 +433,23 @@ namespace RPG
             if (currentCreature.CurrentHealthPoints <= 0)
             {
                 Console.WriteLine("You defeated this mob!");
+            }
+        }
+
+        private void Recharge(ICharacters currentCharacter)
+        {
+            currentCharacter.CurrentMana += 7;
+        }
+
+        private void Reheal(ICharacters currentCharacter)
+        {
+            if (Convert.ToInt32(1.2 * currentCharacter.CurrentHealthPoints) <= currentCharacter.HealthPoints)
+            {
+                currentCharacter.CurrentHealthPoints = Convert.ToInt32(currentCharacter.CurrentHealthPoints*1.2);
+            }
+            else
+            {
+                currentCharacter.CurrentHealthPoints = currentCharacter.HealthPoints;
             }
         }
     }
