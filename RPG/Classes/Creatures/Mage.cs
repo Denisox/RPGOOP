@@ -21,37 +21,37 @@ namespace RPG.Classes
 
         public abstract bool HasShield { get; set; }
         public abstract bool HasBuff { get; set; }
+
         public virtual void Heal()
         {
             if (Convert.ToInt32(this.CurrentHealthPoints + this.HealthPoints * 0.25) > this.HealthPoints)
             {
                 this.CurrentHealthPoints = this.HealthPoints;
             }
-
             else
             {
                 this.CurrentHealthPoints = Convert.ToInt32(0.25 * this.HealthPoints + this.CurrentHealthPoints);
             }
         }
+
         public virtual void GetBuff()
         {
             if (this.HasBuff == false)
             {
                 this.HasBuff = true;
             }
-
             else
             {
                 Console.WriteLine("Can't get a new Buff!");
             }
         }
+
         public virtual void GetShield()
         {
             if (this.HasShield == false)
             {
                 this.HasShield = true;
             }
-
             else
             {
                 Console.WriteLine("Can't get a new Shield!");
@@ -64,13 +64,13 @@ namespace RPG.Classes
             {
                 this.OutgoingDamage = Convert.ToInt32(1.25 * this.Attack);
             }
-
             else
             {
                 this.OutgoingDamage = Convert.ToInt32(1.5 * 1.25 * this.Attack);
             }
             newCharacter.IncomingDamage = this.OutgoingDamage;
         }
+
         public virtual void GetDamage()
         {
             int dealtDamage = Convert.ToInt32(this.IncomingDamage - 0.75 * this.Defence);
@@ -92,6 +92,7 @@ namespace RPG.Classes
                 CurrentHealthPoints = 0;
             }
         }
+
         public string Status()
         {
             return "\nThe Mob has " + this.CurrentHealthPoints + " Health and " + this.Mana + " Mana\nThe Attack of the mob is " + this.Attack + " and the Defense is " + this.Defence + ". The Speed is" + this.Speed + "\n";

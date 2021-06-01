@@ -67,13 +67,16 @@ namespace RPG
                 new Item("Life God's Robe", "all", 90, 16, 0, 0, 5)
             };
 
-            CharacterArcher character1 = new CharacterArbalist("default", 13, 8, 1.3, 150, 30);
-            CharacterArcher character2 = new CharacterBowman("default", 12, 7, 1.2, 140, 40);
-            CharacterKnight character3 = new CharacterOneHandedSwordsman("default", 12, 10, 1.3, 140, 50);
-            CharacterKnight character4 = new CharacterTwoHandedSwordsman("default", 15, 7, 1, 180, 60);
-            CharacterMage character5 = new CharacterPyromancer("default", 100, 9, 1.2, 130, 200);
-            CharacterMage character6 = new CharacterNecromancer("default", 9, 8, 1.25, 220, 220);
-            CharacterKnight character7 = new CharacterSpearman("default", 13, 10, 1.30, 150, 50);
+            // attack and health * 1.5
+            // defence * 1.2
+
+            CharacterArcher character1 = new CharacterArbalist("default", 20, 12, 1.3, 225, 30);
+            CharacterArcher character2 = new CharacterBowman("default", 18, 8, 1.2, 168, 40);
+            CharacterKnight character3 = new CharacterOneHandedSwordsman("default", 18, 12, 1.3, 168, 50);
+            CharacterKnight character4 = new CharacterTwoHandedSwordsman("default", 23, 8, 1, 216, 60);
+            CharacterMage character5 = new CharacterPyromancer("default", 18, 11, 1.2, 156, 200);
+            CharacterMage character6 = new CharacterNecromancer("default", 14, 10, 1.25, 264, 220);
+            CharacterKnight character7 = new CharacterSpearman("default", 20, 12, 1.30, 180, 50);
 
             List<ICharacters> characters = new List<ICharacters>()
             {
@@ -199,30 +202,37 @@ namespace RPG
                         currentCharacter = character1;
                         Console.WriteLine("You have chosen class Crossbow\n");
                         break;
+
                     case "Bow":
                         currentCharacter = character2;
                         Console.WriteLine("You have chosen class Bow\n");
                         break;
+
                     case "One-Hand Swordsman":
                         currentCharacter = character3;
                         Console.WriteLine("You have chosen class OHS\n");
                         break;
+
                     case "Two-Hand Swordsman":
                         currentCharacter = character4;
                         Console.WriteLine("You have chosen class THS\n");
                         break;
+
                     case "Pyromancer":
                         currentCharacter = character5;
                         Console.WriteLine("You have chosen class Pyromancer\n");
                         break;
+
                     case "Necromancer":
                         currentCharacter = character6;
                         Console.WriteLine("You have chosen class Necromancer\n");
                         break;
+
                     case "Spearman":
                         currentCharacter = character7;
                         Console.WriteLine("You have chosen class Spearman\n");
                         break;
+
                     default:
                         Console.WriteLine("Bad Input\n");
                         break;
@@ -242,6 +252,32 @@ namespace RPG
 
             Program program = new Program();
             program.CombatTier(currentCharacter, tier1Creatures, tier1Boss);
+            if (currentCharacter.CurrentHealthPoints > 0)
+            {
+                Console.WriteLine("\n\nCongratulations! You finished Stage 1! Two more to go!");
+            }
+            else
+            {
+                System.Environment.Exit(0);
+            }
+            program.CombatTier(currentCharacter, tier2Creatures, tier2Boss);
+            if (currentCharacter.CurrentHealthPoints > 0)
+            {
+                Console.WriteLine("\n\nCongratulations! You finished Stage 2! One more to go!");
+            }
+            else
+            {
+                System.Environment.Exit(0);
+            }
+            program.CombatTier(currentCharacter, tier3Creatures, tier3Boss);
+            if (currentCharacter.CurrentHealthPoints > 0)
+            {
+                Console.WriteLine("\n\nCongratulations! You finished Stage 3! Game Over, you win!");
+            }
+            else
+            {
+                System.Environment.Exit(0);
+            }
         }
 
         public void CombatTier(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss)
@@ -251,7 +287,7 @@ namespace RPG
                 Random random1 = new Random();
                 int index = random1.Next(tier1Creatures.Count);
                 ICreature currentCreature = tier1Creatures[index];
-                Console.WriteLine("\nYou will be fight a: " + currentCreature.Name + "\n");
+                Console.WriteLine("\nYou will be fighting1 a: " + currentCreature.Name + "\n");
                 if (currentCharacter.Speed >= currentCreature.Speed)
                 {
                     while (currentCharacter.CurrentHealthPoints > 0 && currentCreature.CurrentHealthPoints > 0)
@@ -296,15 +332,14 @@ namespace RPG
                     SomeoneDied(currentCharacter, currentCreature);
                     Reheal(currentCharacter);
                 }
-
             }
             Random random2 = new Random();
             int indexBoss = random2.Next(tier1Boss.Count);
-            ICreature currentBoss = tier1Creatures[indexBoss];
-            Console.WriteLine("\nYou will be fight a: " + currentBoss.Name + "\n");
+            ICreature currentBoss = tier1Boss[indexBoss];
+            Console.WriteLine("\nYou will be fighting a: " + currentBoss.Name + "\n");
             if (currentCharacter.Speed >= currentBoss.Speed)
             {
-                while (currentBoss.CurrentHealthPoints > 0 || currentBoss.CurrentHealthPoints > 0)
+                while (currentBoss.CurrentHealthPoints > 0 && currentBoss.CurrentHealthPoints > 0)
                 {
                     Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
                     string currentCommand = Console.ReadLine();
@@ -325,7 +360,7 @@ namespace RPG
             }
             else
             {
-                while (currentCharacter.CurrentHealthPoints > 0 || currentBoss.CurrentHealthPoints > 0)
+                while (currentCharacter.CurrentHealthPoints > 0 && currentBoss.CurrentHealthPoints > 0)
                 {
                     Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
                     string currentCommand = Console.ReadLine();
@@ -343,8 +378,8 @@ namespace RPG
                     Console.WriteLine(currentBoss.Status());
                 }
                 SomeoneDied(currentCharacter, currentBoss);
+                Reheal(currentCharacter);
             }
-
         }
 
         private void ExecuteCommand(string currentCommand, ICharacters currentCharacter, ICreature currentCreature)
@@ -358,14 +393,12 @@ namespace RPG
                     Recharge(currentCharacter);
                     break;
                 }
-
                 else if (currentCommand == "Buff")
                 {
                     currentCharacter.GetBuff();
                     Recharge(currentCharacter);
                     break;
                 }
-
                 else if (currentCommand == "Shield")
                 {
                     currentCharacter.GetShield();
@@ -385,7 +418,6 @@ namespace RPG
                     Recharge(currentCharacter);
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid command");
@@ -444,7 +476,7 @@ namespace RPG
         {
             if (Convert.ToInt32(1.2 * currentCharacter.CurrentHealthPoints) <= currentCharacter.HealthPoints)
             {
-                currentCharacter.CurrentHealthPoints = Convert.ToInt32(currentCharacter.CurrentHealthPoints*1.2);
+                currentCharacter.CurrentHealthPoints = Convert.ToInt32(currentCharacter.CurrentHealthPoints * 1.2);
             }
             else
             {
