@@ -238,14 +238,10 @@ namespace RPG
             }
 
             currentCharacter.Name = givenName;
-            Console.WriteLine("Your name is " + currentCharacter.Name + "\n");
-            Console.WriteLine("Let the Combat begin\n");
+            Console.WriteLine("Your name is " + currentCharacter.Name + ", let the Combat begin\n");
+
             Program program = new Program();
             program.CombatTier(currentCharacter, tier1Creatures, tier1Boss);
-
-
-
-            Console.ReadKey();
         }
 
         public void CombatTier(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss)
@@ -351,7 +347,6 @@ namespace RPG
         {
             while (true)
             {
-
                 if (currentCommand == "Attack")
                 {
                     currentCharacter.NormalAttack(currentCreature);
