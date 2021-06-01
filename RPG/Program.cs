@@ -270,7 +270,7 @@ namespace RPG
                         ExecuteCommand(currentCommand, currentCharacter, currentCreature);
 
                         Console.WriteLine("You used: " + currentCommand);
-                        Console.WriteLine(currentCharacter.Status());
+                        Console.WriteLine (currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
 
                         if (currentCreature.CurrentHealthPoints <= 0)
@@ -283,7 +283,6 @@ namespace RPG
                         Console.WriteLine(currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
                     }
-                    SomeoneDied(currentCharacter, currentCreature);
                 }
                 else
                 {
@@ -304,9 +303,16 @@ namespace RPG
                         Console.WriteLine(currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
                     }
-                    SomeoneDied(currentCharacter, currentCreature);
+                }
+                if (currentCharacter.CurrentHealthPoints <= 0)
+                {
+                    Console.WriteLine("You have died! Game over! You Lose!");
                 }
 
+                if (currentCreature.CurrentHealthPoints <= 0)
+                {
+                    Console.WriteLine("You defeated this mob!");
+                }
             }
 
             Random random2 = new Random();
@@ -332,7 +338,6 @@ namespace RPG
                     currentCharacter.Status();
                     currentBoss.Status();
                 }
-                SomeoneDied(currentCharacter, currentBoss);
             }
             else
             {
@@ -354,7 +359,15 @@ namespace RPG
                     currentCharacter.Status();
                     currentBoss.Status();
                 }
-                SomeoneDied(currentCharacter, currentBoss);
+            }
+            if (currentCharacter.CurrentHealthPoints <= 0)
+            {
+                Console.WriteLine("You have died! Game over! You Lose!");
+            }
+
+            if (currentBoss.CurrentHealthPoints <= 0)
+            {
+                Console.WriteLine("You defeated this mob!");
             }
         }
 
@@ -362,8 +375,7 @@ namespace RPG
         {
             while (true)
             {
-                currentCommand = currentCommand.ToLower();
-                if (currentCommand == "attack")
+                if (currentCommand == "Attack")
                 {
                     currentCharacter.NormalAttack(currentCreature);
                     currentCreature.GetDamage();
@@ -424,19 +436,6 @@ namespace RPG
                 return "Heal";
             }
             return "Bug, no command";
-        }
-
-        private void SomeoneDied(ICharacters currentCharacter, ICreature currentCreature)
-        {
-            if (currentCharacter.CurrentHealthPoints <= 0)
-            {
-                Console.WriteLine("You have died! Game over! You Lose!");
-            }
-
-            if (currentCreature.CurrentHealthPoints <= 0)
-            {
-                Console.WriteLine("You defeated this mob!");
-            }
         }
     }
 }
