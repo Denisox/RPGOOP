@@ -239,13 +239,16 @@ namespace RPG
 
             currentCharacter.Name = givenName;
             Console.WriteLine("Your name is " + currentCharacter.Name + "\n");
-
+            Console.WriteLine("Let the Combat begin\n");
+            Program program = new Program();
+            program.CombatTier(currentCharacter, tier1Creatures, tier1Boss);
+            
             
 
             Console.ReadKey();
         }
 
-        private void CombatTier1(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss)
+        public void CombatTier(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -280,7 +283,7 @@ namespace RPG
 
                         currentCharacter.Status();
                         currentCreature.Status();
-                        if (currentCreature.CurrentHealthPoints <= 0)
+                        if (currentCharacter.CurrentHealthPoints <= 0)
                         {
                             break;
                         }
@@ -299,43 +302,97 @@ namespace RPG
                     Console.WriteLine("You defeated this mob!");
                 }
             }
+            Random random2 = new Random();
+            int indexBoss = random2.Next(tier1Boss.Count);
+            ICreature currentBoss = tier1Creatures[indexBoss];
+            if (currentCharacter.Speed >= currentBoss.Speed)
+            {
+                while (currentBoss.CurrentHealthPoints > 0 || currentBoss.CurrentHealthPoints > 0)
+                {
+                    Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                    string currentCommand = Console.ReadLine();
+                    ExecuteCommand(currentCommand, currentCharacter, currentBoss);
+                    currentCharacter.Status();
+                    currentBoss.Status();
+                    if (currentBoss.CurrentHealthPoints <= 0)
+                    {
+                        break;
+                    }
+                    MobAction(currentCharacter, currentBoss);
+                    currentCharacter.Status();
+                    currentBoss.Status();
+                }
+            }
+            else
+            {
+                while (currentCharacter.CurrentHealthPoints > 0 || currentBoss.CurrentHealthPoints > 0)
+                {
+                    Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                    string currentCommand = Console.ReadLine();
+                    MobAction(currentCharacter, currentBoss);
+
+                    currentCharacter.Status();
+                    currentBoss.Status();
+                    if (currentCharacter.CurrentHealthPoints <= 0)
+                    {
+                        break;
+                    }
+                    ExecuteCommand(currentCommand, currentCharacter, currentBoss);
+                    currentCharacter.Status();
+                    currentBoss.Status();
+                }
+            }
+            if (currentCharacter.CurrentHealthPoints <= 0)
+            {
+                Console.WriteLine("You have died! Game over! You Lose!");
+            }
+
+            if (currentBoss.CurrentHealthPoints <= 0)
+            {
+                Console.WriteLine("You defeated this mob!");
+            }
+
         }
 
         private void ExecuteCommand(string currentCommand, ICharacters currentCharacter, ICreature currentCreature)
         {
-            int i = 0;
-            while (i <= 0)
+            while (true)
             {
-                i = 1;
+                
                 if (currentCommand == "Attack")
                 {
                     currentCharacter.NormalAttack(currentCreature);
                     currentCreature.GetDamage();
+                    break;
                 }
 
                 else if (currentCommand == "Buff")
                 {
                     currentCharacter.GetBuff();
+                    break;
                 }
 
                 else if (currentCommand == "Shield")
                 {
                     currentCharacter.GetShield();
+                    break;
                 }
                 else if (currentCommand == "Heal")
                 {
                     currentCharacter.HealCharacter(currentCharacter);
+                    break;
                 }
                 else if (currentCommand == "Power Attack")
                 {
                     currentCharacter.PowerAttack(currentCreature);
                     currentCreature.GetDamage();
+                    break;
                 }
 
                 else
                 {
                     Console.WriteLine("Invalid command");
-                    i = 0;
+                    currentCommand = Console.ReadLine();
                 }
             }
         }
