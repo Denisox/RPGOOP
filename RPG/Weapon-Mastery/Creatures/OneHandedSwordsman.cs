@@ -92,6 +92,7 @@ namespace RPG.Weapon_Mastery
             this.speed = speed;
             this.healthPoints = hp;
             this.mana = mana;
+            this.currentHealthPoints = this.healthPoints;
         }
     }
 }
