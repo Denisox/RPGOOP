@@ -27,5 +27,7 @@ namespace RPG.Interfaces
 
         void AttackCharacter(ICharacters newCharacter);
 
+        string Status();
+
     }
 }
