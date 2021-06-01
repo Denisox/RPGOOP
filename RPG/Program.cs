@@ -266,30 +266,20 @@ namespace RPG
                         Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                         string currentCommand = Console.ReadLine();
                         ExecuteCommand(currentCommand, currentCharacter, currentCreature);
-<<<<<<< HEAD
-                        currentCharacter.Status();
-                        currentCreature.Status();
 
-=======
                         Console.WriteLine("You used: " + currentCommand);
                         Console.WriteLine (currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
->>>>>>> 282808957ce27c1072536d3ea7fcc1e40bbe3390
-                        if (currentCreature.CurrentHealthPoints <= 0)
+                        
+			if (currentCreature.CurrentHealthPoints <= 0)
                         {
                             break;
                         }
-<<<<<<< HEAD
 
-                        MobAction(currentCharacter, currentCreature);
-                        currentCharacter.Status();
-                        currentCreature.Status();
-=======
                         string mobCommand = MobAction(currentCharacter, currentCreature);
                         Console.WriteLine("The mob used " + mobCommand);
                         Console.WriteLine(currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
->>>>>>> 282808957ce27c1072536d3ea7fcc1e40bbe3390
                     }
                 }
                 else
