@@ -119,7 +119,7 @@ namespace RPG.CharacterClasses
             {
                 dealtDamage = 2;
             }
-            if (HasBuff == false)
+            if (HasShield == false)
             {
                 this.CurrentHealthPoints = this.CurrentHealthPoints - dealtDamage;
             }

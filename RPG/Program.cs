@@ -240,11 +240,61 @@ namespace RPG
             currentCharacter.Name = givenName;
             Console.WriteLine("Your name is " + currentCharacter.Name + "\n");
 
-            foreach (var item in tier1Boss)
-            {
-                Console.WriteLine($"{item.Name}, {item.Attack}, {item.Defence}, {item.HealthPoints}, {item.Mana}, {item.Speed}");
-            }
+            
 
+            Console.ReadKey();
+        }
+
+        private void CombatTier1(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss)
+        {
+            Random random = new Random();
+            int index = random.Next(tier1Creatures.Count);
+            ICreature currentCreature = tier1Creatures[index];
+            if (currentCharacter.Speed >= currentCreature.Speed)
+            {
+                Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                string currentCommand = Console.ReadLine();
+                ExecuteCommand(currentCommand, currentCharacter, currentCreature);
+            }
+        }
+
+        private void ExecuteCommand(string currentCommand, ICharacters currentCharacter, ICreature currentCreature)
+        {
+            int i = 0;
+            while (i <= 0)
+            {
+                i = 1;
+                if (currentCommand == "Attack")
+                {
+                    currentCharacter.NormalAttack(currentCreature);
+                    currentCreature.GetDamage();
+                }
+
+                else if (currentCommand == "Buff")
+                {
+                    currentCharacter.GetBuff();
+                }
+
+                else if (currentCommand == "Shield")
+                {
+                    currentCharacter.GetShield();
+                }
+                else if (currentCommand == "Heal")
+                {
+                    currentCharacter.HealCharacter(currentCharacter);
+                }
+                else if (currentCommand == "Power Attack")
+                {
+                    currentCharacter.PowerAttack(currentCreature);
+                    currentCreature.GetDamage();
+                }
+
+                else
+                {
+                    Console.WriteLine("Invalid command");
+                    i = 0;
+                }
+            }
         }
     }
 }
