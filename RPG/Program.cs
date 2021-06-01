@@ -199,30 +199,37 @@ namespace RPG
                         currentCharacter = character1;
                         Console.WriteLine("You have chosen class Crossbow\n");
                         break;
+
                     case "Bow":
                         currentCharacter = character2;
                         Console.WriteLine("You have chosen class Bow\n");
                         break;
+
                     case "One-Hand Swordsman":
                         currentCharacter = character3;
                         Console.WriteLine("You have chosen class OHS\n");
                         break;
+
                     case "Two-Hand Swordsman":
                         currentCharacter = character4;
                         Console.WriteLine("You have chosen class THS\n");
                         break;
+
                     case "Pyromancer":
                         currentCharacter = character5;
                         Console.WriteLine("You have chosen class Pyromancer\n");
                         break;
+
                     case "Necromancer":
                         currentCharacter = character6;
                         Console.WriteLine("You have chosen class Necromancer\n");
                         break;
+
                     case "Spearman":
                         currentCharacter = character7;
                         Console.WriteLine("You have chosen class Spearman\n");
                         break;
+
                     default:
                         Console.WriteLine("Bad Input\n");
                         break;
@@ -238,14 +245,10 @@ namespace RPG
             }
 
             currentCharacter.Name = givenName;
-            Console.WriteLine("Your name is " + currentCharacter.Name + "\n");
-            Console.WriteLine("Let the Combat begin\n");
+            Console.WriteLine("Your name is " + currentCharacter.Name + ", let the Combat begin\n");
+
             Program program = new Program();
             program.CombatTier(currentCharacter, tier1Creatures, tier1Boss);
-            
-            
-
-            Console.ReadKey();
         }
 
         public void CombatTier(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss)
@@ -255,19 +258,22 @@ namespace RPG
                 Random random1 = new Random();
                 int index = random1.Next(tier1Creatures.Count);
                 ICreature currentCreature = tier1Creatures[index];
+
                 if (currentCharacter.Speed >= currentCreature.Speed)
                 {
                     while (currentCharacter.CurrentHealthPoints > 0 || currentCreature.CurrentHealthPoints > 0)
                     {
-                        Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                        Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                         string currentCommand = Console.ReadLine();
                         ExecuteCommand(currentCommand, currentCharacter, currentCreature);
                         currentCharacter.Status();
                         currentCreature.Status();
+
                         if (currentCreature.CurrentHealthPoints <= 0)
                         {
                             break;
                         }
+
                         MobAction(currentCharacter, currentCreature);
                         currentCharacter.Status();
                         currentCreature.Status();
@@ -277,7 +283,7 @@ namespace RPG
                 {
                     while (currentCharacter.CurrentHealthPoints > 0 || currentCreature.CurrentHealthPoints > 0)
                     {
-                        Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                        Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                         string currentCommand = Console.ReadLine();
                         MobAction(currentCharacter, currentCreature);
 
@@ -302,22 +308,26 @@ namespace RPG
                     Console.WriteLine("You defeated this mob!");
                 }
             }
+
             Random random2 = new Random();
             int indexBoss = random2.Next(tier1Boss.Count);
             ICreature currentBoss = tier1Creatures[indexBoss];
+
             if (currentCharacter.Speed >= currentBoss.Speed)
             {
                 while (currentBoss.CurrentHealthPoints > 0 || currentBoss.CurrentHealthPoints > 0)
                 {
-                    Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                    Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                     string currentCommand = Console.ReadLine();
                     ExecuteCommand(currentCommand, currentCharacter, currentBoss);
                     currentCharacter.Status();
                     currentBoss.Status();
+
                     if (currentBoss.CurrentHealthPoints <= 0)
                     {
                         break;
                     }
+
                     MobAction(currentCharacter, currentBoss);
                     currentCharacter.Status();
                     currentBoss.Status();
@@ -327,16 +337,18 @@ namespace RPG
             {
                 while (currentCharacter.CurrentHealthPoints > 0 || currentBoss.CurrentHealthPoints > 0)
                 {
-                    Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                    Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                     string currentCommand = Console.ReadLine();
                     MobAction(currentCharacter, currentBoss);
 
                     currentCharacter.Status();
                     currentBoss.Status();
+
                     if (currentCharacter.CurrentHealthPoints <= 0)
                     {
                         break;
                     }
+
                     ExecuteCommand(currentCommand, currentCharacter, currentBoss);
                     currentCharacter.Status();
                     currentBoss.Status();
@@ -351,44 +363,40 @@ namespace RPG
             {
                 Console.WriteLine("You defeated this mob!");
             }
-
         }
 
         private void ExecuteCommand(string currentCommand, ICharacters currentCharacter, ICreature currentCreature)
         {
             while (true)
             {
-                
-                if (currentCommand == "Attack")
+                currentCommand = currentCommand.ToLower();
+                if (currentCommand == "attack")
                 {
                     currentCharacter.NormalAttack(currentCreature);
                     currentCreature.GetDamage();
                     break;
                 }
-
-                else if (currentCommand == "Buff")
+                else if (currentCommand == "buff")
                 {
                     currentCharacter.GetBuff();
                     break;
                 }
-
-                else if (currentCommand == "Shield")
+                else if (currentCommand == "shield")
                 {
                     currentCharacter.GetShield();
                     break;
                 }
-                else if (currentCommand == "Heal")
+                else if (currentCommand == "heal")
                 {
                     currentCharacter.HealCharacter(currentCharacter);
                     break;
                 }
-                else if (currentCommand == "Power Attack")
+                else if (currentCommand == "power attack")
                 {
                     currentCharacter.PowerAttack(currentCreature);
                     currentCreature.GetDamage();
                     break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid command");
