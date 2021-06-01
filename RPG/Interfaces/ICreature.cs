@@ -23,6 +23,7 @@ namespace RPG.Interfaces
         void Heal();
         void GetBuff();
         void GetShield();
+        void GetDamage();
 
         void AttackCharacter(ICharacters newCharacter);
 
