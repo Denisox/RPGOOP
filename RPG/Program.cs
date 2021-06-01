@@ -71,7 +71,7 @@ namespace RPG
             CharacterArcher character2 = new CharacterBowman("default", 12, 7, 1.2, 140, 40);
             CharacterKnight character3 = new CharacterOneHandedSwordsman("default", 12, 10, 1.3, 140, 50);
             CharacterKnight character4 = new CharacterTwoHandedSwordsman("default", 15, 7, 1, 180, 60);
-            CharacterMage character5 = new CharacterPyromancer("default", 100, 9, 1.2, 130, 200);
+            CharacterMage character5 = new CharacterPyromancer("default", 12, 9, 1.2, 130, 200);
             CharacterMage character6 = new CharacterNecromancer("default", 9, 8, 1.25, 220, 220);
             CharacterKnight character7 = new CharacterSpearman("default", 13, 10, 1.30, 150, 50);
 
@@ -125,35 +125,35 @@ namespace RPG
 
             List<ICreature> tier1Creatures = new List<ICreature>(7)
             {
-                new Arbalist("default", 13, 8, 1.1, 110, 30),
-                new Bowman("default", 12, 7, 1.3, 110, 30),
-                new OneHandedSwordsman("default", 10, 15, 1.25, 150, 30),
-                new TwoHandedSwordsman("default", 15, 5, 1.15, 170, 30),
-                new Spearman("default", 12, 10, 1.30, 150, 0),
-                new Pyromancer("default", 10, 8, 1, 120, 150),
-                new Necromancer("default", 8, 8, 1, 90, 200)
+                new Arbalist("tier1 Arbalist", 13, 8, 1.1, 110, 30),
+                new Bowman("tier1 Bowman", 12, 7, 1.3, 110, 30),
+                new OneHandedSwordsman("tier1 One-Handed Swordsman", 10, 15, 1.25, 150, 30),
+                new TwoHandedSwordsman("tier1 Two-Handed Swordsman", 15, 5, 1.15, 170, 30),
+                new Spearman("tier1 Spearman", 12, 10, 1.30, 150, 0),
+                new Pyromancer("tier1 Pyromancer", 10, 8, 1, 120, 150),
+                new Necromancer("tier1 Necromancer", 8, 8, 1, 90, 200)
             };
 
             List<ICreature> tier2Creatures = new List<ICreature>(7)
             {
-                new Arbalist("default", 20, 14, 1.10, 220, 50),
-                new Bowman("default", 17, 14, 1.30, 230, 50),
-                new OneHandedSwordsman("default", 20, 20, 1.25, 200, 60),
-                new TwoHandedSwordsman("default", 20, 13, 1.15, 260, 60),
-                new Spearman("default", 18, 15, 1.30, 250, 0),
-                new Pyromancer("default", 15, 18, 1.25, 240, 250),
-                new Necromancer("default", 15, 16, 1.25, 240, 250)
+                new Arbalist("tier2 Arbalist", 20, 14, 1.10, 220, 50),
+                new Bowman("tier2 Bowman", 17, 14, 1.30, 230, 50),
+                new OneHandedSwordsman("tier2 One-Handed Swordsman", 20, 20, 1.25, 200, 60),
+                new TwoHandedSwordsman("tier2 Two-Handed Swordsman", 20, 13, 1.15, 260, 60),
+                new Spearman("tier2 Spearman", 18, 15, 1.30, 250, 0),
+                new Pyromancer("tier2 Pyromancer", 15, 18, 1.25, 240, 250),
+                new Necromancer("tier2 Necromancer", 15, 16, 1.25, 240, 250)
             };
 
             List<ICreature> tier3Creatures = new List<ICreature>(7)
             {
-                new Arbalist("default", 26, 14, 1.10, 220, 30),
-                new Bowman("default", 23, 20, 1.30, 280, 100),
-                new OneHandedSwordsman("default", 25, 25, 1.25, 320, 80),
-                new TwoHandedSwordsman("default", 27, 25, 1.15, 300, 80),
-                new Spearman("default", 23, 20, 1.30, 300, 0),
-                new Pyromancer("default", 18, 23, 1.30, 300, 400),
-                new Necromancer("default", 20, 20, 1.40, 300, 400)
+                new Arbalist("tier3 Arbalist", 26, 14, 1.10, 220, 30),
+                new Bowman("tier3 Bowman", 23, 20, 1.30, 280, 100),
+                new OneHandedSwordsman("tier3 One-Handed Swordsman", 25, 25, 1.25, 320, 80),
+                new TwoHandedSwordsman("tier3 Two-Handed Swordsman", 27, 25, 1.15, 300, 80),
+                new Spearman("tier3 Spearman", 23, 20, 1.30, 300, 0),
+                new Pyromancer("tier3 Pyromancer", 18, 23, 1.30, 300, 400),
+                new Necromancer("tier3 Necromancer", 20, 20, 1.40, 300, 400)
             };
 
             Console.WriteLine("List of the possible characters: ");
@@ -258,9 +258,10 @@ namespace RPG
                 Random random1 = new Random();
                 int index = random1.Next(tier1Creatures.Count);
                 ICreature currentCreature = tier1Creatures[index];
+                Console.WriteLine("\nYou will be fighting1 a: " + currentCreature.Name + "\n");
                 if (currentCharacter.Speed >= currentCreature.Speed)
                 {
-                    while (currentCharacter.CurrentHealthPoints > 0 || currentCreature.CurrentHealthPoints > 0)
+                    while (currentCharacter.CurrentHealthPoints > 0 && currentCreature.CurrentHealthPoints > 0)
                     {
                         Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
                         string currentCommand = Console.ReadLine();
@@ -282,7 +283,7 @@ namespace RPG
                 }
                 else
                 {
-                    while (currentCharacter.CurrentHealthPoints > 0 || currentCreature.CurrentHealthPoints > 0)
+                    while (currentCharacter.CurrentHealthPoints > 0 && currentCreature.CurrentHealthPoints > 0)
                     {
                         Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
                         string currentCommand = Console.ReadLine();
@@ -305,46 +306,51 @@ namespace RPG
             }
             Random random2 = new Random();
             int indexBoss = random2.Next(tier1Boss.Count);
-            ICreature currentBoss = tier1Creatures[indexBoss];
+            ICreature currentBoss = tier1Boss[indexBoss];
+            Console.WriteLine("\nYou will be fighting a: " + currentBoss.Name + "\n");
             if (currentCharacter.Speed >= currentBoss.Speed)
             {
-                while (currentBoss.CurrentHealthPoints > 0 || currentBoss.CurrentHealthPoints > 0)
+                while (currentBoss.CurrentHealthPoints > 0 && currentBoss.CurrentHealthPoints > 0)
                 {
                     Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
                     string currentCommand = Console.ReadLine();
                     ExecuteCommand(currentCommand, currentCharacter, currentBoss);
-                    currentCharacter.Status();
-                    currentBoss.Status();
+                    Console.WriteLine("You used: " + currentCommand);
+                    Console.WriteLine(currentCharacter.Status());
+                    Console.WriteLine(currentBoss.Status());
                     if (currentBoss.CurrentHealthPoints <= 0)
                     {
                         break;
                     }
-                    MobAction(currentCharacter, currentBoss);
-                    currentCharacter.Status();
-                    currentBoss.Status();
+                    Console.WriteLine("The boss used: " + MobAction(currentCharacter, currentBoss));
+                    Console.WriteLine(currentCharacter.Status());
+                    Console.WriteLine(currentBoss.Status());
                 }
                 SomeoneDied(currentCharacter, currentBoss);
                 Reheal(currentCharacter);
             }
             else
             {
-                while (currentCharacter.CurrentHealthPoints > 0 || currentBoss.CurrentHealthPoints > 0)
+                while (currentCharacter.CurrentHealthPoints > 0 && currentBoss.CurrentHealthPoints > 0)
                 {
                     Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
                     string currentCommand = Console.ReadLine();
-                    MobAction(currentCharacter, currentBoss);
+                    Console.WriteLine("The boss used: " + MobAction(currentCharacter, currentBoss));
 
-                    currentCharacter.Status();
-                    currentBoss.Status();
+                    Console.WriteLine(currentCharacter.Status());
+                    Console.WriteLine(currentBoss.Status());
                     if (currentCharacter.CurrentHealthPoints <= 0)
                     {
                         break;
                     }
                     ExecuteCommand(currentCommand, currentCharacter, currentBoss);
-                    currentCharacter.Status();
-                    currentBoss.Status();
+                    Console.WriteLine("You used: " + currentCommand);
+                    Console.WriteLine(currentCharacter.Status());
+                    Console.WriteLine(currentBoss.Status());
                 }
                 SomeoneDied(currentCharacter, currentBoss);
+                Reheal(currentCharacter);
+
             }
         }
 
