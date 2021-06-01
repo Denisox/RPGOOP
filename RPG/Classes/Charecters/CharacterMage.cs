@@ -23,6 +23,7 @@ namespace RPG.CharacterClasses
 
         public abstract bool HasShield { get; set; }
         public abstract bool HasBuff { get; set; }
+
         public virtual void HealCharacter(ICharacters character)
         {
             if (character.CurrentMana >= 25)
@@ -32,7 +33,6 @@ namespace RPG.CharacterClasses
                     character.CurrentHealthPoints = character.HealthPoints;
                     CurrentMana -= 25;
                 }
-
                 else
                 {
                     character.CurrentHealthPoints = Convert.ToInt32(0.3 * character.HealthPoints + character.CurrentHealthPoints);
@@ -44,13 +44,13 @@ namespace RPG.CharacterClasses
                 Console.WriteLine("Not enough mana!");
             }
         }
+
         public virtual void NormalAttack(ICreature newCreature)
         {
             if (this.HasBuff == false)
             {
                 this.OutgoingDamage = Convert.ToInt32(1.15 * this.Attack);
             }
-
             else
             {
                 this.OutgoingDamage = Convert.ToInt32(1.5 * 1.15 * this.Attack);
@@ -69,7 +69,6 @@ namespace RPG.CharacterClasses
                     {
                         this.OutgoingDamage = Convert.ToInt32(2 * this.Attack);
                     }
-
                     else
                     {
                         this.OutgoingDamage = Convert.ToInt32(1.5 * 2 * this.Attack);
@@ -87,13 +86,13 @@ namespace RPG.CharacterClasses
                 Console.WriteLine("Power Attack could not get executed!");
             }
         }
+
         public virtual void GetBuff()
         {
             if (this.HasBuff == false)
             {
                 this.HasBuff = true;
             }
-
             else
             {
                 Console.WriteLine("Can't get a new Buff!");
@@ -106,12 +105,12 @@ namespace RPG.CharacterClasses
             {
                 this.HasShield = true;
             }
-
             else
             {
                 Console.WriteLine("Can't get a new Shield!");
             }
         }
+
         public virtual void GetDamage()
         {
             int dealtDamage = Convert.ToInt32(this.IncomingDamage - 0.8 * this.Defence);
@@ -133,6 +132,7 @@ namespace RPG.CharacterClasses
                 CurrentHealthPoints = 0;
             }
         }
+
         public string AsAString()
         {
             throw new NotImplementedException();
@@ -140,7 +140,7 @@ namespace RPG.CharacterClasses
 
         public string Status()
         {
-            return "\nYou have " + this.CurrentHealthPoints + " Health and " + this.CurrentMana + " Mana\nYour Attack is " + this.Attack + " and your Defense is " + this.Defence + ". Speed is" + this.Speed + "\n";
+            return "\nCharecter Stats \nHealth Points: " + this.CurrentHealthPoints + "\nMana: " + this.CurrentMana + "\nAttack: " + this.Attack + "\nDefence: " + this.Defence + "\nSpeed: " + this.Speed + "\n";
         }
     }
 }

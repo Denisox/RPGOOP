@@ -268,10 +268,10 @@ namespace RPG
                         ExecuteCommand(currentCommand, currentCharacter, currentCreature);
 
                         Console.WriteLine("You used: " + currentCommand);
-                        Console.WriteLine (currentCharacter.Status());
+                        Console.WriteLine(currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
-                        
-			if (currentCreature.CurrentHealthPoints <= 0)
+
+                        if (currentCreature.CurrentHealthPoints <= 0)
                         {
                             break;
                         }
