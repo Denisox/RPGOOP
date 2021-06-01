@@ -56,6 +56,7 @@ namespace RPG.CharacterClasses
             else
             {
                 this.OutgoingDamage = Convert.ToInt32(1.5 * 1.2 * this.Attack);
+                this.HasBuff = false;
             }
             newCreature.IncomingDamage = this.OutgoingDamage;
         }
@@ -75,6 +76,7 @@ namespace RPG.CharacterClasses
                     else
                     {
                         this.OutgoingDamage = Convert.ToInt32(1.5 * 2 * this.Attack);
+                        this.HasBuff = false;
                     }
                     newCreature.IncomingDamage = this.OutgoingDamage;
                 }
@@ -130,6 +132,7 @@ namespace RPG.CharacterClasses
             {
                 dealtDamage = Convert.ToInt32(0.5 * dealtDamage);
                 this.CurrentHealthPoints = this.CurrentHealthPoints - dealtDamage;
+                this.HasShield = false;
             }
             if (CurrentHealthPoints < 0)
             {
