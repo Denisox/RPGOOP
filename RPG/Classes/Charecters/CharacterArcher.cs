@@ -140,5 +140,10 @@ namespace RPG.CharacterClasses
         {
             throw new NotImplementedException();
         }
+
+        public virtual string Status()
+        {
+            return "\nYou have " + this.CurrentHealthPoints + " Health and " + this.CurrentMana + " Mana\nYour Attack is " + this.Attack + " and your Defense is " + this.Defence + ". Speed is" + this.Speed + "\n";
+        }
     }
 }

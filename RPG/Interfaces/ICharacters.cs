@@ -30,6 +30,6 @@ namespace RPG.Interfaces
         void GetShield();
         void GetDamage();
         string AsAString();
-
+        string Status();
     }
 }

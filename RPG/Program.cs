@@ -247,14 +247,57 @@ namespace RPG
 
         private void CombatTier1(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss)
         {
-            Random random = new Random();
-            int index = random.Next(tier1Creatures.Count);
-            ICreature currentCreature = tier1Creatures[index];
-            if (currentCharacter.Speed >= currentCreature.Speed)
+            for (int i = 0; i < 3; i++)
             {
-                Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
-                string currentCommand = Console.ReadLine();
-                ExecuteCommand(currentCommand, currentCharacter, currentCreature);
+                Random random1 = new Random();
+                int index = random1.Next(tier1Creatures.Count);
+                ICreature currentCreature = tier1Creatures[index];
+                if (currentCharacter.Speed >= currentCreature.Speed)
+                {
+                    while (currentCharacter.CurrentHealthPoints > 0 || currentCreature.CurrentHealthPoints > 0)
+                    {
+                        Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                        string currentCommand = Console.ReadLine();
+                        ExecuteCommand(currentCommand, currentCharacter, currentCreature);
+                        currentCharacter.Status();
+                        currentCreature.Status();
+                        if (currentCreature.CurrentHealthPoints <= 0)
+                        {
+                            break;
+                        }
+                        MobAction(currentCharacter, currentCreature);
+                        currentCharacter.Status();
+                        currentCreature.Status();
+                    }
+                }
+                else
+                {
+                    while (currentCharacter.CurrentHealthPoints > 0 || currentCreature.CurrentHealthPoints > 0)
+                    {
+                        Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                        string currentCommand = Console.ReadLine();
+                        MobAction(currentCharacter, currentCreature);
+
+                        currentCharacter.Status();
+                        currentCreature.Status();
+                        if (currentCreature.CurrentHealthPoints <= 0)
+                        {
+                            break;
+                        }
+                        ExecuteCommand(currentCommand, currentCharacter, currentCreature);
+                        currentCharacter.Status();
+                        currentCreature.Status();
+                    }
+                }
+                if (currentCharacter.CurrentHealthPoints <= 0)
+                {
+                    Console.WriteLine("You have died! Game over! You Lose!");
+                }
+
+                if (currentCreature.CurrentHealthPoints <= 0)
+                {
+                    Console.WriteLine("You defeated this mob!");
+                }
             }
         }
 
@@ -294,6 +337,29 @@ namespace RPG
                     Console.WriteLine("Invalid command");
                     i = 0;
                 }
+            }
+        }
+
+        private void MobAction(ICharacters currentCharacter, ICreature currentCreature)
+        {
+            Random random2 = new Random();
+            int chanceForMob = random2.Next(1, 101);
+            if (chanceForMob < 70)
+            {
+                currentCreature.AttackCharacter(currentCharacter);
+                currentCharacter.GetDamage();
+            }
+            else if (chanceForMob >= 70 && chanceForMob < 84)
+            {
+                currentCreature.GetBuff();
+            }
+            else if (chanceForMob >= 84 && chanceForMob <= 98)
+            {
+                currentCreature.GetShield();
+            }
+            else if (chanceForMob > 98)
+            {
+                currentCreature.Heal();
             }
         }
     }
