@@ -26,24 +26,23 @@ namespace RPG.CharacterClasses
 
         public virtual void HealCharacter(ICharacters character)
         {
-                if (character.CurrentMana >= 20)
+            if (character.CurrentMana >= 20)
+            {
+                if (Convert.ToInt32(character.CurrentHealthPoints + character.HealthPoints * 0.25) > character.HealthPoints)
                 {
-                    if (Convert.ToInt32(character.CurrentHealthPoints + character.HealthPoints * 0.25) > character.HealthPoints)
-                    {
-                        character.CurrentHealthPoints = character.HealthPoints;
-                        CurrentMana -= 20;
-                    }
-
-                    else
-                    {
-                        character.CurrentHealthPoints = Convert.ToInt32(0.25 * character.HealthPoints + character.CurrentHealthPoints);
-                        CurrentMana -= 20;
-                    }
+                    character.CurrentHealthPoints = character.HealthPoints;
+                    CurrentMana -= 20;
                 }
                 else
                 {
-                    Console.WriteLine("Not enough mana!");
+                    character.CurrentHealthPoints = Convert.ToInt32(0.25 * character.HealthPoints + character.CurrentHealthPoints);
+                    CurrentMana -= 20;
                 }
+            }
+            else
+            {
+                Console.WriteLine("Not enough mana!");
+            }
         }
 
         public virtual void NormalAttack(ICreature newCreature)
@@ -52,7 +51,6 @@ namespace RPG.CharacterClasses
             {
                 this.OutgoingDamage = Convert.ToInt32(1.2 * this.Attack);
             }
-
             else
             {
                 this.OutgoingDamage = Convert.ToInt32(1.5 * 1.2 * this.Attack);
@@ -71,14 +69,12 @@ namespace RPG.CharacterClasses
                     {
                         this.OutgoingDamage = Convert.ToInt32(2 * this.Attack);
                     }
-
                     else
                     {
                         this.OutgoingDamage = Convert.ToInt32(1.5 * 2 * this.Attack);
                     }
                     newCreature.IncomingDamage = this.OutgoingDamage;
                 }
-
                 else
                 {
                     Console.WriteLine("Power Attack failed. Not enough mana");
@@ -92,23 +88,22 @@ namespace RPG.CharacterClasses
 
         public virtual void GetBuff()
         {
-            if(this.HasBuff == false)
+            if (this.HasBuff == false)
             {
                 this.HasBuff = true;
             }
-
             else
             {
                 Console.WriteLine("Can't get a new Buff!");
             }
         }
+
         public virtual void GetShield()
         {
             if (this.HasShield == false)
             {
                 this.HasShield = true;
             }
-
             else
             {
                 Console.WriteLine("Can't get a new Shield!");
@@ -136,6 +131,7 @@ namespace RPG.CharacterClasses
                 CurrentHealthPoints = 0;
             }
         }
+
         public string AsAString()
         {
             throw new NotImplementedException();
@@ -143,7 +139,7 @@ namespace RPG.CharacterClasses
 
         public string Status()
         {
-            return "\nYou have " + this.CurrentHealthPoints + " Health and " + this.CurrentMana + " Mana\nYour Attack is " + this.Attack + " and your Defense is " + this.Defence + ". Speed is" + this.Speed + "\n";
+            return "\nCharecter Stats" + "\nHealth: " + this.CurrentHealthPoints + "\nMana: " + this.Mana + "\nAttack: " + this.Attack + "\nDefence: " + this.Defence + "\nSpeed: " + this.Speed + "\n";
         }
     }
 }

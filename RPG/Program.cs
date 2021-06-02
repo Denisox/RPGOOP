@@ -200,32 +200,32 @@ namespace RPG
                 {
                     case "Crossbow":
                         currentCharacter = character1;
-                        Console.WriteLine("You have chosen class Crossbow\n");
+                        Console.WriteLine("You have chosen class: Crossbow\n");
                         break;
 
                     case "Bow":
                         currentCharacter = character2;
-                        Console.WriteLine("You have chosen class Bow\n");
+                        Console.WriteLine("You have chosen class: Bow\n");
                         break;
 
                     case "One-Hand Swordsman":
                         currentCharacter = character3;
-                        Console.WriteLine("You have chosen class OHS\n");
+                        Console.WriteLine("You have chosen class: OHS\n");
                         break;
 
                     case "Two-Hand Swordsman":
                         currentCharacter = character4;
-                        Console.WriteLine("You have chosen class THS\n");
+                        Console.WriteLine("You have chosen class: THS\n");
                         break;
 
                     case "Pyromancer":
                         currentCharacter = character5;
-                        Console.WriteLine("You have chosen class Pyromancer\n");
+                        Console.WriteLine("You have chosen class: Pyromancer\n");
                         break;
 
                     case "Necromancer":
                         currentCharacter = character6;
-                        Console.WriteLine("You have chosen class Necromancer\n");
+                        Console.WriteLine("You have chosen class: Necromancer\n");
                         break;
 
                     case "Spearman":
@@ -287,12 +287,12 @@ namespace RPG
                 Random random1 = new Random();
                 int index = random1.Next(tier1Creatures.Count);
                 ICreature currentCreature = tier1Creatures[index];
-                Console.WriteLine("\nYou will be fighting1 a: " + currentCreature.Name + "\n");
+                Console.WriteLine("\nYou will be fighting a: " + currentCreature.Name + "\n");
                 if (currentCharacter.Speed >= currentCreature.Speed)
                 {
                     while (currentCharacter.CurrentHealthPoints > 0 && currentCreature.CurrentHealthPoints > 0)
                     {
-                        Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                        Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                         string currentCommand = Console.ReadLine();
                         ExecuteCommand(currentCommand, currentCharacter, currentCreature);
                         Console.WriteLine("You used: " + currentCommand);
@@ -314,7 +314,7 @@ namespace RPG
                 {
                     while (currentCharacter.CurrentHealthPoints > 0 && currentCreature.CurrentHealthPoints > 0)
                     {
-                        Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                        Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                         string currentCommand = Console.ReadLine();
                         string mobCommand = MobAction(currentCharacter, currentCreature);
                         Console.WriteLine("The mob used " + mobCommand);
@@ -341,7 +341,7 @@ namespace RPG
             {
                 while (currentBoss.CurrentHealthPoints > 0 && currentBoss.CurrentHealthPoints > 0)
                 {
-                    Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                    Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                     string currentCommand = Console.ReadLine();
                     ExecuteCommand(currentCommand, currentCharacter, currentBoss);
                     Console.WriteLine("You used: " + currentCommand);
@@ -362,7 +362,7 @@ namespace RPG
             {
                 while (currentCharacter.CurrentHealthPoints > 0 && currentBoss.CurrentHealthPoints > 0)
                 {
-                    Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                    Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                     string currentCommand = Console.ReadLine();
                     Console.WriteLine("The boss used: " + MobAction(currentCharacter, currentBoss));
 
@@ -386,32 +386,33 @@ namespace RPG
         {
             while (true)
             {
-                if (currentCommand == "Attack")
+                currentCommand = currentCommand.ToLower();
+                if (currentCommand == "attack")
                 {
                     currentCharacter.NormalAttack(currentCreature);
                     currentCreature.GetDamage();
                     Recharge(currentCharacter);
                     break;
                 }
-                else if (currentCommand == "Buff")
+                else if (currentCommand == "buff")
                 {
                     currentCharacter.GetBuff();
                     Recharge(currentCharacter);
                     break;
                 }
-                else if (currentCommand == "Shield")
+                else if (currentCommand == "shield")
                 {
                     currentCharacter.GetShield();
                     Recharge(currentCharacter);
                     break;
                 }
-                else if (currentCommand == "Heal")
+                else if (currentCommand == "heal")
                 {
                     currentCharacter.HealCharacter(currentCharacter);
                     Recharge(currentCharacter);
                     break;
                 }
-                else if (currentCommand == "Power Attack")
+                else if (currentCommand == "power attack")
                 {
                     currentCharacter.PowerAttack(currentCreature);
                     currentCreature.GetDamage();

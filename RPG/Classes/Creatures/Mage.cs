@@ -95,7 +95,7 @@ namespace RPG.Classes
 
         public string Status()
         {
-            return "\nThe Mob has " + this.CurrentHealthPoints + " Health and " + this.Mana + " Mana\nThe Attack of the mob is " + this.Attack + " and the Defense is " + this.Defence + ". The Speed is" + this.Speed + "\n";
+            return "\nMob Stats" + "\nHealth: " + this.CurrentHealthPoints + "\nMana: " + this.Mana + "\nAttack: " + this.Attack + "\nDefence: " + this.Defence + "\nSpeed: " + this.Speed + "\n";
         }
     }
 }

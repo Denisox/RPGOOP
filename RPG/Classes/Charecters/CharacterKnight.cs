@@ -23,6 +23,7 @@ namespace RPG.CharacterClasses
 
         public abstract bool HasShield { get; set; }
         public abstract bool HasBuff { get; set; }
+
         public virtual void HealCharacter(ICharacters character)
         {
             if (character.CurrentMana >= 15)
@@ -32,7 +33,6 @@ namespace RPG.CharacterClasses
                     character.CurrentHealthPoints = character.HealthPoints;
                     CurrentMana -= 15;
                 }
-
                 else
                 {
                     character.CurrentHealthPoints = Convert.ToInt32(0.2 * character.HealthPoints + character.CurrentHealthPoints);
@@ -51,7 +51,6 @@ namespace RPG.CharacterClasses
             {
                 this.OutgoingDamage = Convert.ToInt32(1.25 * this.Attack);
             }
-
             else
             {
                 this.OutgoingDamage = Convert.ToInt32(1.4 * 1.25 * this.Attack);
@@ -61,7 +60,6 @@ namespace RPG.CharacterClasses
 
         public virtual void PowerAttack(ICreature newCreature)
         {
-
             Random newRandom = new Random();
             if (newRandom.Next(100) < 85)
             {
@@ -71,7 +69,6 @@ namespace RPG.CharacterClasses
                     {
                         this.OutgoingDamage = Convert.ToInt32(2 * this.Attack);
                     }
-
                     else
                     {
                         this.OutgoingDamage = Convert.ToInt32(1.4 * 2 * this.Attack);
@@ -88,30 +85,31 @@ namespace RPG.CharacterClasses
                 Console.WriteLine("Power Attack could not get executed!");
             }
         }
+
         public virtual void GetBuff()
         {
             if (this.HasBuff == false)
             {
                 this.HasBuff = true;
             }
-
             else
             {
                 Console.WriteLine("Can't get a new Buff!");
             }
         }
+
         public virtual void GetShield()
         {
             if (this.HasShield == false)
             {
                 this.HasShield = true;
             }
-
             else
             {
                 Console.WriteLine("Can't get a new Shield!");
             }
         }
+
         public virtual void GetDamage()
         {
             int dealtDamage = Convert.ToInt32(this.IncomingDamage - 0.8 * this.Defence);
@@ -141,7 +139,7 @@ namespace RPG.CharacterClasses
 
         public string Status()
         {
-            return "\nYou have " + this.CurrentHealthPoints + " Health and " + this.CurrentMana + " Mana\nYour Attack is " + this.Attack + " and your Defense is " + this.Defence + ". Speed is" + this.Speed + "\n";
+            return "\nCharecter Stats" + "\nHealth: " + this.CurrentHealthPoints + "\nMana: " + this.Mana + "\nAttack: " + this.Attack + "\nDefence: " + this.Defence + "\nSpeed: " + this.Speed + "\n";
         }
     }
 }
