@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RPG.Items;
 
 namespace RPG.Interfaces
 {
@@ -24,12 +25,19 @@ namespace RPG.Interfaces
         bool HasBuff { get; set; }
 
         void HealCharacter(ICharacters character);
+
         void NormalAttack(ICreature newCreature);
+
         void PowerAttack(ICreature newCreature);
+
         void GetBuff();
+
         void GetShield();
+
         void GetDamage();
+
         string AsAString();
+
         string Status();
     }
 }

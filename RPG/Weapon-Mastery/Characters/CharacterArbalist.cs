@@ -54,6 +54,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         }
 
         private int currentHealthPoints;
+
         public override int CurrentHealthPoints
         {
             get => currentHealthPoints;
@@ -61,6 +62,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         }
 
         private int currentMana;
+
         public override int CurrentMana
         {
             get => currentMana;
@@ -68,6 +70,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         }
 
         private bool hasBuff = false;
+
         public override bool HasBuff
         {
             get => hasBuff;
@@ -75,6 +78,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         }
 
         private bool hasShield = false;
+
         public override bool HasShield
         {
             get => hasShield;
@@ -82,12 +86,15 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         }
 
         private int incomingDamage = 0;
+
         public override int IncomingDamage
         {
             get => incomingDamage;
             set => incomingDamage = value;
         }
+
         private int outgoingDamage = 0;
+
         public override int OutgoingDamage
         {
             get => outgoingDamage;
