@@ -11,6 +11,11 @@ namespace RPG
 {
     internal class Program
     {
+        private Item currentWeapon = null;
+        private Item currentArmor = null;
+        private Item oldWeapon = new Item("null", "all", 0, 0, 0, 0, 0);
+        private Item oldArmor = new Item("null", "all", 0, 0, 0, 0, 0);
+
         private static void Main(string[] args)
         {
             List<Item> weaponsTier1 = new List<Item>()
@@ -65,6 +70,16 @@ namespace RPG
                 new Item("Borealis Shirt if Shivers", "all", 60, 16, 0, 0, 20),
                 new Item("Gear of the Unstopable", "all", 36, 16, 0.7, 0, 15),
                 new Item("Life God's Robe", "all", 90, 16, 0, 0, 5)
+            };
+
+            List<List<Item>> containsAllItems = new List<List<Item>>()
+            {
+                weaponsTier1,
+                armorTier1,
+                weaponsTier2,
+                armorTier2,
+                weaponsTier3,
+                armorTier3
             };
 
             // attack and health * 1.5
@@ -256,26 +271,24 @@ namespace RPG
             if (currentCharacter.CurrentHealthPoints > 0)
             {
                 Console.WriteLine("\n\nCongratulations! You finished Stage 1! Two more to go!");
-                program.ItemDropTier2(weaponsTier2, armorTier2);
             }
             else
             {
                 System.Environment.Exit(0);
             }
 
-            program.CombatTier(currentCharacter, tier2Creatures, tier2Boss, weaponsTier1, armorTier1);
+            program.CombatTier(currentCharacter, tier2Creatures, tier2Boss, weaponsTier2, armorTier2);
 
             if (currentCharacter.CurrentHealthPoints > 0)
             {
                 Console.WriteLine("\n\nCongratulations! You finished Stage 2! One more to go!");
-                program.ItemDropTier3(weaponsTier3, armorTier3);
             }
             else
             {
                 System.Environment.Exit(0);
             }
 
-            program.CombatTier(currentCharacter, tier3Creatures, tier3Boss, weaponsTier1, armorTier1);
+            program.CombatTier(currentCharacter, tier3Creatures, tier3Boss, weaponsTier3, armorTier3);
 
             if (currentCharacter.CurrentHealthPoints > 0)
             {
@@ -293,16 +306,11 @@ namespace RPG
             int indexWeapon = 0, indexArmor = 0;
             int chance = randomNum.Next(1, 101);
 
-            if (chance <= 70)
-            {
-                indexWeapon = randomNum.Next(weaponsTier1.Count);
-                Console.WriteLine($"Drop: {weaponsTier1[indexWeapon].Name}");
-            }
-            else
-            {
-                indexArmor = randomNum.Next(armorTier1.Count);
-                Console.WriteLine($"Drop: {armorTier1[indexArmor].Name}");
-            }
+            indexWeapon = randomNum.Next(weaponsTier1.Count);
+            indexArmor = randomNum.Next(armorTier1.Count);
+            currentWeapon = weaponsTier1[indexWeapon];
+            currentArmor = armorTier1[indexArmor];
+            Console.WriteLine($"Drops\nWeapon: {weaponsTier1[indexWeapon].Name}\nArmor: {armorTier1[indexArmor].Name}");
         }
 
         private void ItemDropTier2(List<Item> weaponsTier2, List<Item> armorTier2)
@@ -310,8 +318,9 @@ namespace RPG
             Random randomNum = new Random();
             int indexWeapon = randomNum.Next(weaponsTier2.Count);
             int indexArmor = randomNum.Next(armorTier2.Count);
-
-            Console.WriteLine($"Drops: {weaponsTier2[indexWeapon].Name} and {armorTier2[indexArmor].Name}");
+            currentWeapon = weaponsTier2[indexWeapon];
+            currentArmor = armorTier2[indexArmor];
+            Console.WriteLine($"Drops\nWeapon: {weaponsTier2[indexWeapon].Name}\nArmor: {armorTier2[indexArmor].Name}");
         }
 
         private void ItemDropTier3(List<Item> weaponsTier3, List<Item> armorTier3)
@@ -319,8 +328,9 @@ namespace RPG
             Random randomNum = new Random();
             int indexWeapon = randomNum.Next(weaponsTier3.Count);
             int indexArmor = randomNum.Next(armorTier3.Count);
-
-            Console.WriteLine($"Drops: {weaponsTier3[indexWeapon].Name} and {armorTier3[indexArmor].Name}");
+            currentWeapon = weaponsTier3[indexWeapon];
+            currentArmor = armorTier3[indexArmor];
+            Console.WriteLine($"Drops\nWeapon: {weaponsTier3[indexWeapon].Name}\nArmor: {armorTier3[indexArmor].Name}");
         }
 
         public void CombatTier(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss, List<Item> weaponsTier1, List<Item> armorTier1)
@@ -356,7 +366,6 @@ namespace RPG
                     }
 
                     SomeoneDied(currentCharacter, currentCreature);
-                    ItemDropTier1(weaponsTier1, armorTier1);
                     Reheal(currentCharacter);
                 }
                 else
@@ -384,6 +393,8 @@ namespace RPG
                     SomeoneDied(currentCharacter, currentCreature);
                     Reheal(currentCharacter);
                 }
+                ItemDropTier1(weaponsTier1, armorTier1);
+                GettingEquipment(currentWeapon, currentArmor, oldWeapon, oldArmor, currentCharacter);
             }
 
             Random random2 = new Random();
@@ -414,6 +425,10 @@ namespace RPG
 
                 SomeoneDied(currentCharacter, currentBoss);
                 Reheal(currentCharacter);
+                ItemDropTier1(weaponsTier1, armorTier1);
+                GettingEquipment(currentWeapon, currentArmor, oldWeapon, oldArmor, currentCharacter);
+                ItemDropTier1(weaponsTier1, armorTier1);
+                GettingEquipment(currentWeapon, currentArmor, oldWeapon, oldArmor, currentCharacter);
             }
             else
             {
@@ -543,6 +558,43 @@ namespace RPG
             {
                 currentCharacter.CurrentHealthPoints = currentCharacter.HealthPoints;
             }
+        }
+
+        private void Equip(Item currentWeapon, Item oldWeapon, ICharacters currentCharacter, string equipCommand)
+        {
+            if (equipCommand == "y")
+            {
+                currentCharacter.HealthPoints -= oldWeapon.HpAdd;
+                currentCharacter.Mana -= oldWeapon.ManaAdd;
+                currentCharacter.Attack -= Convert.ToInt32(oldWeapon.AttackAdd);
+                currentCharacter.Defence -= Convert.ToInt32(oldWeapon.DefenceAdd);
+                currentCharacter.Speed -= oldWeapon.DefenceAdd;
+                currentCharacter.HealthPoints += currentWeapon.HpAdd;
+                currentCharacter.Mana += currentWeapon.ManaAdd;
+                currentCharacter.Attack += Convert.ToInt32(currentWeapon.AttackAdd);
+                currentCharacter.Defence += Convert.ToInt32(currentWeapon.DefenceAdd);
+                currentCharacter.Speed += currentWeapon.SpeedAdd;
+                Console.WriteLine("\n Item " + currentWeapon.Name + " successfully equipped!");
+                oldWeapon = currentWeapon;
+            }
+            else if (equipCommand == "n")
+            {
+                Console.WriteLine("Item " + currentWeapon.Name + " successfully discarded!");
+            }
+            else
+            {
+                throw new Exception("Command not recognized! Game over!");
+            }
+        }
+
+        private void GettingEquipment(Item currentWeapon, Item currentArmor, Item oldWeapon, Item oldArmor, ICharacters currentCharacter)
+        {
+            Console.WriteLine("\nDo you want to equip the dropped weapon? This will discard your current weapon if you have one. y/n\n");
+            string equipWeaponCommand = Console.ReadLine();
+            Equip(currentWeapon, oldWeapon, currentCharacter, equipWeaponCommand);
+            Console.WriteLine("\nDo you want to equip the dropped armor? This will discard your current armor if you have one. y/n\n");
+            string equipArmorCommand = Console.ReadLine();
+            Equip(currentArmor, oldArmor, currentCharacter, equipArmorCommand);
         }
     }
 }

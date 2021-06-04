@@ -10,11 +10,11 @@ namespace RPG.Interfaces
     public interface ICharacters
     {
         string Name { get; set; }
-        int Attack { get; }
-        int Defence { get; }
-        double Speed { get; }
-        int HealthPoints { get; }
-        int Mana { get; }
+        int Attack { get; set; }
+        int Defence { get; set; }
+        double Speed { get; set; }
+        int HealthPoints { get; set; }
+        int Mana { get; set; }
         int CurrentHealthPoints { get; set; }
         int CurrentMana { get; set; }
 

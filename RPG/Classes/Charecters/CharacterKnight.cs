@@ -23,6 +23,11 @@ namespace RPG.CharacterClasses
 
         public abstract bool HasShield { get; set; }
         public abstract bool HasBuff { get; set; }
+        int ICharacters.Attack { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        int ICharacters.Defence { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        double ICharacters.Speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        int ICharacters.HealthPoints { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        int ICharacters.Mana { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public virtual void HealCharacter(ICharacters character)
         {
