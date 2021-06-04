@@ -10,11 +10,11 @@ namespace RPG.CharacterClasses
     public abstract class CharacterMage : ICharacters
 
     {
-        public abstract int HealthPoints { get; }
-        public abstract int Attack { get; }
-        public abstract int Defence { get; }
-        public abstract double Speed { get; }
-        public abstract int Mana { get; }
+        public abstract int HealthPoints { get; set; }
+        public abstract int Attack { get; set; }
+        public abstract int Defence { get; set; }
+        public abstract double Speed { get; set; }
+        public abstract int Mana { get; set; }
         public abstract string Name { get; set; }
         public abstract int CurrentHealthPoints { get; set; }
         public abstract int CurrentMana { get; set; }
@@ -23,11 +23,6 @@ namespace RPG.CharacterClasses
 
         public abstract bool HasShield { get; set; }
         public abstract bool HasBuff { get; set; }
-        int ICharacters.Attack { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        int ICharacters.Defence { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double ICharacters.Speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        int ICharacters.HealthPoints { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        int ICharacters.Mana { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public virtual void HealCharacter(ICharacters character)
         {
