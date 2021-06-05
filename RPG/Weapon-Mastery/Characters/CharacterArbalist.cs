@@ -106,6 +106,8 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             set => outgoingDamage = value;
         }
 
+        public override string WeaponType { get; set; }
+
         public CharacterArbalist(string name, int attack, int defence, double speed, int hp, int mana)
         {
             this.name = name;

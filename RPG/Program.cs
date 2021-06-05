@@ -215,36 +215,43 @@ namespace RPG
                 {
                     case "Crossbow":
                         currentCharacter = character1;
+                        currentCharacter.WeaponType = "Crossbow";
                         Console.WriteLine("You have chosen class: Crossbow\n");
                         break;
 
                     case "Bow":
                         currentCharacter = character2;
+                        currentCharacter.WeaponType = "Bow";
                         Console.WriteLine("You have chosen class: Bow\n");
                         break;
 
                     case "One-Hand Swordsman":
                         currentCharacter = character3;
+                        currentCharacter.WeaponType = "OHS";
                         Console.WriteLine("You have chosen class: OHS\n");
                         break;
 
                     case "Two-Hand Swordsman":
                         currentCharacter = character4;
+                        currentCharacter.WeaponType = "THS";
                         Console.WriteLine("You have chosen class: THS\n");
                         break;
 
                     case "Pyromancer":
                         currentCharacter = character5;
+                        currentCharacter.WeaponType = "Mage";
                         Console.WriteLine("You have chosen class: Pyromancer\n");
                         break;
 
                     case "Necromancer":
                         currentCharacter = character6;
+                        currentCharacter.WeaponType = "Mage";
                         Console.WriteLine("You have chosen class: Necromancer\n");
                         break;
 
                     case "Spearman":
                         currentCharacter = character7;
+                        currentCharacter.WeaponType = "Spear";
                         Console.WriteLine("You have chosen class Spearman\n");
                         break;
 
@@ -564,18 +571,16 @@ namespace RPG
         {
             if (equipCommand == "y")
             {
-                currentCharacter.HealthPoints -= oldWeapon.HpAdd;
-                currentCharacter.Mana -= oldWeapon.ManaAdd;
-                currentCharacter.Attack -= Convert.ToInt32(oldWeapon.AttackAdd);
-                currentCharacter.Defence -= Convert.ToInt32(oldWeapon.DefenceAdd);
-                currentCharacter.Speed -= oldWeapon.DefenceAdd;
-                currentCharacter.HealthPoints += currentWeapon.HpAdd;
-                currentCharacter.Mana += currentWeapon.ManaAdd;
-                currentCharacter.Attack += Convert.ToInt32(currentWeapon.AttackAdd);
-                currentCharacter.Defence += Convert.ToInt32(currentWeapon.DefenceAdd);
-                currentCharacter.Speed += currentWeapon.SpeedAdd;
-                Console.WriteLine("\n Item " + currentWeapon.Name + " successfully equipped!");
-                oldWeapon = currentWeapon;
+                if (currentCharacter.WeaponType == currentWeapon.Type || currentWeapon.Type == "all")
+                {
+                    RemoveCurrentItemStats(oldWeapon, currentCharacter);
+                    AddNewItemStats(currentWeapon, currentCharacter);
+                    oldWeapon = currentWeapon;
+                }
+                else
+                {
+                    Console.WriteLine("The item is not compatible with your class!");
+                }
             }
             else if (equipCommand == "n")
             {
@@ -585,6 +590,26 @@ namespace RPG
             {
                 throw new Exception("Command not recognized! Game over!");
             }
+        }
+
+        private void RemoveCurrentItemStats(Item oldWeapon, ICharacters currentCharacter)
+        {
+            currentCharacter.HealthPoints -= oldWeapon.HpAdd;
+            currentCharacter.Mana -= oldWeapon.ManaAdd;
+            currentCharacter.Attack -= Convert.ToInt32(oldWeapon.AttackAdd);
+            currentCharacter.Defence -= Convert.ToInt32(oldWeapon.DefenceAdd);
+            currentCharacter.Speed -= oldWeapon.DefenceAdd;
+        }
+
+        private void AddNewItemStats(Item currentWeapon, ICharacters currentCharacter)
+        {
+            currentCharacter.HealthPoints += currentWeapon.HpAdd;
+            currentCharacter.Mana += currentWeapon.ManaAdd;
+            currentCharacter.Attack += Convert.ToInt32(currentWeapon.AttackAdd);
+            currentCharacter.Defence += Convert.ToInt32(currentWeapon.DefenceAdd);
+            currentCharacter.Speed += currentWeapon.SpeedAdd;
+
+            Console.WriteLine("\n Item " + currentWeapon.Name + " successfully equipped!");
         }
 
         private void GettingEquipment(Item currentWeapon, Item currentArmor, Item oldWeapon, Item oldArmor, ICharacters currentCharacter)

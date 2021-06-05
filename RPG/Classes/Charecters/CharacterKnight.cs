@@ -23,6 +23,7 @@ namespace RPG.CharacterClasses
 
         public abstract bool HasShield { get; set; }
         public abstract bool HasBuff { get; set; }
+        public abstract string WeaponType { get; set; }
 
         public virtual void HealCharacter(ICharacters character)
         {

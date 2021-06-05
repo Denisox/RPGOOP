@@ -30,6 +30,10 @@ namespace RPG.Items
             {
                 return type;
             }
+            set
+            {
+                type = value;
+            }
         }
 
         public int HpAdd

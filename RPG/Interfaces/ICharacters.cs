@@ -23,6 +23,7 @@ namespace RPG.Interfaces
 
         bool HasShield { get; set; }
         bool HasBuff { get; set; }
+        string WeaponType { get; set; }
 
         void HealCharacter(ICharacters character);
 
