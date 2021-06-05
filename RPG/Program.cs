@@ -11,6 +11,11 @@ namespace RPG
 {
     internal class Program
     {
+        private Item currentWeapon = null;
+        private Item currentArmor = null;
+        private Item oldWeapon = new Item("null", "all", 0, 0, 0, 0, 0);
+        private Item oldArmor = new Item("null", "all", 0, 0, 0, 0, 0);
+
         private static void Main(string[] args)
         {
             List<Item> weaponsTier1 = new List<Item>()
@@ -20,8 +25,8 @@ namespace RPG
                 new Item("Spear of Regeneration", "Spear", 0, 0, 0.2, 4, 0),
                 new Item("Shield of Valor", "OHS", 0, 0, 0, 1, 3),
                 new Item("Destructive Blade", "THS", 0, 0, 0.1, 4, 0),
-                new Item("Crimson Bow", "bow", 0, 0, 0.2, 3, 0),
-                new Item("Azure Crossbow of Destruction", "crossbow", 0, 0, 0.3, 2, 0)
+                new Item("Crimson Bow", "Bow", 0, 0, 0.2, 3, 0),
+                new Item("Azure Crossbow of Destruction", "Crossbow", 0, 0, 0.3, 2, 0)
             };
 
             List<Item> weaponsTier2 = new List<Item>()
@@ -31,8 +36,8 @@ namespace RPG
                 new Item("Spear of Wolf's Vengance", "Spear", 0, 0, 0.3, 5, 0),
                 new Item("Shield of Infinity", "OHS", 0, 0, 0, 1, 4),
                 new Item("Serpent Blade", "THS", 0, 0, 0.15, 5, 0),
-                new Item("Purple Bow of Nobility", "bow", 0, 0, 0.25, 4, 0),
-                new Item("Crossbow of Eternity", "crossbow", 0, 0, 0.35, 3, 0)
+                new Item("Purple Bow of Nobility", "Bow", 0, 0, 0.25, 4, 0),
+                new Item("Crossbow of Eternity", "Crossbow", 0, 0, 0.35, 3, 0)
             };
 
             List<Item> weaponsTier3 = new List<Item>()
@@ -42,8 +47,8 @@ namespace RPG
                 new Item("Spear of Witch's Wrath", "Spear", 0, 0, 0.35, 6, 0),
                 new Item("Shield of Brutality", "OHS", 0, 0, 0, 1, 6),
                 new Item("Blade of the Undefeated", "THS", 0, 0, 0.2, 7, 0),
-                new Item("The Bow", "bow", 0, 0, 0.3, 5, 0),
-                new Item("Mega V", "crossbow", 0, 0, 0.4, 4, 0)
+                new Item("The Bow", "Bow", 0, 0, 0.3, 5, 0),
+                new Item("Mega V", "Crossbow", 0, 0, 0.4, 4, 0)
             };
 
             List<Item> armorTier1 = new List<Item>()
@@ -65,6 +70,16 @@ namespace RPG
                 new Item("Borealis Shirt if Shivers", "all", 60, 16, 0, 0, 20),
                 new Item("Gear of the Unstopable", "all", 36, 16, 0.7, 0, 15),
                 new Item("Life God's Robe", "all", 90, 16, 0, 0, 5)
+            };
+
+            List<List<Item>> containsAllItems = new List<List<Item>>()
+            {
+                weaponsTier1,
+                armorTier1,
+                weaponsTier2,
+                armorTier2,
+                weaponsTier3,
+                armorTier3
             };
 
             // attack and health * 1.5
@@ -200,36 +215,43 @@ namespace RPG
                 {
                     case "Crossbow":
                         currentCharacter = character1;
-                        Console.WriteLine("You have chosen class Crossbow\n");
+                        currentCharacter.WeaponType = "Crossbow";
+                        Console.WriteLine("You have chosen class: Crossbow\n");
                         break;
 
                     case "Bow":
                         currentCharacter = character2;
-                        Console.WriteLine("You have chosen class Bow\n");
+                        currentCharacter.WeaponType = "Bow";
+                        Console.WriteLine("You have chosen class: Bow\n");
                         break;
 
                     case "One-Hand Swordsman":
                         currentCharacter = character3;
-                        Console.WriteLine("You have chosen class OHS\n");
+                        currentCharacter.WeaponType = "OHS";
+                        Console.WriteLine("You have chosen class: OHS\n");
                         break;
 
                     case "Two-Hand Swordsman":
                         currentCharacter = character4;
-                        Console.WriteLine("You have chosen class THS\n");
+                        currentCharacter.WeaponType = "THS";
+                        Console.WriteLine("You have chosen class: THS\n");
                         break;
 
                     case "Pyromancer":
                         currentCharacter = character5;
-                        Console.WriteLine("You have chosen class Pyromancer\n");
+                        currentCharacter.WeaponType = "Mage";
+                        Console.WriteLine("You have chosen class: Pyromancer\n");
                         break;
 
                     case "Necromancer":
                         currentCharacter = character6;
-                        Console.WriteLine("You have chosen class Necromancer\n");
+                        currentCharacter.WeaponType = "Mage";
+                        Console.WriteLine("You have chosen class: Necromancer\n");
                         break;
 
                     case "Spearman":
                         currentCharacter = character7;
+                        currentCharacter.WeaponType = "Spear";
                         Console.WriteLine("You have chosen class Spearman\n");
                         break;
 
@@ -251,7 +273,8 @@ namespace RPG
             Console.WriteLine("Your name is " + currentCharacter.Name + ", let the Combat begin\n");
 
             Program program = new Program();
-            program.CombatTier(currentCharacter, tier1Creatures, tier1Boss);
+            program.CombatTier(currentCharacter, tier1Creatures, tier1Boss, weaponsTier1, armorTier1);
+
             if (currentCharacter.CurrentHealthPoints > 0)
             {
                 Console.WriteLine("\n\nCongratulations! You finished Stage 1! Two more to go!");
@@ -260,7 +283,9 @@ namespace RPG
             {
                 System.Environment.Exit(0);
             }
-            program.CombatTier(currentCharacter, tier2Creatures, tier2Boss);
+
+            program.CombatTier(currentCharacter, tier2Creatures, tier2Boss, weaponsTier2, armorTier2);
+
             if (currentCharacter.CurrentHealthPoints > 0)
             {
                 Console.WriteLine("\n\nCongratulations! You finished Stage 2! One more to go!");
@@ -269,7 +294,9 @@ namespace RPG
             {
                 System.Environment.Exit(0);
             }
-            program.CombatTier(currentCharacter, tier3Creatures, tier3Boss);
+
+            program.CombatTier(currentCharacter, tier3Creatures, tier3Boss, weaponsTier3, armorTier3);
+
             if (currentCharacter.CurrentHealthPoints > 0)
             {
                 Console.WriteLine("\n\nCongratulations! You finished Stage 3! Game Over, you win!");
@@ -280,33 +307,71 @@ namespace RPG
             }
         }
 
-        public void CombatTier(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss)
+        private void ItemDropTier1(List<Item> weaponsTier1, List<Item> armorTier1)
+        {
+            Random randomNum = new Random();
+            int indexWeapon = 0, indexArmor = 0;
+            int chance = randomNum.Next(1, 101);
+
+            indexWeapon = randomNum.Next(weaponsTier1.Count);
+            indexArmor = randomNum.Next(armorTier1.Count);
+            currentWeapon = weaponsTier1[indexWeapon];
+            currentArmor = armorTier1[indexArmor];
+            Console.WriteLine($"Drops\nWeapon: {weaponsTier1[indexWeapon].Name}\nArmor: {armorTier1[indexArmor].Name}");
+        }
+
+        private void ItemDropTier2(List<Item> weaponsTier2, List<Item> armorTier2)
+        {
+            Random randomNum = new Random();
+            int indexWeapon = randomNum.Next(weaponsTier2.Count);
+            int indexArmor = randomNum.Next(armorTier2.Count);
+            currentWeapon = weaponsTier2[indexWeapon];
+            currentArmor = armorTier2[indexArmor];
+            Console.WriteLine($"Drops\nWeapon: {weaponsTier2[indexWeapon].Name}\nArmor: {armorTier2[indexArmor].Name}");
+        }
+
+        private void ItemDropTier3(List<Item> weaponsTier3, List<Item> armorTier3)
+        {
+            Random randomNum = new Random();
+            int indexWeapon = randomNum.Next(weaponsTier3.Count);
+            int indexArmor = randomNum.Next(armorTier3.Count);
+            currentWeapon = weaponsTier3[indexWeapon];
+            currentArmor = armorTier3[indexArmor];
+            Console.WriteLine($"Drops\nWeapon: {weaponsTier3[indexWeapon].Name}\nArmor: {armorTier3[indexArmor].Name}");
+        }
+
+        public void CombatTier(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss, List<Item> weaponsTier1, List<Item> armorTier1)
         {
             for (int i = 0; i < 3; i++)
             {
                 Random random1 = new Random();
                 int index = random1.Next(tier1Creatures.Count);
                 ICreature currentCreature = tier1Creatures[index];
-                Console.WriteLine("\nYou will be fighting1 a: " + currentCreature.Name + "\n");
+
+                Console.WriteLine("\nYou will be fighting a: " + currentCreature.Name + "\n");
+
                 if (currentCharacter.Speed >= currentCreature.Speed)
                 {
                     while (currentCharacter.CurrentHealthPoints > 0 && currentCreature.CurrentHealthPoints > 0)
                     {
-                        Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                        Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                         string currentCommand = Console.ReadLine();
                         ExecuteCommand(currentCommand, currentCharacter, currentCreature);
                         Console.WriteLine("You used: " + currentCommand);
                         Console.WriteLine(currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
+
                         if (currentCreature.CurrentHealthPoints <= 0)
                         {
                             break;
                         }
+
                         string mobCommand = MobAction(currentCharacter, currentCreature);
                         Console.WriteLine("The mob used " + mobCommand);
                         Console.WriteLine(currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
                     }
+
                     SomeoneDied(currentCharacter, currentCreature);
                     Reheal(currentCharacter);
                 }
@@ -314,69 +379,86 @@ namespace RPG
                 {
                     while (currentCharacter.CurrentHealthPoints > 0 && currentCreature.CurrentHealthPoints > 0)
                     {
-                        Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                        Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                         string currentCommand = Console.ReadLine();
                         string mobCommand = MobAction(currentCharacter, currentCreature);
                         Console.WriteLine("The mob used " + mobCommand);
                         Console.WriteLine(currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
+
                         if (currentCharacter.CurrentHealthPoints <= 0)
                         {
                             break;
                         }
+
                         ExecuteCommand(currentCommand, currentCharacter, currentCreature);
                         Console.WriteLine("You used: " + currentCommand);
                         Console.WriteLine(currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
                     }
+
                     SomeoneDied(currentCharacter, currentCreature);
                     Reheal(currentCharacter);
                 }
+                ItemDropTier1(weaponsTier1, armorTier1);
+                GettingEquipment(currentWeapon, currentArmor, oldWeapon, oldArmor, currentCharacter);
             }
+
             Random random2 = new Random();
             int indexBoss = random2.Next(tier1Boss.Count);
             ICreature currentBoss = tier1Boss[indexBoss];
             Console.WriteLine("\nYou will be fighting a: " + currentBoss.Name + "\n");
+
             if (currentCharacter.Speed >= currentBoss.Speed)
             {
                 while (currentBoss.CurrentHealthPoints > 0 && currentBoss.CurrentHealthPoints > 0)
                 {
-                    Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                    Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                     string currentCommand = Console.ReadLine();
                     ExecuteCommand(currentCommand, currentCharacter, currentBoss);
                     Console.WriteLine("You used: " + currentCommand);
                     Console.WriteLine(currentCharacter.Status());
                     Console.WriteLine(currentBoss.Status());
+
                     if (currentBoss.CurrentHealthPoints <= 0)
                     {
                         break;
                     }
+
                     Console.WriteLine("The boss used: " + MobAction(currentCharacter, currentBoss));
                     Console.WriteLine(currentCharacter.Status());
                     Console.WriteLine(currentBoss.Status());
                 }
+
                 SomeoneDied(currentCharacter, currentBoss);
                 Reheal(currentCharacter);
+                ItemDropTier1(weaponsTier1, armorTier1);
+                GettingEquipment(currentWeapon, currentArmor, oldWeapon, oldArmor, currentCharacter);
+                ItemDropTier1(weaponsTier1, armorTier1);
+                GettingEquipment(currentWeapon, currentArmor, oldWeapon, oldArmor, currentCharacter);
             }
             else
             {
                 while (currentCharacter.CurrentHealthPoints > 0 && currentBoss.CurrentHealthPoints > 0)
                 {
-                    Console.WriteLine("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command:\n");
+                    Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                     string currentCommand = Console.ReadLine();
                     Console.WriteLine("The boss used: " + MobAction(currentCharacter, currentBoss));
 
                     Console.WriteLine(currentCharacter.Status());
                     Console.WriteLine(currentBoss.Status());
+
                     if (currentCharacter.CurrentHealthPoints <= 0)
                     {
                         break;
                     }
+
                     ExecuteCommand(currentCommand, currentCharacter, currentBoss);
                     Console.WriteLine("You used: " + currentCommand);
                     Console.WriteLine(currentCharacter.Status());
                     Console.WriteLine(currentBoss.Status());
                 }
+
                 SomeoneDied(currentCharacter, currentBoss);
                 Reheal(currentCharacter);
             }
@@ -386,32 +468,33 @@ namespace RPG
         {
             while (true)
             {
-                if (currentCommand == "Attack")
+                currentCommand = currentCommand.ToLower();
+                if (currentCommand == "attack")
                 {
                     currentCharacter.NormalAttack(currentCreature);
                     currentCreature.GetDamage();
                     Recharge(currentCharacter);
                     break;
                 }
-                else if (currentCommand == "Buff")
+                else if (currentCommand == "buff")
                 {
                     currentCharacter.GetBuff();
                     Recharge(currentCharacter);
                     break;
                 }
-                else if (currentCommand == "Shield")
+                else if (currentCommand == "shield")
                 {
                     currentCharacter.GetShield();
                     Recharge(currentCharacter);
                     break;
                 }
-                else if (currentCommand == "Heal")
+                else if (currentCommand == "heal")
                 {
                     currentCharacter.HealCharacter(currentCharacter);
                     Recharge(currentCharacter);
                     break;
                 }
-                else if (currentCommand == "Power Attack")
+                else if (currentCommand == "power attack")
                 {
                     currentCharacter.PowerAttack(currentCreature);
                     currentCreature.GetDamage();
@@ -482,6 +565,61 @@ namespace RPG
             {
                 currentCharacter.CurrentHealthPoints = currentCharacter.HealthPoints;
             }
+        }
+
+        private void Equip(Item currentWeapon, Item oldWeapon, ICharacters currentCharacter, string equipCommand)
+        {
+            if (equipCommand == "y")
+            {
+                if (currentCharacter.WeaponType == currentWeapon.Type || currentWeapon.Type == "all")
+                {
+                    RemoveCurrentItemStats(oldWeapon, currentCharacter);
+                    AddNewItemStats(currentWeapon, currentCharacter);
+                    oldWeapon = currentWeapon;
+                }
+                else
+                {
+                    Console.WriteLine("The item is not compatible with your class!");
+                }
+            }
+            else if (equipCommand == "n")
+            {
+                Console.WriteLine("Item " + currentWeapon.Name + " successfully discarded!");
+            }
+            else
+            {
+                throw new Exception("Command not recognized! Game over!");
+            }
+        }
+
+        private void RemoveCurrentItemStats(Item oldWeapon, ICharacters currentCharacter)
+        {
+            currentCharacter.HealthPoints -= oldWeapon.HpAdd;
+            currentCharacter.Mana -= oldWeapon.ManaAdd;
+            currentCharacter.Attack -= Convert.ToInt32(oldWeapon.AttackAdd);
+            currentCharacter.Defence -= Convert.ToInt32(oldWeapon.DefenceAdd);
+            currentCharacter.Speed -= oldWeapon.DefenceAdd;
+        }
+
+        private void AddNewItemStats(Item currentWeapon, ICharacters currentCharacter)
+        {
+            currentCharacter.HealthPoints += currentWeapon.HpAdd;
+            currentCharacter.Mana += currentWeapon.ManaAdd;
+            currentCharacter.Attack += Convert.ToInt32(currentWeapon.AttackAdd);
+            currentCharacter.Defence += Convert.ToInt32(currentWeapon.DefenceAdd);
+            currentCharacter.Speed += currentWeapon.SpeedAdd;
+
+            Console.WriteLine("\n Item " + currentWeapon.Name + " successfully equipped!");
+        }
+
+        private void GettingEquipment(Item currentWeapon, Item currentArmor, Item oldWeapon, Item oldArmor, ICharacters currentCharacter)
+        {
+            Console.WriteLine("\nDo you want to equip the dropped weapon? This will discard your current weapon if you have one. y/n\n");
+            string equipWeaponCommand = Console.ReadLine();
+            Equip(currentWeapon, oldWeapon, currentCharacter, equipWeaponCommand);
+            Console.WriteLine("\nDo you want to equip the dropped armor? This will discard your current armor if you have one. y/n\n");
+            string equipArmorCommand = Console.ReadLine();
+            Equip(currentArmor, oldArmor, currentCharacter, equipArmorCommand);
         }
     }
 }

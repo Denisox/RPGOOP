@@ -30,6 +30,10 @@ namespace RPG.Items
             {
                 return type;
             }
+            set
+            {
+                type = value;
+            }
         }
 
         public int HpAdd
@@ -62,6 +66,10 @@ namespace RPG.Items
             {
                 return attackAdd;
             }
+            set
+            {
+                AttackAdd = value;
+            }
         }
 
         public double DefenceAdd
@@ -69,6 +77,10 @@ namespace RPG.Items
             get
             {
                 return defenceAdd;
+            }
+            set
+            {
+                DefenceAdd = value;
             }
         }
 

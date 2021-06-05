@@ -16,7 +16,6 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         {
             get => name;
             set => name = value;
-
         }
 
         private int attack;
@@ -24,6 +23,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         public override int Attack
         {
             get => attack;
+            set => attack = value;
         }
 
         private int defence;
@@ -31,6 +31,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         public override int Defence
         {
             get => defence;
+            set => defence = value;
         }
 
         private double speed;
@@ -38,6 +39,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         public override double Speed
         {
             get => speed;
+            set => speed = value;
         }
 
         private int healthPoints;
@@ -45,6 +47,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         public override int HealthPoints
         {
             get => healthPoints;
+            set => healthPoints = value;
         }
 
         private int mana;
@@ -52,21 +55,27 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         public override int Mana
         {
             get => mana;
+            set => mana = value;
         }
 
         private int currentHealthPoints;
+
         public override int CurrentHealthPoints
         {
             get => currentHealthPoints;
             set => currentHealthPoints = value;
         }
+
         private int currentMana;
+
         public override int CurrentMana
         {
             get => currentMana;
             set => currentMana = value;
         }
+
         private bool hasBuff = false;
+
         public override bool HasBuff
         {
             get => hasBuff;
@@ -74,6 +83,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         }
 
         private bool hasShield = false;
+
         public override bool HasShield
         {
             get => hasShield;
@@ -81,17 +91,22 @@ namespace RPG.CharacterClasses.Weapon_Mastery
         }
 
         private int incomingDamage = 0;
+
         public override int IncomingDamage
         {
             get => incomingDamage;
             set => incomingDamage = value;
         }
+
         private int outgoingDamage = 0;
+
         public override int OutgoingDamage
         {
             get => outgoingDamage;
             set => outgoingDamage = value;
         }
+
+        public override string WeaponType { get; set; }
 
         public CharacterPyromancer(string name, int attack, int defence, double speed, int hp, int mana)
         {
