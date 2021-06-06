@@ -141,7 +141,7 @@ namespace RPG.CharacterClasses
 
         public string Status()
         {
-            return "\nCharecter Stats" + "\nHealth: " + this.CurrentHealthPoints + "\nMana: " + this.Mana + "\nAttack: " + this.Attack + "\nDefence: " + this.Defence + "\nSpeed: " + this.Speed + "\n";
+            return "\nCharecter Stats" + "\nHealth: " + this.CurrentHealthPoints + "\nMana: " + this.CurrentMana + "\nAttack: " + this.Attack + "\nDefence: " + this.Defence + "\nSpeed: " + this.Speed + "\n";
         }
     }
 }
