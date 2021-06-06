@@ -45,7 +45,8 @@ namespace RPG
             ICharacters currentCharacter = null;
 
             // choose class
-            program.ChooseCurrentCharacterClass(currentCharacter, characterInstance);
+            currentCharacter = program.ChooseCurrentCharacterClass(currentCharacter, characterInstance);
+
 
             // choose name
             program.ChooseCurrentCharacterName(currentCharacter);
@@ -66,7 +67,7 @@ namespace RPG
             program.Stage3Completed(currentCharacter);
         }
 
-        public void ChooseCurrentCharacterClass(ICharacters currentCharacter, CharactеrInstance characterInstance)
+        public ICharacters ChooseCurrentCharacterClass(ICharacters currentCharacter, CharactеrInstance characterInstance)
         {
             while (currentCharacter == null)
             {
@@ -121,7 +122,10 @@ namespace RPG
                         Console.WriteLine("Bad Input\n");
                         break;
                 }
+                
+
             }
+            return currentCharacter;
         }
 
         public void ChooseCurrentCharacterName(ICharacters currentCharacter) // needs to be fixed
