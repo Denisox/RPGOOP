@@ -45,7 +45,8 @@ namespace RPG
             ICharacters currentCharacter = null;
 
             // choose class
-            program.ChooseCurrentCharacterClass(currentCharacter, characterInstance);
+            currentCharacter = program.ChooseCurrentCharacterClass(currentCharacter, characterInstance);
+
 
             // choose name
             program.ChooseCurrentCharacterName(currentCharacter);
@@ -66,7 +67,7 @@ namespace RPG
             program.Stage3Completed(currentCharacter);
         }
 
-        public void ChooseCurrentCharacterClass(ICharacters currentCharacter, CharactеrInstance characterInstance)
+        public ICharacters ChooseCurrentCharacterClass(ICharacters currentCharacter, CharactеrInstance characterInstance)
         {
             while (currentCharacter == null)
             {
@@ -121,7 +122,10 @@ namespace RPG
                         Console.WriteLine("Bad Input\n");
                         break;
                 }
+                
+
             }
+            return currentCharacter;
         }
 
         public void ChooseCurrentCharacterName(ICharacters currentCharacter) // needs to be fixed
@@ -235,7 +239,6 @@ namespace RPG
                     Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                     string currentCommand = Console.ReadLine();
                     ExecuteCommand(currentCommand, currentCharacter, currentBoss);
-                    Console.WriteLine("You used: " + currentCommand);
                     Console.WriteLine(currentCharacter.Status());
                     Console.WriteLine(currentBoss.Status());
 
@@ -244,7 +247,6 @@ namespace RPG
                         break;
                     }
 
-                    Console.WriteLine("The boss used: " + MobAction(currentCharacter, currentBoss));
                     Console.WriteLine(currentCharacter.Status());
                     Console.WriteLine(currentBoss.Status());
                 }
@@ -262,7 +264,6 @@ namespace RPG
                 {
                     Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                     string currentCommand = Console.ReadLine();
-                    Console.WriteLine("The boss used: " + MobAction(currentCharacter, currentBoss));
 
                     Console.WriteLine(currentCharacter.Status());
                     Console.WriteLine(currentBoss.Status());
@@ -273,7 +274,6 @@ namespace RPG
                     }
 
                     ExecuteCommand(currentCommand, currentCharacter, currentBoss);
-                    Console.WriteLine("You used: " + currentCommand);
                     Console.WriteLine(currentCharacter.Status());
                     Console.WriteLine(currentBoss.Status());
                 }
@@ -300,7 +300,6 @@ namespace RPG
                         Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                         string currentCommand = Console.ReadLine();
                         ExecuteCommand(currentCommand, currentCharacter, currentCreature);
-                        Console.WriteLine("You used: " + currentCommand);
                         Console.WriteLine(currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
 
@@ -310,7 +309,6 @@ namespace RPG
                         }
 
                         string mobCommand = MobAction(currentCharacter, currentCreature);
-                        Console.WriteLine("The mob used " + mobCommand);
                         Console.WriteLine(currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
                     }
@@ -325,7 +323,6 @@ namespace RPG
                         Console.Write("\nList of possible commands: Attack / Buff / Shield / Heal / Power Attack\nEnter a command: ");
                         string currentCommand = Console.ReadLine();
                         string mobCommand = MobAction(currentCharacter, currentCreature);
-                        Console.WriteLine("The mob used " + mobCommand);
                         Console.WriteLine(currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
 
@@ -335,7 +332,6 @@ namespace RPG
                         }
 
                         ExecuteCommand(currentCommand, currentCharacter, currentCreature);
-                        Console.WriteLine("You used: " + currentCommand);
                         Console.WriteLine(currentCharacter.Status());
                         Console.WriteLine(currentCreature.Status());
                     }
@@ -437,6 +433,8 @@ namespace RPG
             if (currentCreature.CurrentHealthPoints <= 0)
             {
                 Console.WriteLine("You defeated this mob!");
+                currentCharacter.HasBuff = false;
+                currentCharacter.HasShield = false;
             }
         }
 
