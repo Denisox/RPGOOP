@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using RPG.Items;
 using RPG.Interfaces;
-using RPG.Weapon_Mastery;
-using RPG.CharacterClasses.Weapon_Mastery;
-using RPG.CharacterClasses;
-using RPG.Classes;
-using RPG;
 
 namespace RPG
 {
@@ -22,6 +17,7 @@ namespace RPG
             ItemsInstance itemsInstance = new ItemsInstance();
             CharactеrInstance characterInstance = new CharactеrInstance();
             BossInstance bossInstance = new BossInstance();
+            Program program = new Program();
 
             List<List<Item>> containsAllItems = new List<List<Item>>()
             {
@@ -44,18 +40,34 @@ namespace RPG
                 characterInstance.character7
             };
 
-            Console.WriteLine("List of the possible characters: ");
-            foreach (ICharacters character in characters)
-            {
-                Console.WriteLine(character.AsAString());
-            }
-
-            Console.WriteLine();
-            string choice = "Choose Class: |    Crossbow    |   Bow   |     One-Hand Swordsman     |      Two-Hand Swordsman     |      Spearman     |      Pyromancer     |        Necromancer      |";
-
-            Console.WriteLine(choice);
+            program.DisplayPossibleClasses(characters); // add display classes here
 
             ICharacters currentCharacter = null;
+
+            // choose class
+            program.ChooseCurrentCharacterClass(currentCharacter, characterInstance);
+
+            // choose name
+            program.ChooseCurrentCharacterName(currentCharacter);
+
+            program.CombatTier(currentCharacter, itemsInstance.tier1Creatures, bossInstance.tier1Boss, itemsInstance.weaponsTier1, itemsInstance.armorTier1);
+
+            // stage 1 finished, 2 more to go!
+            program.Stage1Completed(currentCharacter);
+
+            program.CombatTier(currentCharacter, itemsInstance.tier2Creatures, bossInstance.tier2Boss, itemsInstance.weaponsTier2, itemsInstance.armorTier2);
+
+            //stage 2 finished, 1 more to go!
+            program.Stage2Completed(currentCharacter);
+
+            program.CombatTier(currentCharacter, itemsInstance.tier3Creatures, bossInstance.tier3Boss, itemsInstance.weaponsTier3, itemsInstance.armorTier3);
+            //stage 3 finished, you win!
+
+            program.Stage3Completed(currentCharacter);
+        }
+
+        public void ChooseCurrentCharacterClass(ICharacters currentCharacter, CharactеrInstance characterInstance)
+        {
             while (currentCharacter == null)
             {
                 Console.Write("Enter class name: ");
@@ -110,7 +122,10 @@ namespace RPG
                         break;
                 }
             }
+        }
 
+        public void ChooseCurrentCharacterName(ICharacters currentCharacter) // needs to be fixed
+        {
             Console.Write("Enter name: ");
             string givenName = Console.ReadLine();
             while (string.IsNullOrEmpty(givenName))
@@ -121,10 +136,24 @@ namespace RPG
 
             currentCharacter.Name = givenName;
             Console.WriteLine("Your name is " + currentCharacter.Name + ", let the Combat begin\n");
+        }
 
-            Program program = new Program();
-            program.CombatTier(currentCharacter, itemsInstance.tier1Creatures, bossInstance.tier1Boss, itemsInstance.weaponsTier1, itemsInstance.armorTier1);
+        public void DisplayPossibleClasses(List<ICharacters> characters)
+        {
+            Console.WriteLine("List of the possible characters: ");
+            foreach (ICharacters character in characters)
+            {
+                Console.WriteLine(character.AsAString());
+            }
 
+            Console.WriteLine();
+            string choice = "Choose Class: |    Crossbow    |   Bow   |     One-Hand Swordsman     |      Two-Hand Swordsman     |      Spearman     |      Pyromancer     |        Necromancer      |";
+
+            Console.WriteLine(choice);
+        }
+
+        public void Stage1Completed(ICharacters currentCharacter)
+        {
             if (currentCharacter.CurrentHealthPoints > 0)
             {
                 Console.WriteLine("\n\nCongratulations! You finished Stage 1! Two more to go!");
@@ -133,20 +162,22 @@ namespace RPG
             {
                 System.Environment.Exit(0);
             }
+        }
 
-            program.CombatTier(currentCharacter, itemsInstance.tier2Creatures, bossInstance.tier2Boss, itemsInstance.weaponsTier2, itemsInstance.armorTier2);
-
+        public void Stage2Completed(ICharacters currentCharacter)
+        {
             if (currentCharacter.CurrentHealthPoints > 0)
             {
-                Console.WriteLine("\n\nCongratulations! You finished Stage 2! One more to go!");
+                Console.WriteLine("\n\nCongratulations! You finished Stage 2! Two more to go!");
             }
             else
             {
                 System.Environment.Exit(0);
             }
+        }
 
-            program.CombatTier(currentCharacter, itemsInstance.tier3Creatures, bossInstance.tier3Boss, itemsInstance.weaponsTier3, itemsInstance.armorTier3);
-
+        public void Stage3Completed(ICharacters currentCharacter)
+        {
             if (currentCharacter.CurrentHealthPoints > 0)
             {
                 Console.WriteLine("\n\nCongratulations! You finished Stage 3! Game Over, you win!");
