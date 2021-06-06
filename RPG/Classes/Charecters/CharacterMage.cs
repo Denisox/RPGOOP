@@ -74,7 +74,7 @@ namespace RPG.CharacterClasses
                     {
                         this.OutgoingDamage = Convert.ToInt32(1.5 * 2 * this.Attack);
                     }
-                    CurrentMana -= 35;
+                    this.CurrentMana -= 35;
                     newCreature.IncomingDamage = this.OutgoingDamage;
                 }
                 else
