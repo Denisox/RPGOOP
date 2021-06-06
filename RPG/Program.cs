@@ -441,6 +441,8 @@ namespace RPG
             if (currentCreature.CurrentHealthPoints <= 0)
             {
                 Console.WriteLine("You defeated this mob!");
+                currentCharacter.HasBuff = false;
+                currentCharacter.HasShield = false;
             }
         }
 
