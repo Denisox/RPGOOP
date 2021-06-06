@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BossInstance.cs" />
+    <Compile Include="CharactеrInstance.cs" />
     <Compile Include="Classes\Charecters\CharacterArcher.cs" />
     <Compile Include="Classes\Charecters\CharacterKnight.cs" />
     <Compile Include="Classes\Charecters\CharacterMage.cs" />
+    <Compile Include="ItemsInstance.cs" />
     <Compile Include="Weapon-Mastery\Characters\CharacterArbalist.cs" />
     <Compile Include="Weapon-Mastery\Characters\CharacterBowman.cs" />
     <Compile Include="Weapon-Mastery\Characters\CharacterNecromancer.cs" />
