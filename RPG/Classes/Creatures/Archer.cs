@@ -25,6 +25,7 @@ namespace RPG.Classes
 
         public virtual void Heal()
         {
+            Console.WriteLine("The Creature used Heal!");
             if (Convert.ToInt32(this.CurrentHealthPoints + this.HealthPoints * 0.20) > this.HealthPoints)
             {
                 this.CurrentHealthPoints = this.HealthPoints;
@@ -37,6 +38,7 @@ namespace RPG.Classes
 
         public virtual void GetBuff()
         {
+            Console.WriteLine("The Creature used Buff!");
             if (this.HasBuff == false)
             {
                 this.HasBuff = true;
@@ -49,6 +51,7 @@ namespace RPG.Classes
 
         public virtual void GetShield()
         {
+            Console.WriteLine("The Creature used Shield!");
             if (this.HasShield == false)
             {
                 this.HasShield = true;
@@ -61,6 +64,7 @@ namespace RPG.Classes
 
         public virtual void AttackCharacter(ICharacters newCharacter)
         {
+            Console.WriteLine("The Creature used Attack!");
             if (this.HasShield == false)
             {
                 this.OutgoingDamage = Convert.ToInt32(1.3 * this.Attack);

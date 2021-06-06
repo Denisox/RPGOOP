@@ -29,6 +29,7 @@ namespace RPG.CharacterClasses
         {
             if (character.CurrentMana >= 15)
             {
+                Console.WriteLine("You used Heal!");
                 if (Convert.ToInt32(character.CurrentHealthPoints + character.HealthPoints * 0.2) > character.HealthPoints)
                 {
                     character.CurrentHealthPoints = character.HealthPoints;
@@ -48,6 +49,7 @@ namespace RPG.CharacterClasses
 
         public virtual void NormalAttack(ICreature newCreature)
         {
+            Console.WriteLine("You used Attack!");
             if (this.HasBuff == false)
             {
                 this.OutgoingDamage = Convert.ToInt32(1.25 * this.Attack);
@@ -61,6 +63,7 @@ namespace RPG.CharacterClasses
 
         public virtual void PowerAttack(ICreature newCreature)
         {
+            Console.WriteLine("You used Power Attack!");
             Random newRandom = new Random();
             if (newRandom.Next(100) < 85)
             {
@@ -90,6 +93,7 @@ namespace RPG.CharacterClasses
 
         public virtual void GetBuff()
         {
+            Console.WriteLine("You used Buff!");
             if (this.HasBuff == false)
             {
                 this.HasBuff = true;
@@ -102,6 +106,7 @@ namespace RPG.CharacterClasses
 
         public virtual void GetShield()
         {
+            Console.WriteLine("You used Shield!");
             if (this.HasShield == false)
             {
                 this.HasShield = true;
