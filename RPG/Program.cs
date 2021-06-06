@@ -42,28 +42,26 @@ namespace RPG
 
             program.DisplayPossibleClasses(characters); // add display classes here
 
-            ICharacters currentCharacter = null;
-
             // choose class
-            program.ChooseCurrentCharacterClass(currentCharacter, characterInstance);
+            program.ChooseCurrentCharacterClass(characterInstance.currentCharacter, characterInstance);
 
             // choose name
-            program.ChooseCurrentCharacterName(currentCharacter);
+            program.ChooseCurrentCharacterName(characterInstance.currentCharacter);
 
-            program.CombatTier(currentCharacter, itemsInstance.tier1Creatures, bossInstance.tier1Boss, itemsInstance.weaponsTier1, itemsInstance.armorTier1);
+            program.CombatTier(characterInstance.currentCharacter, itemsInstance.tier1Creatures, bossInstance.tier1Boss, itemsInstance.weaponsTier1, itemsInstance.armorTier1);
 
             // stage 1 finished, 2 more to go!
-            program.Stage1Completed(currentCharacter);
+            program.Stage1Completed(characterInstance.currentCharacter);
 
-            program.CombatTier(currentCharacter, itemsInstance.tier2Creatures, bossInstance.tier2Boss, itemsInstance.weaponsTier2, itemsInstance.armorTier2);
+            program.CombatTier(characterInstance.currentCharacter, itemsInstance.tier2Creatures, bossInstance.tier2Boss, itemsInstance.weaponsTier2, itemsInstance.armorTier2);
 
             //stage 2 finished, 1 more to go!
-            program.Stage2Completed(currentCharacter);
+            program.Stage2Completed(characterInstance.currentCharacter);
 
-            program.CombatTier(currentCharacter, itemsInstance.tier3Creatures, bossInstance.tier3Boss, itemsInstance.weaponsTier3, itemsInstance.armorTier3);
+            program.CombatTier(characterInstance.currentCharacter, itemsInstance.tier3Creatures, bossInstance.tier3Boss, itemsInstance.weaponsTier3, itemsInstance.armorTier3);
             //stage 3 finished, you win!
 
-            program.Stage3Completed(currentCharacter);
+            program.Stage3Completed(characterInstance.currentCharacter);
         }
 
         public void ChooseCurrentCharacterClass(ICharacters currentCharacter, CharactеrInstance characterInstance)
