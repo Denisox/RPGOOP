@@ -5,7 +5,7 @@ using RPG.Interfaces;
 
 namespace RPG
 {
-    internal class Program
+    public class Program
     {
         private Item currentWeapon = null;
         private Item currentArmor = null;
@@ -40,31 +40,43 @@ namespace RPG
                 characterInstance.character7
             };
 
-            program.DisplayPossibleClasses(characters); // add display classes here
+            // display all possible classes
+            program.DisplayPossibleClasses(characters);
+
+            ICharacters currentCharacter = null;
 
             // choose class
-            program.ChooseCurrentCharacterClass(characterInstance.currentCharacter, characterInstance);
+            currentCharacter = program.ChooseCurrentCharacterClass(currentCharacter, characterInstance);
 
             // choose name
-            program.ChooseCurrentCharacterName(characterInstance.currentCharacter);
+            program.ChooseCurrentCharacterName(currentCharacter);
 
-            program.CombatTier(characterInstance.currentCharacter, itemsInstance.tier1Creatures, bossInstance.tier1Boss, itemsInstance.weaponsTier1, itemsInstance.armorTier1);
+            // --------------------------------------------------------------------------------------------------
+
+            // stage 1 combat start
+            program.CombatTier(currentCharacter, itemsInstance.tier1Creatures, bossInstance.tier1Boss, itemsInstance.weaponsTier1, itemsInstance.armorTier1);
 
             // stage 1 finished, 2 more to go!
-            program.Stage1Completed(characterInstance.currentCharacter);
+            program.Stage1Completed(currentCharacter);
 
-            program.CombatTier(characterInstance.currentCharacter, itemsInstance.tier2Creatures, bossInstance.tier2Boss, itemsInstance.weaponsTier2, itemsInstance.armorTier2);
+            // --------------------------------------------------------------------------------------------------
 
-            //stage 2 finished, 1 more to go!
-            program.Stage2Completed(characterInstance.currentCharacter);
+            // stage 2 combat start
+            program.CombatTier(currentCharacter, itemsInstance.tier2Creatures, bossInstance.tier2Boss, itemsInstance.weaponsTier2, itemsInstance.armorTier2);
 
-            program.CombatTier(characterInstance.currentCharacter, itemsInstance.tier3Creatures, bossInstance.tier3Boss, itemsInstance.weaponsTier3, itemsInstance.armorTier3);
-            //stage 3 finished, you win!
+            // stage 2 finished, 1 more to go!
+            program.Stage2Completed(currentCharacter);
 
-            program.Stage3Completed(characterInstance.currentCharacter);
+            // --------------------------------------------------------------------------------------------------
+
+            // stage 3 combat start
+            program.CombatTier(currentCharacter, itemsInstance.tier3Creatures, bossInstance.tier3Boss, itemsInstance.weaponsTier3, itemsInstance.armorTier3);
+
+            // stage 3 finished, you win!
+            program.Stage3Completed(currentCharacter);
         }
 
-        public void ChooseCurrentCharacterClass(ICharacters currentCharacter, CharactеrInstance characterInstance)
+        public ICharacters ChooseCurrentCharacterClass(ICharacters currentCharacter, CharactеrInstance characterInstance)
         {
             while (currentCharacter == null)
             {
@@ -120,9 +132,10 @@ namespace RPG
                         break;
                 }
             }
+            return currentCharacter;
         }
 
-        public void ChooseCurrentCharacterName(ICharacters currentCharacter) // needs to be fixed
+        public void ChooseCurrentCharacterName(ICharacters currentCharacter)
         {
             Console.Write("Enter name: ");
             string givenName = Console.ReadLine();

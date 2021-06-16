@@ -114,10 +114,12 @@ namespace RPG.CharacterClasses
         public virtual void GetDamage()
         {
             int dealtDamage = Convert.ToInt32(this.IncomingDamage - 0.75 * this.Defence);
+
             if (dealtDamage < 2)
             {
                 dealtDamage = 2;
             }
+
             if (HasShield == false)
             {
                 this.CurrentHealthPoints = this.CurrentHealthPoints - dealtDamage;
@@ -127,6 +129,7 @@ namespace RPG.CharacterClasses
                 dealtDamage = Convert.ToInt32(0.5 * dealtDamage);
                 this.CurrentHealthPoints = this.CurrentHealthPoints - dealtDamage;
             }
+
             if (CurrentHealthPoints < 0)
             {
                 CurrentHealthPoints = 0;
