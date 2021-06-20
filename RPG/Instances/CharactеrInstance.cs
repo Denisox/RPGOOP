@@ -1,5 +1,6 @@
 ﻿using RPG.CharacterClasses.Weapon_Mastery;
 using RPG.CharacterClasses;
+using RPG.Interfaces;
 
 namespace RPG
 {
