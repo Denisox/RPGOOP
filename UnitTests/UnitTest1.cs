@@ -4,6 +4,7 @@ using RPG;
 using RPG.Interfaces;
 using RPG.Classes;
 using RPG.CharacterClasses;
+using RPG.Weapon_Mastery;
 
 namespace UnitTests
 {
@@ -78,5 +79,14 @@ namespace UnitTests
             var expected = 0;
             Assert.AreNotEqual(char1.character1.Mana, expected);
         }
+        [TestMethod]
+        public void CharacterClass_CheckGetBuff()
+        {
+            Necromancer char1 = new Necromancer("default", 0 , 0, 0, 0, 0);
+            char1.GetBuff();
+            var expected = true;
+            Assert.AreEqual(char1.HasBuff, expected);
+        }
+
     }
 }
