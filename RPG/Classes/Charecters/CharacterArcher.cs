@@ -25,7 +25,7 @@ namespace RPG.CharacterClasses
         public abstract bool HasBuff { get; set; }
         public abstract string WeaponType { get; set; }
 
-        public virtual void HealCharacter(ICharacters character)
+        public virtual void HealCharacter(ICharacters character) // to do: remove HealCharacter argument
         {
             if (character.CurrentMana >= 20)
             {
