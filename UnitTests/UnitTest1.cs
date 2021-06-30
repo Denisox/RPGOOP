@@ -23,6 +23,7 @@ namespace UnitTests
         {
             BossInstance tier2 = new BossInstance();
             Assert.IsNotNull(tier2.tier2Boss);
+            
         }
 
         [TestMethod]
