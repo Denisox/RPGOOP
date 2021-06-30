@@ -28,7 +28,7 @@ namespace UnitTest
             var Arbalist1 = new Arbalist("name", 10, 10, 10, 10, 10);
             Arbalist1.IncomingDamage = 9;
             Arbalist1.GetDamage();
-            Assert.AreEqual(7, Arbalist1.CurrentHealthPoints);
+            Assert.AreEqual(8, Arbalist1.CurrentHealthPoints);
             
 
         }
@@ -66,9 +66,8 @@ namespace UnitTest
         public void EnoughManaForHeal()
         {
             var Arbalist = new CharacterArbalist("name", 10, 10, 10, 10, 50);
-            var Bowman = new CharacterBowman("name", 10, 10, 10, 10, 0);
             
-            Arbalist.HealCharacter(Bowman);
+            Arbalist.HealCharacter(Arbalist);
             Assert.AreEqual(30, Arbalist.CurrentMana);
 
         }
