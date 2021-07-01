@@ -8,7 +8,6 @@ using RPG.Interfaces;
 namespace RPG.CharacterClasses
 {
     public abstract class CharacterMage : ICharacters
-
     {
         public abstract int HealthPoints { get; set; }
         public abstract int Attack { get; set; }
@@ -25,19 +24,19 @@ namespace RPG.CharacterClasses
         public abstract bool HasBuff { get; set; }
         public abstract string WeaponType { get; set; }
 
-        public virtual void HealCharacter(ICharacters character)
+        public virtual void HealCharacter()
         {
             Console.WriteLine("You used Heal!");
-            if (character.CurrentMana >= 25)
+            if (this.CurrentMana >= 25)
             {
-                if (Convert.ToInt32(character.CurrentHealthPoints + character.HealthPoints * 0.3) > character.HealthPoints)
+                if (Convert.ToInt32(this.CurrentHealthPoints + this.HealthPoints * 0.3) > this.HealthPoints)
                 {
-                    character.CurrentHealthPoints = character.HealthPoints;
+                    this.CurrentHealthPoints = this.HealthPoints;
                     CurrentMana -= 25;
                 }
                 else
                 {
-                    character.CurrentHealthPoints = Convert.ToInt32(0.3 * character.HealthPoints + character.CurrentHealthPoints);
+                    this.CurrentHealthPoints = Convert.ToInt32(0.3 * this.HealthPoints + this.CurrentHealthPoints);
                     CurrentMana -= 25;
                 }
             }

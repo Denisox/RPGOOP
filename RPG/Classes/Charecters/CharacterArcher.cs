@@ -25,20 +25,19 @@ namespace RPG.CharacterClasses
         public abstract bool HasBuff { get; set; }
         public abstract string WeaponType { get; set; }
 
-        public virtual void HealCharacter(ICharacters character) // to do: remove HealCharacter argument
+        public virtual void HealCharacter()
         {
-            if (character.CurrentMana >= 20)
+            if (this.CurrentMana >= 20)
             {
-
                 Console.WriteLine("You used Heal!");
-                if (Convert.ToInt32(character.CurrentHealthPoints + character.HealthPoints * 0.25) > character.HealthPoints)
+                if (Convert.ToInt32(this.CurrentHealthPoints + this.HealthPoints * 0.25) > this.HealthPoints)
                 {
-                    character.CurrentHealthPoints = character.HealthPoints;
+                    this.CurrentHealthPoints = this.HealthPoints;
                     CurrentMana -= 20;
                 }
                 else
                 {
-                    character.CurrentHealthPoints = Convert.ToInt32(0.25 * character.HealthPoints + character.CurrentHealthPoints);
+                    this.CurrentHealthPoints = Convert.ToInt32(0.25 * this.HealthPoints + this.CurrentHealthPoints);
                     CurrentMana -= 20;
                 }
             }

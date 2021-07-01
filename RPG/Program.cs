@@ -131,8 +131,6 @@ namespace RPG
                         Console.WriteLine("Bad Input\n");
                         break;
                 }
-                
-
             }
             return currentCharacter;
         }
@@ -385,7 +383,7 @@ namespace RPG
                 }
                 else if (currentCommand == "heal")
                 {
-                    currentCharacter.HealCharacter(currentCharacter);
+                    currentCharacter.HealCharacter();
                     Recharge(currentCharacter);
                     break;
                 }

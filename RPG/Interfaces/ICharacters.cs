@@ -25,7 +25,7 @@ namespace RPG.Interfaces
         bool HasBuff { get; set; }
         string WeaponType { get; set; }
 
-        void HealCharacter(ICharacters character);
+        void HealCharacter();
 
         void NormalAttack(ICreature newCreature);
 
