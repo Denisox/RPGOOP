@@ -73,7 +73,9 @@ namespace RPG
             program.CombatTier(currentCharacter, itemsInstance.tier3Creatures, bossInstance.tier3Boss, itemsInstance.weaponsTier3, itemsInstance.armorTier3);
 
             // stage 3 finished, you win!
+            
             program.Stage3Completed(currentCharacter);
+            Program.GameOver();
         }
 
         public ICharacters ChooseCurrentCharacterClass(ICharacters currentCharacter, CharactеrInstance characterInstance)
@@ -171,7 +173,7 @@ namespace RPG
             }
             else
             {
-                System.Environment.Exit(0);
+                return;
             }
         }
 
@@ -183,7 +185,7 @@ namespace RPG
             }
             else
             {
-                System.Environment.Exit(0);
+                return;
             }
         }
 
@@ -195,7 +197,7 @@ namespace RPG
             }
             else
             {
-                System.Environment.Exit(0);
+                return;
             }
         }
 
@@ -259,6 +261,10 @@ namespace RPG
                 }
 
                 SomeoneDied(currentCharacter, currentBoss);
+                if (currentCharacter.CurrentHealthPoints <= 0)
+                {
+                    return;
+                }
                 Reheal(currentCharacter);
                 ItemDropTier1(weaponsTier1, armorTier1);
                 GettingEquipment(currentWeapon, currentArmor, oldWeapon, oldArmor, currentCharacter);
@@ -286,6 +292,10 @@ namespace RPG
                 }
 
                 SomeoneDied(currentCharacter, currentBoss);
+                if (currentCharacter.CurrentHealthPoints <= 0)
+                {
+                    return;
+                }
                 Reheal(currentCharacter);
             }
         }
@@ -321,6 +331,10 @@ namespace RPG
                     }
 
                     SomeoneDied(currentCharacter, currentCreature);
+                    if (currentCharacter.CurrentHealthPoints <= 0)
+                    {
+                        return;
+                    }
                     Reheal(currentCharacter);
                 }
                 else
@@ -344,6 +358,10 @@ namespace RPG
                     }
 
                     SomeoneDied(currentCharacter, currentCreature);
+                    if(currentCharacter.CurrentHealthPoints<=0)
+                    {
+                        return;
+                    }
                     Reheal(currentCharacter);
                 }
                 ItemDropTier1(weaponsTier1, armorTier1);
@@ -353,7 +371,15 @@ namespace RPG
 
         public void CombatTier(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss, List<Item> weaponsTier1, List<Item> armorTier1)
         {
+            if (currentCharacter.CurrentHealthPoints <= 0)
+            {
+                return;
+            }
             MobBattle(currentCharacter, tier1Creatures, tier1Boss, weaponsTier1, armorTier1);
+            if (currentCharacter.CurrentHealthPoints <= 0)
+            {
+                return;
+            }
             BossBattle(currentCharacter, tier1Creatures, tier1Boss, weaponsTier1, armorTier1);
         }
 
@@ -516,5 +542,12 @@ namespace RPG
             string equipArmorCommand = Console.ReadLine();
             Equip(currentArmor, oldArmor, currentCharacter, equipArmorCommand);
         }
+
+        private static void GameOver()
+        {
+            Console.WriteLine("The game is over! Press any key to exit...");
+            Console.ReadKey();
+        }
+
     }
 }
