@@ -125,7 +125,7 @@ namespace RPG.CharacterClasses.Weapon_Mastery
             return "\nClass: One-Hand Swordsman;\nAttack: " + this.attack + "\nDefence: " + this.defence + "\nSpeed: " + this.speed + "\nHP: " + this.healthPoints + "\nMana: " + this.mana;
         }
 
-        public override void GetDamage()
+        public sealed override void GetDamage()
         {
             int dealtDamage = this.IncomingDamage - this.Defence;
             if (dealtDamage < 2)
