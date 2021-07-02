@@ -473,7 +473,14 @@ namespace RPG
 
         private void Recharge(ICharacters currentCharacter)
         {
-            currentCharacter.CurrentMana += 7;
+            if (currentCharacter.CurrentMana + 7 <= currentCharacter.Mana)
+            {
+                currentCharacter.CurrentMana += 7;
+            }
+            else
+            {
+                currentCharacter.CurrentMana = currentCharacter.Mana;
+            }
         }
 
         private void Reheal(ICharacters currentCharacter)
