@@ -6,6 +6,8 @@ namespace RPG
 {
     public class CharactеrInstance
     {
+        // character default stats (without items equiped)
+
         public CharacterArcher character1 = new CharacterArbalist("default", 20, 12, 1.3, 225, 30);
         public CharacterArcher character2 = new CharacterBowman("default", 18, 8, 1.2, 168, 40);
         public CharacterKnight character3 = new CharacterOneHandedSwordsman("default", 18, 12, 1.3, 168, 50);
