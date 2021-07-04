@@ -49,6 +49,7 @@
     <Compile Include="Classes\Charecters\CharacterKnight.cs" />
     <Compile Include="Classes\Charecters\CharacterMage.cs" />
     <Compile Include="Instances\ItemsInstance.cs" />
+    <Compile Include="Instances\MobsInstance.cs" />
     <Compile Include="Weapon-Mastery\Characters\CharacterArbalist.cs" />
     <Compile Include="Weapon-Mastery\Characters\CharacterBowman.cs" />
     <Compile Include="Weapon-Mastery\Characters\CharacterNecromancer.cs" />

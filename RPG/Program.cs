@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RPG.Items;
 using RPG.Interfaces;
+using RPG.Instances;
 
 namespace RPG
 {
@@ -16,9 +17,11 @@ namespace RPG
         {
             ItemsInstance itemsInstance = new ItemsInstance();
             CharactеrInstance characterInstance = new CharactеrInstance();
+            MobsInstance mobsInstance = new MobsInstance();
             BossInstance bossInstance = new BossInstance();
             Program program = new Program();
 
+            // list of list of all weapons and armors
             List<List<Item>> containsAllItems = new List<List<Item>>()
             {
                 itemsInstance.weaponsTier1,
@@ -29,6 +32,7 @@ namespace RPG
                 itemsInstance.armorTier3
             };
 
+            // list of all available charecters
             List<ICharacters> characters = new List<ICharacters>()
             {
                 characterInstance.character1,
@@ -54,7 +58,7 @@ namespace RPG
             // --------------------------------------------------------------------------------------------------
 
             // stage 1 combat start
-            program.CombatTier(currentCharacter, itemsInstance.tier1Creatures, bossInstance.tier1Boss, itemsInstance.weaponsTier1, itemsInstance.armorTier1);
+            program.CombatTier(currentCharacter, mobsInstance.tier1Creatures, bossInstance.tier1Boss, itemsInstance.weaponsTier1, itemsInstance.armorTier1);
 
             // stage 1 finished, 2 more to go!
             program.Stage1Completed(currentCharacter);
@@ -62,7 +66,7 @@ namespace RPG
             // --------------------------------------------------------------------------------------------------
 
             // stage 2 combat start
-            program.CombatTier(currentCharacter, itemsInstance.tier2Creatures, bossInstance.tier2Boss, itemsInstance.weaponsTier2, itemsInstance.armorTier2);
+            program.CombatTier(currentCharacter, mobsInstance.tier2Creatures, bossInstance.tier2Boss, itemsInstance.weaponsTier2, itemsInstance.armorTier2);
 
             // stage 2 finished, 1 more to go!
             program.Stage2Completed(currentCharacter);
@@ -70,14 +74,14 @@ namespace RPG
             // --------------------------------------------------------------------------------------------------
 
             // stage 3 combat start
-            program.CombatTier(currentCharacter, itemsInstance.tier3Creatures, bossInstance.tier3Boss, itemsInstance.weaponsTier3, itemsInstance.armorTier3);
+            program.CombatTier(currentCharacter, mobsInstance.tier3Creatures, bossInstance.tier3Boss, itemsInstance.weaponsTier3, itemsInstance.armorTier3);
 
             // stage 3 finished, you win!
-            
             program.Stage3Completed(currentCharacter);
             Program.GameOver();
         }
 
+        // Method returns the class type and sets the weapon type prop
         public ICharacters ChooseCurrentCharacterClass(ICharacters currentCharacter, CharactеrInstance characterInstance)
         {
             while (currentCharacter == null)
@@ -137,6 +141,7 @@ namespace RPG
             return currentCharacter;
         }
 
+        // prints the name of the current character and sets Name prop
         public void ChooseCurrentCharacterName(ICharacters currentCharacter)
         {
             Console.Write("Enter name: ");
@@ -151,6 +156,7 @@ namespace RPG
             Console.WriteLine("Your name is " + currentCharacter.Name + ", let the Combat begin\n");
         }
 
+        // prints all possible classes the user can choose from
         public void DisplayPossibleClasses(List<ICharacters> characters)
         {
             Console.WriteLine("List of the possible characters: ");
@@ -165,6 +171,7 @@ namespace RPG
             Console.WriteLine(choice);
         }
 
+        // print message after stage 1 is completed
         public void Stage1Completed(ICharacters currentCharacter)
         {
             if (currentCharacter.CurrentHealthPoints > 0)
@@ -177,6 +184,7 @@ namespace RPG
             }
         }
 
+        // print message after stage 2 is completed
         public void Stage2Completed(ICharacters currentCharacter)
         {
             if (currentCharacter.CurrentHealthPoints > 0)
@@ -189,6 +197,7 @@ namespace RPG
             }
         }
 
+        // print message after stage 3 is completed
         public void Stage3Completed(ICharacters currentCharacter)
         {
             if (currentCharacter.CurrentHealthPoints > 0)
@@ -201,6 +210,7 @@ namespace RPG
             }
         }
 
+        // Drop random weapon and armor after stage 1 is completed
         private void ItemDropTier1(List<Item> weaponsTier1, List<Item> armorTier1)
         {
             Random randomNum = new Random();
@@ -214,6 +224,7 @@ namespace RPG
             Console.WriteLine($"Drops\nWeapon: {weaponsTier1[indexWeapon].Name}\nArmor: {armorTier1[indexArmor].Name}");
         }
 
+        // Drop random weapon and armor after stage 2 is completed
         private void ItemDropTier2(List<Item> weaponsTier2, List<Item> armorTier2)
         {
             Random randomNum = new Random();
@@ -224,6 +235,7 @@ namespace RPG
             Console.WriteLine($"Drops\nWeapon: {weaponsTier2[indexWeapon].Name}\nArmor: {armorTier2[indexArmor].Name}");
         }
 
+        // Drop random weapon and armor after stage 3 is completed
         private void ItemDropTier3(List<Item> weaponsTier3, List<Item> armorTier3)
         {
             Random randomNum = new Random();
@@ -234,6 +246,7 @@ namespace RPG
             Console.WriteLine($"Drops\nWeapon: {weaponsTier3[indexWeapon].Name}\nArmor: {armorTier3[indexArmor].Name}");
         }
 
+        // start boss battle (1 boss per stage)
         public void BossBattle(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss, List<Item> weaponsTier1, List<Item> armorTier1)
         {
             Random random2 = new Random();
@@ -300,6 +313,7 @@ namespace RPG
             }
         }
 
+        // mob battle (3 mobs per stage)
         public void MobBattle(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss, List<Item> weaponsTier1, List<Item> armorTier1)
         {
             for (int i = 0; i < 3; i++)
@@ -358,31 +372,38 @@ namespace RPG
                     }
 
                     SomeoneDied(currentCharacter, currentCreature);
-                    if(currentCharacter.CurrentHealthPoints<=0)
+
+                    if (currentCharacter.CurrentHealthPoints <= 0)
                     {
                         return;
                     }
                     Reheal(currentCharacter);
                 }
+
                 ItemDropTier1(weaponsTier1, armorTier1);
                 GettingEquipment(currentWeapon, currentArmor, oldWeapon, oldArmor, currentCharacter);
             }
         }
 
+        // start battle
         public void CombatTier(ICharacters currentCharacter, List<ICreature> tier1Creatures, List<ICreature> tier1Boss, List<Item> weaponsTier1, List<Item> armorTier1)
         {
             if (currentCharacter.CurrentHealthPoints <= 0)
             {
                 return;
             }
+
             MobBattle(currentCharacter, tier1Creatures, tier1Boss, weaponsTier1, armorTier1);
+
             if (currentCharacter.CurrentHealthPoints <= 0)
             {
                 return;
             }
+
             BossBattle(currentCharacter, tier1Creatures, tier1Boss, weaponsTier1, armorTier1);
         }
 
+        // get command input from user
         private void ExecuteCommand(string currentCommand, ICharacters currentCharacter, ICreature currentCreature)
         {
             while (true)
@@ -428,6 +449,7 @@ namespace RPG
             }
         }
 
+        // mob combat
         private string MobAction(ICharacters currentCharacter, ICreature currentCreature)
         {
             Random random2 = new Random();
@@ -456,6 +478,7 @@ namespace RPG
             return "Bug, no command";
         }
 
+        // ends the game if health <= 0 and prints victory message if mob health <= 0
         private void SomeoneDied(ICharacters currentCharacter, ICreature currentCreature)
         {
             if (currentCharacter.CurrentHealthPoints <= 0)
@@ -495,6 +518,7 @@ namespace RPG
             }
         }
 
+        // equip new armor and weapon
         private void Equip(Item currentWeapon, Item oldWeapon, ICharacters currentCharacter, string equipCommand)
         {
             if (equipCommand == "y")
@@ -520,6 +544,7 @@ namespace RPG
             }
         }
 
+        // removes the stats of the current weapon
         private void RemoveCurrentItemStats(Item oldWeapon, ICharacters currentCharacter)
         {
             currentCharacter.HealthPoints -= oldWeapon.HpAdd;
@@ -529,6 +554,7 @@ namespace RPG
             currentCharacter.Speed -= oldWeapon.DefenceAdd;
         }
 
+        // adds the stats of the new weapon
         private void AddNewItemStats(Item currentWeapon, ICharacters currentCharacter)
         {
             currentCharacter.HealthPoints += currentWeapon.HpAdd;
@@ -545,6 +571,7 @@ namespace RPG
             Console.WriteLine("\nDo you want to equip the dropped weapon? This will discard your current weapon if you have one. y/n\n");
             string equipWeaponCommand = Console.ReadLine();
             Equip(currentWeapon, oldWeapon, currentCharacter, equipWeaponCommand);
+
             Console.WriteLine("\nDo you want to equip the dropped armor? This will discard your current armor if you have one. y/n\n");
             string equipArmorCommand = Console.ReadLine();
             Equip(currentArmor, oldArmor, currentCharacter, equipArmorCommand);
@@ -555,6 +582,5 @@ namespace RPG
             Console.WriteLine("The game is over! Press any key to exit...");
             Console.ReadKey();
         }
-
     }
 }
